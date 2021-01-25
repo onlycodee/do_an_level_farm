@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1066457853196903240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4810649645058081034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e980d504206671549aed23dcb9f95549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToGrow: 1
+  price: 11111
+  isPlanted: 0
+  type: 2
+--- !u!1001 &4810649645057908544
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 187978, guid: 8d5726977994f48ebbad955e41a9f972, type: 3}
+      propertyPath: m_Name
+      value: Crops_Beets Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 187978, guid: 8d5726977994f48ebbad955e41a9f972, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 433088, guid: 8d5726977994f48ebbad955e41a9f972, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 433088, guid: 8d5726977994f48ebbad955e41a9f972, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 433088, guid: 8d5726977994f48ebbad955e41a9f972, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 433088, guid: 8d5726977994f48ebbad955e41a9f972, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 433088, guid: 8d5726977994f48ebbad955e41a9f972, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 433088, guid: 8d5726977994f48ebbad955e41a9f972, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.00000003774895
+      objectReference: {fileID: 0}
+    - target: {fileID: 433088, guid: 8d5726977994f48ebbad955e41a9f972, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 433088, guid: 8d5726977994f48ebbad955e41a9f972, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8d5726977994f48ebbad955e41a9f972, type: 3}
+--- !u!1 &4810649645058081034 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 187978, guid: 8d5726977994f48ebbad955e41a9f972,
+    type: 3}
+  m_PrefabInstance: {fileID: 4810649645057908544}
+  m_PrefabAsset: {fileID: 0}

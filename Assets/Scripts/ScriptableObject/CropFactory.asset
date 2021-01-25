@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 072a6306c48a55f40a58ab6d2b49cd34, type: 3}
+  m_Name: CropFactory
+  m_EditorClassIdentifier: 
+  cropPrefabs:
+  - {fileID: 1928745632, guid: 861e3799b3b49284cb127721c49cc4f8, type: 3}
+  - {fileID: 4891546318450640196, guid: c94cac55a71b12c42a384fdb17b0e588, type: 3}
+  - {fileID: 1066457853196903240, guid: 2124a1f7f84d2d645be25fcb77008eab, type: 3}
+  - {fileID: 5293858962055883558, guid: 845fdc47ecd564142b1585212155a54e, type: 3}
