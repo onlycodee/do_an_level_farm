@@ -10,6 +10,7 @@ public class PlayerPlanting : MonoBehaviour
     [SerializeField, Range(1f, 10f)] float plantingRange;
     [SerializeField] CropFactory cropFactory;
     [SerializeField] Color fieldHighlightColor;
+    [SerializeField] Inventory inventory;
 
     Camera mainCamera;
     Collider[] inPlantingRangeColliders = new Collider[100];

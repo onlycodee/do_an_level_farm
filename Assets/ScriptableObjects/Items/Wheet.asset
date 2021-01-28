@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d234055f20bfa364ab5146b57c543f44, type: 3}
   m_Name: Wheet
   m_EditorClassIdentifier: 
-  Avatar: {fileID: 0}
-  Price: 0
+  Name: Wheet
+  Avatar: {fileID: 21300000, guid: d562723a27b05d64ca7f3b479eeb7904, type: 3}
+  Price: 33

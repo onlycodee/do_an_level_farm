@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu()]
-public class InventoryItem : ScriptableObject
+public class InventoryItem : Item
 {
-    public Sprite Avatar;
     public float Price;
+
+    public override void SpecificInit()
+    {
+    }
 }

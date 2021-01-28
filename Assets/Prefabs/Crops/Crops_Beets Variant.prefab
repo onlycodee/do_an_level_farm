@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e980d504206671549aed23dcb9f95549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cropItem: {fileID: 11400000, guid: 84c74bbdcea455146a999383fc6fb76b, type: 2}
+  inventory: {fileID: 11400000, guid: 054a33f427e2aae42b0af9db2dea7c0c, type: 2}
   timeToGrow: 1
-  price: 11111
-  isPlanted: 0
+  IsPlanted: 0
+  IsRiped: 0
   type: 2
 --- !u!1001 &4810649645057908544
 PrefabInstance:

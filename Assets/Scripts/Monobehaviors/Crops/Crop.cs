@@ -5,8 +5,9 @@ using DG.Tweening;
 
 public class Crop : MonoBehaviour
 {
+    [SerializeField] InventoryItem cropItem;
+    [SerializeField] Inventory inventory;
     [SerializeField] float timeToGrow;
-    [SerializeField] float price;
 
     Field field;
     MeshRenderer meshRenderer;
@@ -31,6 +32,7 @@ public class Crop : MonoBehaviour
         transform.DOMoveY(transform.position.y + 2f, 1f);
         transform.DOScale(.8f, 1f).OnComplete(() =>
         {
+            inventory.AddItem(cropItem, 1);
             Destroy(gameObject);
         });
     } 
