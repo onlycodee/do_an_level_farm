@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Field : MonoBehaviour
 {
+    public GameEvent cropHarvestedEvent;
     public enum FieldState
     {
         NORMAL,
@@ -39,8 +40,13 @@ public class Field : MonoBehaviour
     {
         if (currentCrop.IsRiped)
         {
-            currentCrop.Harvest();
+            currentCrop.Harvest(UpdateCropMissionUI);
             ResetState();
         }
+    }
+
+    void UpdateCropMissionUI()
+    {
+        cropHarvestedEvent.NotifyAll();
     }
 }

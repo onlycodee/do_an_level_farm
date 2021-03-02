@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d234055f20bfa364ab5146b57c543f44, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f0c2b35f5890a049bc181c9c8c60c90, type: 3}
   m_Name: Beet
   m_EditorClassIdentifier: 
   Name: Beet
   Avatar: {fileID: 21300000, guid: 75acc892ed7c52f489d85ecaa8c4a873, type: 3}
-  Price: 11
+  Price: 20

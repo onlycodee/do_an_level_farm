@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class Crop : MonoBehaviour
 {
-    [SerializeField] InventoryItem cropItem;
+    [SerializeField] CropItem cropItem;
     [SerializeField] Inventory inventory;
     [SerializeField] float timeToGrow;
 
@@ -14,6 +15,7 @@ public class Crop : MonoBehaviour
     public bool IsPlanted = false;
     public bool IsRiped = false;
     public CropType type;
+    public CropFactory CropFactory;
 
     private void Awake()
     {
@@ -27,12 +29,13 @@ public class Crop : MonoBehaviour
             IsRiped = true;
         });
     }
-    public void Harvest()
+    public void Harvest(Action onCropHarvested)
     {
         transform.DOMoveY(transform.position.y + 2f, 1f);
         transform.DOScale(.8f, 1f).OnComplete(() =>
         {
             inventory.AddItem(cropItem, 1);
+            onCropHarvested();
             Destroy(gameObject);
         });
     } 

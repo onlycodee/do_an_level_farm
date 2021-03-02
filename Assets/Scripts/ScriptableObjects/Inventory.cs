@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu()]
 public class Inventory : ScriptableObject
 {
-    public List<ItemHolder> items;
+    public List<CropItemHolder> items;
     public static Inventory _instance;
     const string resourcePath = "Inventory";
 
@@ -30,7 +30,7 @@ public class Inventory : ScriptableObject
         items.Clear();
     }
 
-    public void AddItem(InventoryItem itemToAdd, int quantity = 1)
+    public void AddItem(CropItem itemToAdd, int quantity = 1)
     {
         int itemToAddIndex = GetItemIndex(itemToAdd);
         if (itemToAddIndex != -1)
@@ -38,10 +38,26 @@ public class Inventory : ScriptableObject
             items[itemToAddIndex].Quantity += quantity;
         } else
         {
-            items.Add(new ItemHolder() { InventoryItem = itemToAdd, Quantity = 1 });
+            items.Add(new CropItemHolder() { InventoryItem = itemToAdd, Quantity = 1 });
         }
     }
-    public void RemoveItem(InventoryItem item, int quantity = 1)
+    public IEnumerable<CropItemHolder> GetAllItems()
+    {
+        return items; 
+    }
+
+    public CropItemHolder GetItemWithID(string id)
+    {
+        foreach (var item in items)
+        {
+            if (item.InventoryItem.Id == id)
+            {
+                return item;
+            }
+        }
+        return null;
+    }
+    public void RemoveItem(CropItem item, int quantity = 1)
     {
         int itemToAddIndex = GetItemIndex(item);
         if (itemToAddIndex != -1)
@@ -53,7 +69,7 @@ public class Inventory : ScriptableObject
             }
         }
     }
-    public int GetQuantity(InventoryItem item)
+    public int GetQuantity(CropItem item)
     {
         int itemIndex = GetItemIndex(item); 
         if (itemIndex != -1)
@@ -62,7 +78,7 @@ public class Inventory : ScriptableObject
         }
         return 0;
     }
-    int GetItemIndex(InventoryItem item)
+    int GetItemIndex(CropItem item)
     {
         for (int i = 0; i < items.Count; i++)
         {

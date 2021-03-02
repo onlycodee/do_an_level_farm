@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu()]
-public class InventoryItem : Item
+public class CropItem : Item
 {
     public float Price;
 

@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d234055f20bfa364ab5146b57c543f44, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f0c2b35f5890a049bc181c9c8c60c90, type: 3}
   m_Name: Wheet
   m_EditorClassIdentifier: 
   Name: Wheet
   Avatar: {fileID: 21300000, guid: d562723a27b05d64ca7f3b479eeb7904, type: 3}
-  Price: 33
+  Price: 12

@@ -11,6 +11,7 @@ public class PlayerPlanting : MonoBehaviour
     [SerializeField] CropFactory cropFactory;
     [SerializeField] Color fieldHighlightColor;
     [SerializeField] Inventory inventory;
+    [SerializeField] Transform rightHandTrans;
 
     Camera mainCamera;
     Collider[] inPlantingRangeColliders = new Collider[100];

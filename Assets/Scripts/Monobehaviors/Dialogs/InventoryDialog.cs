@@ -18,7 +18,8 @@ public class InventoryDialog : MonoBehaviour
         }
         for (int i = 0; i < inventory.items.Count; i++)
         {
-            itemSlots[i].UpdateUI();
+            //itemSlots[i].UpdateUI();
+            itemSlots[i].SetItemQuantityText(Inventory.Instance.GetQuantity(itemSlots[i].GetCropItem()));
         }
     }
 

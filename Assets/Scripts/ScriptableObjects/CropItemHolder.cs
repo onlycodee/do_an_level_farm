@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class ItemHolder 
+public class CropItemHolder 
 {
-    public InventoryItem InventoryItem;
+    public CropItem InventoryItem;
     public int Quantity;
 }

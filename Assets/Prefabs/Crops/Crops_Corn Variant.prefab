@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e980d504206671549aed23dcb9f95549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cropItem: {fileID: 11400000, guid: da4281239ef849348ba37b22013b309a, type: 2}
+  cropItem: {fileID: 11400000, guid: 7103c2840a0701c4e80057b51d003a4e, type: 2}
   inventory: {fileID: 11400000, guid: 054a33f427e2aae42b0af9db2dea7c0c, type: 2}
   timeToGrow: 2
   IsPlanted: 0

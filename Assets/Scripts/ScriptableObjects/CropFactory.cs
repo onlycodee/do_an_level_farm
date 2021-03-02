@@ -14,7 +14,7 @@ public class CropFactory : ScriptableObject
     {
         int cropIndex = (int)type;
         Crop cropInstance = Instantiate(cropPrefabs[cropIndex]);
-        Debug.Log("Cop instance: " + cropInstance.name);
+        cropInstance.CropFactory = this;
         return cropInstance;
     }
 

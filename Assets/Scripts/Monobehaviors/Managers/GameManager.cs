@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private void OnApplicationQuit()
+    private void Awake()
+    {
+        Inventory.Instance.Reset();
+    }
+
+    private void OnDestroy()
     {
         Inventory.Instance.Reset();
     }
