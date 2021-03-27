@@ -9,7 +9,7 @@ public class PlayerPlanting : MonoBehaviour
     [SerializeField] LayerMask fieldLayermark;
     [SerializeField, Range(1f, 10f)] float plantingRange;
     [SerializeField] CropFactory cropFactory;
-    [SerializeField] Color fieldHighlightColor;
+    [SerializeField] Color fieldHighlightColor, hasRipedCropColor;
     [SerializeField] Inventory inventory;
     [SerializeField] Transform rightHandTrans;
 
@@ -36,6 +36,10 @@ public class PlayerPlanting : MonoBehaviour
             lastClosestField = curClosestField;
             lastClosestField.GetComponent<Renderer>().material.color = fieldHighlightColor;
             Field curFieldComp = lastClosestField.GetComponent<Field>();
+            if (curFieldComp.HasCrop && curFieldComp.GetCurrentCrop().IsRiped)
+            {
+                lastClosestField.GetComponent<Renderer>().material.color = hasRipedCropColor;
+            }
             if (Input.GetMouseButtonDown(0))
             {
                 if (curFieldComp.HasCrop)
@@ -61,10 +65,10 @@ public class PlayerPlanting : MonoBehaviour
                     cropInstance = cropFactory.GetCrop(CropType.GREENPLANT); 
                 }
                 curFieldComp.SetCrop(cropInstance);
+                cropInstance.SetField(curFieldComp);
                 cropInstance.transform.SetParent(curClosestField.transform);
                 cropInstance.transform.localPosition = Vector3.zero;
                 cropInstance.transform.localScale = Vector3.zero;
-                cropInstance.StartPlanting();
             } 
         } else
         {

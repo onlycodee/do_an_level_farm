@@ -9,5 +9,6 @@ public class NavTools : MonoBehaviour
     public static void RemoveAllData()
     {
         ZPlayerPrefs.DeleteAll();
+        Debug.Log("Delete all data successfull");
     }
 }

@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    public static LevelManager Instance;
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+    }
+
     public void LoadNextLevel()
     {
         int currentLevel = PlayerPrefWrapper.CurrentLevel;
@@ -12,7 +19,13 @@ public class LevelManager : MonoBehaviour
         {
             currentLevel++;
             PlayerPrefWrapper.CurrentLevel = currentLevel;
-            SceneManager.LoadScene("Level_" + PlayerPrefWrapper.CurrentLevel); 
+            //SceneManager.LoadScene("Level_" + PlayerPrefWrapper.CurrentLevel); 
         } 
+    }
+
+    public int GetCurrentLevel()
+    {
+        int currentLevel = PlayerPrefWrapper.CurrentLevel;
+        return currentLevel;
     }
 }

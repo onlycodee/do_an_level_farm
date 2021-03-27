@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Field : MonoBehaviour
 {
     public GameEvent cropHarvestedEvent;
-    public enum FieldState
-    {
-        NORMAL,
-        LACKWATER,
-        DISEASED
-    }
+    public GrownTimeDisplay grownTimeDisplay;
+    public CropStateUI cropStateUI;
     MeshRenderer meshRenderer;
     Crop currentCrop = null;
-    public FieldState State { get; set; }
+
+
     public bool HasCrop
     {
         get => currentCrop != null;
@@ -26,14 +20,28 @@ public class Field : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
     }
 
+    private void Start()
+    {
+    }
+
+    private void Update()
+    {
+    }
+
     public void ResetState()
     {
         currentCrop = null;
-        State = FieldState.NORMAL;
+        cropStateUI.ResetUI();
     }
+
     public void SetCrop(Crop cropToSet)
     {
-        currentCrop = cropToSet; 
+        currentCrop = cropToSet;
+    }
+
+    public Crop GetCurrentCrop()
+    {
+        return currentCrop;
     }
 
     public void Interac()
@@ -42,11 +50,29 @@ public class Field : MonoBehaviour
         {
             currentCrop.Harvest(UpdateCropMissionUI);
             ResetState();
+            //cropStateUI.SetActive(false);
         }
     }
 
     void UpdateCropMissionUI()
     {
         cropHarvestedEvent.NotifyAll();
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Player" && HasCrop)
+        {
+            cropStateUI.SetActiveTimerImg(true);
+            cropStateUI.SetFillOfTimerImg(currentCrop.GetGrowPercent());
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            cropStateUI.SetActiveTimerImg(false);
+        }
     }
 }

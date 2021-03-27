@@ -11,7 +11,7 @@ public class MissionUIItem : MonoBehaviour
     [SerializeField] TextMeshProUGUI quantityTxt;
     [SerializeField] GameObject tickDone;
 
-    CropItemHolder cropItem;
+    ItemHolder cropItem;
     int targetQuantity = 0;
 
     public void SetQuantity(int currentQuantity, int targetQuantity)
@@ -35,14 +35,14 @@ public class MissionUIItem : MonoBehaviour
         tickDone.SetActive(false);
     }
 
-    public void SetCropItem(CropItemHolder cropItem)
+    public void SetCropItem(ItemHolder cropItem)
     {
         this.cropItem = cropItem;
     }
 
     public void UpdateUI()
     {
-        CropItemHolder cropInInventory = Inventory.Instance.GetItemWithID(cropItem.InventoryItem.Id); 
+        ItemHolder cropInInventory = Inventory.Instance.GetItemWithID(cropItem.InventoryItem.Id);
         if (cropInInventory == null)
         {
             quantityTxt.text = $"{0}/{targetQuantity}";//quantity.ToString();

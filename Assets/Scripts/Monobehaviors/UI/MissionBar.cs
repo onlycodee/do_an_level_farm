@@ -6,12 +6,29 @@ public class MissionBar : MonoBehaviour
 {
     [SerializeField] MissionUIItem missionItemSlotPrefab;
     [SerializeField] Inventory inventory;
-    [SerializeField] CropMission[] cropsMission;
+    [SerializeField] GameObject nextLevelBtn;
+    //[SerializeField] CropMission[] cropsMission;
     List<MissionUIItem> itemSlots = new List<MissionUIItem>();
+    LevelData levelData;
+    LevelManager levelManager = null;
 
+    const string levelDataPath = "Levels/Level_";
+
+    private void Awake()
+    {
+        levelManager = FindObjectOfType<LevelManager>();
+    }
+
+    private void Start()
+    {
+        //nextLevelBtn.SetActive(false);
+        //Debug.LogError("Init coin: " + levelData.GetInitCoin())
+        FindObjectOfType<CoinManager>().CurrentCoin = levelData.GetInitCoin();
+    }
 
     private void OnEnable()
     {
+        levelData = Resources.Load<LevelData>(levelDataPath + (levelManager.GetCurrentLevel() - 1));
         InitItemSlots();
     }
 
@@ -22,42 +39,58 @@ public class MissionBar : MonoBehaviour
             Destroy(itemSlots[i].gameObject);
         }
         itemSlots.Clear();
-        for (int i = 0; i < cropsMission.Length; i++)
+        MissionBase[] missions = levelData.GetMissions();
+        for (int i = 0; i < missions.Length; i++)
         {
-            foreach (var crop in cropsMission[i].requiredCrops)
+            foreach (var crop in missions[i].GetItems())
             {
                 MissionUIItem missionUI = Instantiate(missionItemSlotPrefab, transform);
                 missionUI.SetAvatar(crop.InventoryItem.Avatar);
                 missionUI.SetCropItem(crop);
-                CropItemHolder cropInInventory = inventory.GetItemWithID(crop.InventoryItem.Id);
+                ItemHolder cropInInventory = inventory.GetItemWithID(crop.InventoryItem.Id);
                 if (cropInInventory != null)
                 {
-                    missionUI.SetQuantity(inventory.GetItemWithID(crop.InventoryItem.Id).Quantity, 
+                    missionUI.SetQuantity(inventory.GetItemWithID(crop.InventoryItem.Id).Quantity,
                                           crop.Quantity);
-                } else
+                }
+                else
                 {
                     missionUI.SetQuantity(0, crop.Quantity);
-                } 
+                }
                 itemSlots.Add(missionUI);
-                if (cropsMission[i].HasCropCompleted(crop)) {
-                    missionUI.Complete();
-                } else
+
+                CropMission cropMission = missions[i] as CropMission;
+                if (cropMission != null)
                 {
-                    missionUI.Uncomplete();
+                    if (cropMission.IsItemCompleted(crop))
+                    {
+                        missionUI.Complete();
+                    }
+                    else
+                    {
+                        missionUI.Uncomplete();
+                    }
                 }
             }
         }
     }
 
+    // event update ui
     public void UpdateUI()
     {
-        Debug.Log("Update ui in mission bar");
         foreach (var item in itemSlots)
         {
             if (item)
             {
                 item.UpdateUI();
+            } else
+            {
+                Debug.Log("Item is null");
             }
         }
+        //if (levelData.CheckIfLevelCompleted())
+        //{
+        //    nextLevelBtn.SetActive(true);
+        //}
     }
 }

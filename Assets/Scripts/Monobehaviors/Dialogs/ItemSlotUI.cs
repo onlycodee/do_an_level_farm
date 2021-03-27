@@ -8,9 +8,9 @@ public class ItemSlotUI : MonoBehaviour
 {
     public Image itemImage;
     public TextMeshProUGUI itemQuantityText;
-    CropItem item;
+    Item item;
     
-    public void SetItem(CropItem itemToSet)
+    public void SetItem(Item itemToSet)
     {
         item = itemToSet;
         itemImage.sprite = item.Avatar;
@@ -21,7 +21,7 @@ public class ItemSlotUI : MonoBehaviour
         itemQuantityText.text = value.ToString();
     }
 
-    public CropItem GetCropItem()
+    public Item GetItem()
     {
         return item;
     }

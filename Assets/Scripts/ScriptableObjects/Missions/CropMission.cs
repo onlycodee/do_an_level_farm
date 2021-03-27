@@ -5,17 +5,22 @@ using UnityEngine;
 [CreateAssetMenu()]
 public class CropMission : MissionBase
 {
-    public List<CropItemHolder> requiredCrops;
-    public override bool CheckIfFinished()
+    public ItemHolder[] requiredItems;
+    public override bool CheckIfCompleted()
     {
-        foreach (var requiredCrop in requiredCrops)
+        foreach (var requiredItem in requiredItems)
         {
-            if (!HasCropCompleted(requiredCrop)) return false;
+            if (!IsItemCompleted(requiredItem)) return false;
         }
         return true;
     }
 
-    public bool HasCropCompleted(CropItemHolder crop)
+    public override ItemHolder[] GetItems()
+    {
+        return requiredItems;
+    }
+
+    public bool IsItemCompleted(ItemHolder crop)
     {
         foreach (var item in Inventory.Instance.GetAllItems())
         {
