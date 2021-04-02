@@ -3,23 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Items/Seed item")]
-public class SeedItem : CropItem
+public class SeedItem : Item, IExchangeable
 {
     [SerializeField] int unlockLevel;
-    [SerializeField, Range(1, 100)] float diseasePercent, thirstyPercent; 
+    [SerializeField] PriceVariable price;
+    public CropItem cropItem;
 
     public int GetUnlockLevel()
     {
         return unlockLevel;
     }
 
-    public float GetThirstyPercent()
+    public override void SpecificInit()
     {
-        return thirstyPercent; 
     }
-    
-    public float GetDiseasedPercent()
+
+    public int GetSellPrice()
     {
-        return diseasePercent;
+        return price.SellPrice;
+    }
+
+    public int GetBuyPrice()
+    {
+        return price.BuyPrice;
     }
 }

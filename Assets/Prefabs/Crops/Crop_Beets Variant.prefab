@@ -67,10 +67,16 @@ PrefabInstance:
       propertyPath: type
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2135634266836533046, guid: e165a31f59e1dc845b4b3dcd817df551,
+        type: 3}
+      propertyPath: cropItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 84c74bbdcea455146a999383fc6fb76b,
+        type: 2}
     - target: {fileID: 2135634266836533047, guid: e165a31f59e1dc845b4b3dcd817df551,
         type: 3}
       propertyPath: m_Name
-      value: Crop_Beets
+      value: Crop_Beets Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e165a31f59e1dc845b4b3dcd817df551, type: 3}

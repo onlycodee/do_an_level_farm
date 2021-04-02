@@ -4,7 +4,7 @@ using System;
 
 public class Crop : MonoBehaviour
 {
-    [SerializeField] SeedItem cropItem;
+    [SerializeField] CropItem cropItem;
     [SerializeField] Inventory inventory;
 
     [SerializeField] BaseState normalState;

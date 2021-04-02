@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a150e5d34f21e043b1b84fe3af05ee4, type: 3}
-  m_Name: Inventory
+  m_Script: {fileID: 11500000, guid: f3ba17e98aa4a3a46957795e4ec76f78, type: 3}
+  m_Name: Corn Price
   m_EditorClassIdentifier: 
-  items:
-  - InventoryItem: {fileID: 0}
-    Quantity: 0
-  - InventoryItem: {fileID: 0}
-    Quantity: 0
-  - InventoryItem: {fileID: 0}
-    Quantity: 0
+  BuyPrice: 15
+  SellPrice: 25

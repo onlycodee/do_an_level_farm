@@ -26,7 +26,6 @@ public class ShopItem : MonoBehaviour
             buyPriceText.text = seedItem.GetBuyPrice().ToString();
             itemName.text = seedItem.name;
             avatar.sprite = seedItem.Avatar;
-            //Debug.Log("unlock: " + cropItem.GetUnlockLevel() + " current: " + LevelManager.Instance.GetCurrentLevel());
             if (seedItem.GetUnlockLevel() <= LevelManager.Instance.GetCurrentLevel())
             {
                 lockMask.SetActive(false);

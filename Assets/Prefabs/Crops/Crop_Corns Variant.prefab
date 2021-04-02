@@ -72,10 +72,16 @@ PrefabInstance:
       propertyPath: type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8439598123352459510, guid: d9fe06ea25675c642b79241b9546f7c5,
+        type: 3}
+      propertyPath: cropItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 7103c2840a0701c4e80057b51d003a4e,
+        type: 2}
     - target: {fileID: 8439598123352459511, guid: d9fe06ea25675c642b79241b9546f7c5,
         type: 3}
       propertyPath: m_Name
-      value: Crop_Corns
+      value: Crop_Corns Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9fe06ea25675c642b79241b9546f7c5, type: 3}

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f0c2b35f5890a049bc181c9c8c60c90, type: 3}
+  m_Name: Wheet
+  m_EditorClassIdentifier: 
+  Avatar: {fileID: 21300000, guid: d562723a27b05d64ca7f3b479eeb7904, type: 3}
+  Id: 0d4875a6-f167-4ce7-b952-14825bf4a161
+  price: {fileID: 11400000, guid: e48d639aaf08d6a4b8d97647c35bc58f, type: 2}
+  grownTime: 5
+  diseasePercent: 18.8
+  thirstyPercent: 24.5

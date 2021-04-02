@@ -35,10 +35,13 @@ public class PlayerMovement : MonoBehaviour
         m_playerController.SetAnimSpeed(m_moveInput.magnitude);
         if (!Mathf.Approximately(m_moveInput.x, Mathf.Epsilon) || !Mathf.Approximately(m_moveInput.z, Mathf.Epsilon))
         {
-            //Debug.Log("Move input: " + m_moveInput);
+            Debug.LogError("Move input: " + m_moveInput);
             m_rigidBody.MovePosition(transform.position + m_moveInput * m_moveSpeed * Time.deltaTime);
             m_targetRotation = Mathf.Atan2(m_moveInput.x, m_moveInput.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, m_targetRotation, 0f), m_rotationSpeed * Time.deltaTime);
+        } else
+        {
+            Debug.LogError("Move speed is too small");
         }
     }
 }

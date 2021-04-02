@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     int hoeParam = Animator.StringToHash("Hoe");
     int wateringParam = Animator.StringToHash("Watering");
+    int seedParam = Animator.StringToHash("Seed");
     int m_animSpeedParam = Animator.StringToHash("MoveSpeed");
 
     private void Awake()
@@ -17,14 +18,26 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.U))
+        if (Input.GetKeyDown(KeyCode.Keypad1))
         {
-            m_animator.ResetTrigger(wateringParam);
+            ResetAllTriggers();
             m_animator.SetTrigger(hoeParam);
-        } else if (Input.GetKeyDown(KeyCode.I))
+        } else if (Input.GetKeyDown(KeyCode.Keypad2))
         {
-            m_animator.ResetTrigger(hoeParam);
+            ResetAllTriggers();
             m_animator.SetTrigger(wateringParam);
+        } else if (Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            ResetAllTriggers();
+            m_animator.SetTrigger(seedParam);
+        }
+    }
+
+    private void ResetAllTriggers()
+    {
+        foreach (var trigger in m_animator.parameters)
+        {
+            m_animator.ResetTrigger(trigger.name);
         }
     }
 

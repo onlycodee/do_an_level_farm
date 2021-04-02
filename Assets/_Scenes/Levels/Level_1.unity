@@ -5604,11 +5604,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   headingTxt: {fileID: 1588445457}
   items:
-  - {fileID: 11400000, guid: ebabcbaf6b1bd204592f195b37d5cb0e, type: 2}
-  - {fileID: 11400000, guid: 084977f28bf874042864cdd0579bdb63, type: 2}
-  - {fileID: 11400000, guid: f61d4f21107dc9f46a67277cd85505f5, type: 2}
-  - {fileID: 11400000, guid: ebabcbaf6b1bd204592f195b37d5cb0e, type: 2}
-  - {fileID: 11400000, guid: 084977f28bf874042864cdd0579bdb63, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   shopItemSlotPrefab: {fileID: 8418763604822415011, guid: 5abfef7355391604bbd0132d45a94eba,
     type: 3}
   itemParent: {fileID: 2103322069}
@@ -7292,6 +7292,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1632395941, guid: 7eedf86f99f47d8489b36e6f9e275890, type: 3}
+      propertyPath: m_moveSpeed
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4397684880737303583, guid: 7eedf86f99f47d8489b36e6f9e275890,
         type: 3}
       propertyPath: m_Name

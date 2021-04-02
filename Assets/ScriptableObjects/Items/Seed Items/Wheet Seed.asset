@@ -10,13 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae309b52a997f9a46b55261d4ede0326, type: 3}
-  m_Name: Seed_Beet
+  m_Name: Wheet Seed
   m_EditorClassIdentifier: 
-  Avatar: {fileID: 21300000, guid: 75acc892ed7c52f489d85ecaa8c4a873, type: 3}
-  Id: 0d527f4d-3142-4893-986e-52d8aab87e32
-  sellPrice: 12
-  buyPrice: 21
-  grownTime: 4
-  unlockLevel: 1
-  diseasePercent: 54.6
-  thirstyPercent: 21.3
+  Avatar: {fileID: 21300000, guid: d562723a27b05d64ca7f3b479eeb7904, type: 3}
+  Id: 4c73c3a5-89a5-45b2-9f6b-dbf618672ff6
+  unlockLevel: 0
+  price: {fileID: 11400000, guid: 1022f82c4b4dda4458c0c2ac131973d2, type: 2}
+  cropItem: {fileID: 11400000, guid: 7103c2840a0701c4e80057b51d003a4e, type: 2}
