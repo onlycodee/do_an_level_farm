@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class MissionBar : MonoBehaviour
     [SerializeField] MissionUIItem missionItemSlotPrefab;
     [SerializeField] Inventory inventory;
     [SerializeField] GameObject nextLevelBtn;
+    [SerializeField] GameObject winDialog; 
     //[SerializeField] CropMission[] cropsMission;
     List<MissionUIItem> itemSlots = new List<MissionUIItem>();
     LevelData levelData;
@@ -23,13 +25,31 @@ public class MissionBar : MonoBehaviour
     {
         //nextLevelBtn.SetActive(false);
         //Debug.LogError("Init coin: " + levelData.GetInitCoin())
+        //LoadMissionData();
+    }
+
+    public void LoadMissionData()
+    {
+        levelData = Resources.Load<LevelData>(levelDataPath + (levelManager.GetCurrentLevel()));
+        InitItemSlots();
+        InitializeStartSeeds();
         FindObjectOfType<CoinManager>().CurrentCoin = levelData.GetInitCoin();
+        FindObjectOfType<SeedBarManager>().DisplaySeedItems();
     }
 
     private void OnEnable()
     {
-        levelData = Resources.Load<LevelData>(levelDataPath + (levelManager.GetCurrentLevel() - 1));
-        InitItemSlots();
+    }
+
+    private void InitializeStartSeeds()
+    {
+        Debug.LogError("num init seeds: " + levelData.GetInitSeeds().Length);
+        foreach (var seed in levelData.GetInitSeeds())
+        {
+            Debug.LogError("Add seed item to inventory");
+            Inventory.Instance.AddItem(seed.InventoryItem, seed.Quantity);
+            Debug.LogError("Inventory after add: " + Inventory.Instance.Count());
+        }
     }
 
     void InitItemSlots()
@@ -74,6 +94,28 @@ public class MissionBar : MonoBehaviour
             }
         }
     }
+    
+    public void CheckIfMissionCompleted()
+    {
+        MissionBase[] missions = levelData.GetMissions();
+        bool isCompleted = true;
+        foreach (var mission in missions)
+        {
+            if (!mission.CheckIfCompleted())
+            {
+                isCompleted = false;
+                break;
+            }
+        }
+        if (isCompleted)
+        {
+            winDialog.SetActive(true);
+            //LevelManager.Instance.LoadNextLevel();
+        } else
+        {
+            Debug.LogError("Not completeddddddddddddddd");
+        }
+    }
 
     // event update ui
     public void UpdateUI()
@@ -88,9 +130,5 @@ public class MissionBar : MonoBehaviour
                 Debug.Log("Item is null");
             }
         }
-        //if (levelData.CheckIfLevelCompleted())
-        //{
-        //    nextLevelBtn.SetActive(true);
-        //}
     }
 }

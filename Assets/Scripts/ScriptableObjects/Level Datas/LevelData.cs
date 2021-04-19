@@ -6,6 +6,7 @@ using UnityEngine;
 public class LevelData : ScriptableObject 
 {
     [SerializeField] int initGold = 0;
+    [SerializeField] ItemHolder[] initSeeds;
     [SerializeField] MissionBase[] missions;
 
     public int GetInitCoin()
@@ -16,6 +17,10 @@ public class LevelData : ScriptableObject
     public MissionBase[] GetMissions()
     {
         return missions;
+    }
+    public ItemHolder[] GetInitSeeds()
+    {
+        return initSeeds;
     }
 
     public bool CheckIfLevelCompleted()

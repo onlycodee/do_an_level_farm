@@ -19,3 +19,4 @@ MonoBehaviour:
     Quantity: 0
   - InventoryItem: {fileID: 0}
     Quantity: 0
+  onItemsChanged: {fileID: 11400000, guid: f6d748db4a5a29744afecb5cb57532ec, type: 2}

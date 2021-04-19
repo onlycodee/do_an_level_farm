@@ -8,4 +8,8 @@ public class Test : MonoBehaviour
     {
         FindObjectOfType<CoinManager>().AddCoin(amount);
     }
+    public void HelloWorld()
+    {
+        Debug.LogError("Hello World");
+    }
 }

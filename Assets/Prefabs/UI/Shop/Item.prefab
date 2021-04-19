@@ -990,6 +990,7 @@ MonoBehaviour:
   buyButton: {fileID: 8418763604224752615}
   lockMask: {fileID: 1461526888}
   levelOpenTxt: {fileID: 1978386470}
+  onItemBuyedSuccess: {fileID: 11400000, guid: 86c348e8c57239d449e1ddaac5e796eb, type: 2}
 --- !u!1001 &4634494126749663053
 PrefabInstance:
   m_ObjectHideFlags: 0

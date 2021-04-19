@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Corn
   m_EditorClassIdentifier: 
   Avatar: {fileID: 21300000, guid: 1ac0c4a0f9f12f741920c5de6728d909, type: 3}
-  Id: fa81e326-4626-44ba-8b6a-ee5b0032ff80
+  Id: bcf0122f-c250-414b-a0fa-b1d761f7e8f8
   price: {fileID: 11400000, guid: 89bf266bf8ed0d949861acf3eaffe18c, type: 2}
   grownTime: 4
   diseasePercent: 20.7
   thirstyPercent: 30.2
+  cropType: 1

@@ -1,13 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Items/Seed item")]
-public class SeedItem : Item, IExchangeable
+public class SeedItem : Item, IExchangeable 
 {
     [SerializeField] int unlockLevel;
     [SerializeField] PriceVariable price;
     public CropItem cropItem;
+
+
+    public CropType GetCropType()
+    {
+        return cropItem.GetCropType();
+    }
 
     public int GetUnlockLevel()
     {

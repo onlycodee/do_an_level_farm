@@ -6,7 +6,12 @@ public class CropItem : Item, IExchangeable
     [SerializeField] PriceVariable price;
     [SerializeField] float grownTime;
     [SerializeField, Range(1, 100)] float diseasePercent, thirstyPercent;
+    [SerializeField] CropType cropType;
 
+    public CropType GetCropType()
+    {
+        return cropType;
+    }
 
     public float GetThirstyPercent()
     {

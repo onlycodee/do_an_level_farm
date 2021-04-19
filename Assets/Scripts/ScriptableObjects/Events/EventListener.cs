@@ -20,6 +20,7 @@ public class EventListener : MonoBehaviour
     {
         if (Response != null)
         {
+            //Debug.Log("Notify in event listener");
             Response.Invoke();
         }
     }

@@ -36,40 +36,10 @@ public class PlayerPlanting : MonoBehaviour
             lastClosestField = curClosestField;
             lastClosestField.GetComponent<Renderer>().material.color = fieldHighlightColor;
             Field curFieldComp = lastClosestField.GetComponent<Field>();
-            if (curFieldComp.HasCrop && curFieldComp.GetCurrentCrop().IsRiped)
+            if (curFieldComp && curFieldComp.HasCrop && curFieldComp.GetCurrentCrop().IsRiped)
             {
                 lastClosestField.GetComponent<Renderer>().material.color = hasRipedCropColor;
             }
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (curFieldComp.HasCrop)
-                {
-                    curFieldComp.Interac();
-                    return;
-                } 
-                Crop cropInstance; 
-                if (Input.GetKey(KeyCode.Alpha1))
-                {
-                    cropInstance = cropFactory.GetCrop(CropType.BEET); 
-                } 
-                else if (Input.GetKey(KeyCode.Alpha2))
-                {
-                    cropInstance = cropFactory.GetCrop(CropType.CORN); 
-                } 
-                else if (Input.GetKey(KeyCode.Alpha3))
-                {
-                    cropInstance = cropFactory.GetCrop(CropType.WHEAT); 
-                } 
-                else
-                {
-                    cropInstance = cropFactory.GetCrop(CropType.GREENPLANT); 
-                }
-                curFieldComp.SetCrop(cropInstance);
-                cropInstance.SetField(curFieldComp);
-                cropInstance.transform.SetParent(curClosestField.transform);
-                cropInstance.transform.localPosition = Vector3.zero;
-                cropInstance.transform.localScale = Vector3.zero;
-            } 
         } else
         {
             if (lastClosestField != null)
@@ -79,6 +49,26 @@ public class PlayerPlanting : MonoBehaviour
             }
         }
     }
+
+    public void PlantCrop(Field field, CropType type)
+    {
+        Crop cropInstance = cropFactory.GetCrop(type);
+        Field curFieldComp = field; 
+        curFieldComp.SetCrop(cropInstance);
+        cropInstance.SetField(curFieldComp);
+        cropInstance.transform.SetParent(curFieldComp.transform);
+        cropInstance.transform.localPosition = Vector3.zero;
+        cropInstance.transform.localScale = Vector3.zero;
+    }
+    
+    public Field GetCurrentInteractableField()
+    {
+        if (lastClosestField)
+        {
+            return lastClosestField.GetComponent<Field>();
+        }
+        return null;
+    } 
 
     private Collider GetClosestField(int collidersCnt)
     {

@@ -11,6 +11,7 @@ public class ShopItem : MonoBehaviour
     [SerializeField] Button buyButton;
     [SerializeField] GameObject lockMask;
     [SerializeField] TextMeshProUGUI levelOpenTxt;
+    //[SerializeField] GameEvent onItemBuyedSuccess;
 
     Item item;
     CoinManager coinManager;
@@ -44,13 +45,20 @@ public class ShopItem : MonoBehaviour
 
     public void BuyItem()
     {
+        //Debug.Log("buy item");
         SeedItem seedItem = item as SeedItem;
         if (seedItem)
         {
             if (coinManager.HasEnoughCoint(seedItem.GetBuyPrice()))
             {
+                //Debug.Log("Shop has enough coint");
                 coinManager.SubtractCoin(seedItem.GetBuyPrice());
                 Inventory.Instance.AddItem(seedItem);
+                //if (onItemBuyedSuccess != null)
+                //{
+                //    //Debug.Log("on item buyed success notify all");
+                //    onItemBuyedSuccess.NotifyAll();
+                //}
             }
         }
     }

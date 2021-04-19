@@ -78,5 +78,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crop_Beets Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3707768212025730543, guid: e165a31f59e1dc845b4b3dcd817df551,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3707768212028841127, guid: e165a31f59e1dc845b4b3dcd817df551,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 884f611b051b34d0c85b4b908afba51f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e165a31f59e1dc845b4b3dcd817df551, type: 3}

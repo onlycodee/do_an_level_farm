@@ -10,6 +10,7 @@ public class CropStateUI : MonoBehaviour
     private void Start()
     {
         ResetUI();
+        //SetActiveWaterIcon(false);
     }
 
     public void SetFillOfTimerImg(float percent)
@@ -22,6 +23,7 @@ public class CropStateUI : MonoBehaviour
     }
     public void SetActiveWaterIcon(bool state)
     {
+        //Debug.LogError("Set active water icon: " + state);
         waterIcon.SetActive(state);
     }
     public void SetActiveDiseaseIcon(bool state)
@@ -30,11 +32,11 @@ public class CropStateUI : MonoBehaviour
     }
     public void SetActiveBtnWatering(bool state)
     {
-        waterBtn.SetActive(true);
+        waterBtn.SetActive(state);
     }
     public void SetActiveBtnHealing(bool state)
     {
-        healingBtn.SetActive(true);
+        healingBtn.SetActive(state);
     }
 
     public void ResetUI()
@@ -42,5 +44,7 @@ public class CropStateUI : MonoBehaviour
         SetActiveTimerImg(false);
         SetActiveWaterIcon(false);
         SetActiveDiseaseIcon(false);
+        waterBtn.SetActive(false);
+        healingBtn.SetActive(false);
     }
 }

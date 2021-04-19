@@ -44,14 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e980d504206671549aed23dcb9f95549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cropItem: {fileID: 11400000, guid: ebabcbaf6b1bd204592f195b37d5cb0e, type: 2}
+  cropItem: {fileID: 11400000, guid: 84c74bbdcea455146a999383fc6fb76b, type: 2}
   inventory: {fileID: 11400000, guid: 054a33f427e2aae42b0af9db2dea7c0c, type: 2}
   normalState: {fileID: 11400000, guid: 6b013177f08b20e4b83f81ebbf3e68e5, type: 2}
   thirstyState: {fileID: 11400000, guid: d6598dce6bacd92428b7bf7c69da2a11, type: 2}
   ripedState: {fileID: 11400000, guid: d824a88eeeb4d2a47b92a73e5a338c77, type: 2}
+  diseasedState: {fileID: 11400000, guid: 0d28d79f9d767904fb5dcfa928caab0a, type: 2}
   IsPlanted: 0
   IsRiped: 0
-  type: 0
+  type: 2
   CropFactory: {fileID: 11400000, guid: 0f72e460eb9924d4786a6592dc779d92, type: 2}
 --- !u!1 &3707768212025730543
 GameObject:

@@ -26,6 +26,5 @@ public class ToastManager : MonoBehaviour
 
     public void ShowNotify(string content)
     {
-
     }
 }

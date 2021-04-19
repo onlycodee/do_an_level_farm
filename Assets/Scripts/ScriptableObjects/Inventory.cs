@@ -9,6 +9,8 @@ public class Inventory : ScriptableObject
     public static Inventory _instance;
     const string resourcePath = "Inventory";
 
+    public GameEvent onItemsChanged;
+
     public static Inventory Instance
     {
         get
@@ -42,8 +44,9 @@ public class Inventory : ScriptableObject
             items[itemToAddIndex].Quantity += quantity;
         } else
         {
-            items.Add(new ItemHolder() { InventoryItem = itemToAdd, Quantity = 1 });
+            items.Add(new ItemHolder() { InventoryItem = itemToAdd, Quantity = quantity });
         }
+        if (onItemsChanged) onItemsChanged.NotifyAll();
     }
     public IEnumerable<ItemHolder> GetAllItems()
     {
@@ -52,7 +55,8 @@ public class Inventory : ScriptableObject
 
     public ItemHolder GetItemWithID(string id)
     {
-        Debug.Log("Inventory length: " + items.Count);
+        //Debug.Log("Inventory length: " + items.Count);
+        //Debug.LogError("Get item id: " + id);
         foreach (var item in items)
         {
             if (item == null)
@@ -70,15 +74,21 @@ public class Inventory : ScriptableObject
         }
         return null;
     }
-    public void RemoveItem(Item item, int quantity = 1)
+
+    public bool HasItem(Item item)
+    {
+        return GetItemWithID(item.Id) != null;
+    } 
+
+    public void SubtractQuantity(Item item, int quantity = 1)
     {
         int itemToAddIndex = GetItemIndex(item);
         if (itemToAddIndex != -1)
         {
-            items[itemToAddIndex].Quantity -= quantity;
-            if (items[itemToAddIndex].Quantity <= 0)
+            if (items[itemToAddIndex].Quantity >= quantity)
             {
-                items.Remove(items[itemToAddIndex]);
+                items[itemToAddIndex].Quantity -= quantity;
+                if (onItemsChanged) onItemsChanged.NotifyAll();
             }
         }
     }
@@ -91,6 +101,15 @@ public class Inventory : ScriptableObject
         }
         return 0;
     }
+    public int Count()
+    {
+        int cnt = 0;
+        foreach (var item in items)
+        {
+            if (item.Quantity > 0) cnt++;
+        }
+        return cnt;
+    } 
     int GetItemIndex(Item item)
     {
         for (int i = 0; i < items.Count; i++)

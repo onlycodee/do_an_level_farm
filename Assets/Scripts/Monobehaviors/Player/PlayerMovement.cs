@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField, Min(5f)] float m_moveSpeed = 10f;
     [SerializeField, Min(10f)] float m_rotationSpeed = 120f;
+    [SerializeField] Joystick joystick;
+    [SerializeField] bool useJoyStick = false;
 
     Rigidbody m_rigidBody;
     Animator m_animator;
@@ -22,7 +24,8 @@ public class PlayerMovement : MonoBehaviour
         m_playerController = GetComponent<PlayerController>();
         m_targetRotation = 0;
     }
-    private void Update()
+
+    private void FixedUpdate()
     {
         MovePlayer();
     }
@@ -30,18 +33,27 @@ public class PlayerMovement : MonoBehaviour
     private void MovePlayer()
     {
         if (m_playerController.IsWorking()) return;
-        m_moveInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        if (useJoyStick)
+        {
+            m_moveInput = new Vector3(joystick.Horizontal, 0f, joystick.Vertical);
+        } else
+        {
+            m_moveInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        }
         m_moveInput = Vector3.ClampMagnitude(m_moveInput, 1f);
         m_playerController.SetAnimSpeed(m_moveInput.magnitude);
         if (!Mathf.Approximately(m_moveInput.x, Mathf.Epsilon) || !Mathf.Approximately(m_moveInput.z, Mathf.Epsilon))
         {
-            Debug.LogError("Move input: " + m_moveInput);
+            //Debug.LogError("Move input: " + m_moveInput);
+            //Debug.Log("cur pos: " + transform.position);
+            //Debug.Log("added pos: " + m_moveInput * m_moveSpeed * Time.deltaTime);
             m_rigidBody.MovePosition(transform.position + m_moveInput * m_moveSpeed * Time.deltaTime);
             m_targetRotation = Mathf.Atan2(m_moveInput.x, m_moveInput.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, m_targetRotation, 0f), m_rotationSpeed * Time.deltaTime);
-        } else
-        {
-            Debug.LogError("Move speed is too small");
         }
+        //else
+        //{
+        //    Debug.LogError("Move speed is too small");
+        //}
     }
 }

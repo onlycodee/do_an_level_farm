@@ -10,6 +10,7 @@ public class Crop : MonoBehaviour
     [SerializeField] BaseState normalState;
     [SerializeField] BaseState thirstyState;
     [SerializeField] BaseState ripedState;
+    [SerializeField] BaseState diseasedState;
 
     [HideInInspector]
     public bool IsPlanted = false;
@@ -32,26 +33,29 @@ public class Crop : MonoBehaviour
 
     private void Start()
     {
-        curState = normalState; 
+        ComputeTimes();
+    }
+
+    private void ComputeTimes()
+    {
+        curState = normalState;
         growTimer = 0f;
+        thirstyTime = float.MaxValue;
+        diseasedTime = float.MaxValue;
         float rdThirsty = UnityEngine.Random.Range(1f, 1000f);
         if (rdThirsty / 10f <= cropItem.GetThirstyPercent())
         {
-            thirstyTime = UnityEngine.Random.Range(cropItem.GetGrowTime() * .5f, cropItem.GetGrowTime() * .9f);
-            //Debug.LogError("Thirsty time: " + thirstyTime);
-        } else
-        {
-            thirstyTime = float.MaxValue;
+            thirstyTime = cropItem.GetGrowTime() * UnityEngine.Random.Range(.5f, .9f);
         }
-        float rdDiseased = UnityEngine.Random.Range(1f, 1000f);
-        if (rdDiseased / 10f <= cropItem.GetDiseasedPercent())
+        else
         {
-            diseasedTime = UnityEngine.Random.Range(cropItem.GetGrowTime() * .5f, cropItem.GetGrowTime() * .9f);
-            //Debug.LogError("diseased time: " + diseasedTime);
-        } else
-        {
-            diseasedTime = float.MaxValue;
+            float rdDiseased = UnityEngine.Random.Range(1f, 1000f);
+            if (rdDiseased / 10f <= cropItem.GetDiseasedPercent())
+            {
+                diseasedTime = cropItem.GetGrowTime() * UnityEngine.Random.Range(.5f, .9f);
+            }
         }
+        //Debug.Log("Grown time: " + cropItem.GetGrowTime() + " thirsty time: " + thirstyTime + " diseased time: " + diseasedTime);
     }
 
     private void Update()
@@ -72,16 +76,36 @@ public class Crop : MonoBehaviour
         } else if (growTimer >= thirstyTime)
         {
             ChangeState(thirstyState);
+            thirstyTime = float.MaxValue;
+        }
+        else if (growTimer >= diseasedTime)
+        {
+            ChangeState(diseasedState);
+            diseasedTime = float.MaxValue;
         }
     }
 
     public void DisplayThirstyIcon()
     {
         field.cropStateUI.SetActiveWaterIcon(true);
+        field.cropStateUI.SetActiveBtnWatering(true);
     }
+
     public void HideThirstyIcon()
     {
         field.cropStateUI.SetActiveWaterIcon(false);
+        field.cropStateUI.SetActiveBtnWatering(false);
+    }
+    public void DisplayDiseasedIcon()
+    {
+        field.cropStateUI.SetActiveDiseaseIcon(true);
+        field.cropStateUI.SetActiveBtnHealing(true);
+    }
+
+    public void HideDiseasedIcon()
+    {
+        field.cropStateUI.SetActiveDiseaseIcon(false);
+        field.cropStateUI.SetActiveBtnHealing(false);
     }
 
     public void ChangeState(BaseState newState)
@@ -92,6 +116,11 @@ public class Crop : MonoBehaviour
         }
         curState = newState;
         curState.Enter(this);
+    }
+
+    public void ChangeToNormalState()
+    {
+        ChangeState(normalState);
     }
 
     public void StopGrowing()
