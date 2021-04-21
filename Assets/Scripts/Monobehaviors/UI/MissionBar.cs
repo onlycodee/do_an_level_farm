@@ -98,6 +98,7 @@ public class MissionBar : MonoBehaviour
     public void CheckIfMissionCompleted()
     {
         MissionBase[] missions = levelData.GetMissions();
+        Debug.LogError("Mission counttttttttttt: " + missions.Length);
         bool isCompleted = true;
         foreach (var mission in missions)
         {
@@ -109,8 +110,10 @@ public class MissionBar : MonoBehaviour
         }
         if (isCompleted)
         {
-            winDialog.SetActive(true);
+            //winDialog.SetActive(true);
             //LevelManager.Instance.LoadNextLevel();
+            Debug.LogError("Current level completeeeeeeeeeeeee");
+            DialogController.instance.ShowDialog(DialogType.WIN);
         } else
         {
             Debug.LogError("Not completeddddddddddddddd");

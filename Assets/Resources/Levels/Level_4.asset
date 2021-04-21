@@ -15,4 +15,5 @@ MonoBehaviour:
   initGold: 222
   initSeeds: []
   missions:
-  - {fileID: 11400000, guid: e47a0a760e616254e983618c69e53cf7, type: 2}
+  - {fileID: 11400000, guid: e7b3b0bfa57088046974644d38e923a2, type: 2}
+  time: 0

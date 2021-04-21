@@ -22,12 +22,13 @@ public class CropMission : MissionBase
 
     public bool IsItemCompleted(ItemHolder crop)
     {
+        Debug.LogError("Inventory count: " + Inventory.Instance.GetAllItems());
         foreach (var item in Inventory.Instance.GetAllItems())
         {
             if (item.InventoryItem.Id == crop.InventoryItem.Id)
             {
                 if (item.Quantity >= crop.Quantity) return true;
-                else return false;
+                return false;
             }
         }
         return false;

@@ -17,5 +17,3 @@ MonoBehaviour:
     Quantity: 1
   - InventoryItem: {fileID: 11400000, guid: 30d5d82e0e2651d49a56413fcadef3ba, type: 2}
     Quantity: 1
-  - InventoryItem: {fileID: 11400000, guid: 7103c2840a0701c4e80057b51d003a4e, type: 2}
-    Quantity: 1

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,12 +9,16 @@ public class LevelData : ScriptableObject
     [SerializeField] int initGold = 0;
     [SerializeField] ItemHolder[] initSeeds;
     [SerializeField] MissionBase[] missions;
+    [SerializeField] float time;
 
+    public float GetTime()
+    {
+        return time;
+    }
     public int GetInitCoin()
     {
         return initGold;
     }
-
     public MissionBase[] GetMissions()
     {
         return missions;
@@ -22,7 +27,6 @@ public class LevelData : ScriptableObject
     {
         return initSeeds;
     }
-
     public bool CheckIfLevelCompleted()
     {
         foreach (MissionBase mission in missions)

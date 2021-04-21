@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class ConstantValue 
 {
-    public const int TOTAL_LEVEL = 3; 
+    public const int TOTAL_LEVEL = 6; 
 }

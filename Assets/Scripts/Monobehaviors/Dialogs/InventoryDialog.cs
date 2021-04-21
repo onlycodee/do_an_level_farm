@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryDialog : MonoBehaviour
+public class InventoryDialog : Dialog 
 {
     [SerializeField] Inventory inventory;
     [SerializeField] ItemSlotUI itemSlotPrefab;
@@ -11,6 +11,7 @@ public class InventoryDialog : MonoBehaviour
     [SerializeField] Transform seedParent;
     [SerializeField] Button farmProductsBtn;
     [SerializeField] Button seedsBtn;
+    [SerializeField] Sprite normalSprite, activeSprite;
 
     List<ItemSlotUI> itemSlots = new List<ItemSlotUI>();
     bool seedView = true;
@@ -58,8 +59,9 @@ public class InventoryDialog : MonoBehaviour
     // btn seed view event
     public void OnSeedViewClicked()
     {
-        //if (seedView) return;
-        //seedView = true;
+        Debug.LogError("Seed view clickeddddddddddddd");
+        seedsBtn.image.sprite = activeSprite;
+        farmProductsBtn.image.sprite = normalSprite;
         farmProductParent.gameObject.SetActive(false);
         seedParent.gameObject.SetActive(true);
         InitItemSlots();
@@ -69,8 +71,9 @@ public class InventoryDialog : MonoBehaviour
     // btn seed view event
     public void OnFarmProductViewClicked()
     {
-        //if (!seedView) return;
-        //seedView = false;
+        Debug.LogError("Farm product view clickeddddddddddddd");
+        seedsBtn.image.sprite = normalSprite;
+        farmProductsBtn.image.sprite = activeSprite;
         farmProductParent.gameObject.SetActive(true);
         seedParent.gameObject.SetActive(false);
         InitItemSlots();

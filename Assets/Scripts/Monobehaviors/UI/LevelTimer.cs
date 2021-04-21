@@ -4,13 +4,18 @@ using UnityEngine;
 using TMPro;
 using System;
 
-public class Timer : MonoBehaviour
+public class LevelTimer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timeTxt;
     Coroutine countdownCO;
     WaitForSeconds oneSecond = new WaitForSeconds(1);
     TimeSpan timeSpan;
 
+    public void SetTime(float timeSeconds)
+    {
+        timeSpan = TimeSpan.FromSeconds(timeSeconds);
+        timeTxt.text = string.Format("{1:D2}:{2:D2}", timeSpan.Minutes, timeSpan.Seconds);
+    }
     public void SetTime(TimeSpan timeSpan)
     {
         timeTxt.text = string.Format("{1:D2}:{2:D2}", timeSpan.Minutes, timeSpan.Seconds);
