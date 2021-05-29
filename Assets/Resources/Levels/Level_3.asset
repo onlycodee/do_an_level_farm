@@ -20,4 +20,4 @@ MonoBehaviour:
     Quantity: 1
   missions:
   - {fileID: 11400000, guid: e47a0a760e616254e983618c69e53cf7, type: 2}
-  time: 0
+  time: 1200

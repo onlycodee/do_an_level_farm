@@ -5,7 +5,7 @@ using System;
 public class Crop : MonoBehaviour
 {
     [SerializeField] CropItem cropItem;
-    [SerializeField] Inventory inventory;
+    //[SerializeField] Inventory inventory;
 
     [SerializeField] BaseState normalState;
     [SerializeField] BaseState thirstyState;
@@ -25,6 +25,7 @@ public class Crop : MonoBehaviour
     bool stopGrowing = false;
     BaseState curState = null;
     float thirstyTime, diseasedTime;
+    float growTimerWhenDiseased = 0;
 
     private void Awake()
     {
@@ -45,14 +46,14 @@ public class Crop : MonoBehaviour
         float rdThirsty = UnityEngine.Random.Range(1f, 1000f);
         if (rdThirsty / 10f <= cropItem.GetThirstyPercent())
         {
-            thirstyTime = cropItem.GetGrowTime() * UnityEngine.Random.Range(.5f, .9f);
+            thirstyTime = cropItem.GetGrowthTime() * UnityEngine.Random.Range(.5f, .9f);
         }
         else
         {
             float rdDiseased = UnityEngine.Random.Range(1f, 1000f);
             if (rdDiseased / 10f <= cropItem.GetDiseasedPercent())
             {
-                diseasedTime = cropItem.GetGrowTime() * UnityEngine.Random.Range(.5f, .9f);
+                diseasedTime = cropItem.GetGrowthTime() * UnityEngine.Random.Range(.5f, .9f);
             }
         }
         //Debug.Log("Grown time: " + cropItem.GetGrowTime() + " thirsty time: " + thirstyTime + " diseased time: " + diseasedTime);
@@ -68,10 +69,14 @@ public class Crop : MonoBehaviour
 
     public void Grow()
     {
-        transform.localScale += Vector3.one * (Time.deltaTime / GetGrowTime());
+        if (growTimerWhenDiseased == 0 || growTimer >= growTimerWhenDiseased)
+        {
+            transform.localScale += Vector3.one * (Time.deltaTime / GetGrowTime());
+        }
         growTimer += Time.deltaTime;
         if (transform.localScale.x >= 1f)
         {
+            growTimerWhenDiseased = 0;
             ChangeState(ripedState);
         } else if (growTimer >= thirstyTime)
         {
@@ -82,6 +87,14 @@ public class Crop : MonoBehaviour
         {
             ChangeState(diseasedState);
             diseasedTime = float.MaxValue;
+        }
+    }
+    public void Degrow()
+    {
+        if (growTimerWhenDiseased == 0) growTimerWhenDiseased = growTimer;
+        if (growTimer - Time.deltaTime >= .2f * GetGrowTime())
+        {
+            growTimer -= Time.deltaTime;
         }
     }
 
@@ -128,13 +141,13 @@ public class Crop : MonoBehaviour
         stopGrowing = true;
     }
 
-    public void Harvest(Action onCropHarvested)
+    public void Harvest(Action onCropHarvested = null)
     {
-        transform.DOMoveY(transform.position.y + 2f, 1f);
-        transform.DOScale(.8f, 1f).OnComplete(() =>
+        transform.DOMoveY(transform.position.y + 2f, .5f);
+        transform.DOScale(.8f, .5f).OnComplete(() =>
         {
-            inventory.AddItem(cropItem, 1);
-            onCropHarvested();
+            Inventory.Instance.AddItem(cropItem, 1);
+            onCropHarvested?.Invoke();
             Destroy(gameObject);
         });
     } 
@@ -151,7 +164,7 @@ public class Crop : MonoBehaviour
 
     public float GetGrowTime()
     {
-        return cropItem.GetGrowTime();
+        return cropItem.GetGrowthTime();
     }
 
     public void SetField(Field fieldToSet)

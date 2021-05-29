@@ -42,18 +42,26 @@ public class MissionUIItem : MonoBehaviour
 
     public void UpdateUI()
     {
-        ItemHolder cropInInventory = Inventory.Instance.GetItemWithID(cropItem.InventoryItem.Id);
-        if (cropInInventory == null)
+        //Debug.Log("Update uiiiiiiiiiiiiiiiiiiiiiiiiiiii: " + cropItem.InventoryItem.Id);
+        //ItemHolder cropInInventory = Inventory.Instance.GetItemWithID(cropItem.InventoryItem.Id);
+        //if (cropInInventory == null)
+        //{
+        //    Debug.Log("crop inventory is null");
+        //    quantityTxt.text = $"{0}/{targetQuantity}";//quantity.ToString();
+        //    Uncomplete();
+        //} else
+        //{
+        //}
+        //Debug.Log("crop inventory is not null: " + cropInInventory.Quantity + " " + targetQuantity + " " + cropInInventory.InventoryItem.name);
+        int quantityInInventory = cropItem.InventoryItem.GetQuantityInInventory(); 
+        quantityTxt.text = $"{quantityInInventory}/{targetQuantity}";//quantity.ToString();
+        if (quantityInInventory >= targetQuantity)
         {
-            quantityTxt.text = $"{0}/{targetQuantity}";//quantity.ToString();
-            Uncomplete();
+            Complete();
         } else
         {
-            quantityTxt.text = $"{cropInInventory.Quantity}/{targetQuantity}";//quantity.ToString();
-            if (cropInInventory.Quantity >= targetQuantity)
-            {
-                Complete();
-            }
+            Uncomplete();
         }
     }
+
 }

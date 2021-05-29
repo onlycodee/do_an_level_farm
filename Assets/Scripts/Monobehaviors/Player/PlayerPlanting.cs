@@ -31,20 +31,28 @@ public class PlayerPlanting : MonoBehaviour
             Collider curClosestField = GetClosestField(collidersCnt);
             if (lastClosestField != null && lastClosestField != curClosestField)
             {
-                lastClosestField.GetComponent<Renderer>().material.color = Color.white;
+                //lastClosestField.GetComponent<Renderer>().material.color = Color.white;
+                lastClosestField.GetComponent<Field>().SetToNormalColor();
             }
             lastClosestField = curClosestField;
-            lastClosestField.GetComponent<Renderer>().material.color = fieldHighlightColor;
             Field curFieldComp = lastClosestField.GetComponent<Field>();
-            if (curFieldComp && curFieldComp.HasCrop && curFieldComp.GetCurrentCrop().IsRiped)
+            if (!curFieldComp.HasDiedCrop)
             {
-                lastClosestField.GetComponent<Renderer>().material.color = hasRipedCropColor;
+                lastClosestField.GetComponent<Renderer>().material.color = fieldHighlightColor;
+            }
+            if (curFieldComp)
+            {
+                if (curFieldComp.HasCrop && curFieldComp.GetCurrentCrop().IsRiped)
+                {
+                    lastClosestField.GetComponent<Renderer>().material.color = hasRipedCropColor;
+                } 
             }
         } else
         {
             if (lastClosestField != null)
             {
-                lastClosestField.GetComponent<Renderer>().material.color = Color.white;
+                //lastClosestField.GetComponent<Renderer>().material.color = Color.white;
+                lastClosestField.GetComponent<Field>().SetToNormalColor();
                 lastClosestField = null;
             }
         }

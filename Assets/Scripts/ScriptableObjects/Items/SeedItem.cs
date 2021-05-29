@@ -5,7 +5,7 @@ public class SeedItem : Item, IExchangeable
 {
     [SerializeField] int unlockLevel;
     [SerializeField] PriceVariable price;
-    public CropItem cropItem;
+    [SerializeField] CropItem cropItem;
 
 
     public CropType GetCropType()
@@ -18,10 +18,6 @@ public class SeedItem : Item, IExchangeable
         return unlockLevel;
     }
 
-    public override void SpecificInit()
-    {
-    }
-
     public int GetSellPrice()
     {
         return price.SellPrice;
@@ -29,6 +25,14 @@ public class SeedItem : Item, IExchangeable
 
     public int GetBuyPrice()
     {
-        return price.BuyPrice;
+        return cropItem.GetBuyPrice();
+    }
+    public int GetGrowthTime()
+    {
+        return cropItem.GetGrowthTime();
+    }
+    public CropItem GetCropItem()
+    {
+        return cropItem;
     }
 }

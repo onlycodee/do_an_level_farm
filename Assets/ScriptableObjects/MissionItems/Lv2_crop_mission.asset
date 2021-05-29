@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Lv2_crop_mission
   m_EditorClassIdentifier: 
   requiredItems:
-  - InventoryItem: {fileID: 11400000, guid: 30d5d82e0e2651d49a56413fcadef3ba, type: 2}
-    Quantity: 2
+  - InventoryItem: {fileID: 11400000, guid: 324a5232af6772c45a432ad2d44085bd, type: 2}
+    Quantity: 1

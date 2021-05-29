@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 m_moveInput;
     float m_targetRotation;
+    bool m_canMove = true;
 
     private void Awake()
     {
@@ -27,12 +28,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameManager.Instance.isFinished) return;
         MovePlayer();
     }
 
     private void MovePlayer()
     {
-        if (m_playerController.IsWorking()) return;
+        if (m_playerController.IsWorking() || !m_canMove) return;
         if (useJoyStick)
         {
             m_moveInput = new Vector3(joystick.Horizontal, 0f, joystick.Vertical);
@@ -44,16 +46,14 @@ public class PlayerMovement : MonoBehaviour
         m_playerController.SetAnimSpeed(m_moveInput.magnitude);
         if (!Mathf.Approximately(m_moveInput.x, Mathf.Epsilon) || !Mathf.Approximately(m_moveInput.z, Mathf.Epsilon))
         {
-            //Debug.LogError("Move input: " + m_moveInput);
-            //Debug.Log("cur pos: " + transform.position);
-            //Debug.Log("added pos: " + m_moveInput * m_moveSpeed * Time.deltaTime);
             m_rigidBody.MovePosition(transform.position + m_moveInput * m_moveSpeed * Time.deltaTime);
             m_targetRotation = Mathf.Atan2(m_moveInput.x, m_moveInput.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, m_targetRotation, 0f), m_rotationSpeed * Time.deltaTime);
         }
-        //else
-        //{
-        //    Debug.LogError("Move speed is too small");
-        //}
+    }
+    public void SetMovingState(bool canMove)
+    {
+        m_canMove = canMove;
+        GetComponent<PlayerController>().ResetToIdleAnim();
     }
 }

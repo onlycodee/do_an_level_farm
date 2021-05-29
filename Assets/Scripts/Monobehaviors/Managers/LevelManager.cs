@@ -40,20 +40,26 @@ public class LevelManager : MonoBehaviour
         curScene = SceneManager.GetSceneByName("level_" + PlayerPrefWrapper.CurrentLevel);
         if (curScene.isLoaded)
         {
-            //SceneManager.SetActiveScene(curScene);
+            StartCoroutine(UnloadAndLoadNewScene());
         } else
         {
             StartCoroutine(COLoadCurrentLevelScene("level_" + PlayerPrefWrapper.CurrentLevel));
         }
     }
+    public IEnumerator UnloadAndLoadNewScene()
+    {
+        yield return SceneManager.UnloadSceneAsync(curScene);
+        yield return COLoadCurrentLevelScene("level_" + PlayerPrefWrapper.CurrentLevel);
+    } 
     public IEnumerator COLoadCurrentLevelScene(string sceneName)
     {
-        yield return FindObjectOfType<Fader>().FadeIn();
+        yield return FindObjectOfType<ScreenFader>().FadeIn();
         yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-        yield return FindObjectOfType<Fader>().FadeOut();
+        yield return FindObjectOfType<ScreenFader>().FadeOut();
         Inventory.Instance.Reset();
         FindObjectOfType<MissionBar>().LoadMissionData();
         FindObjectOfType<SeedBarManager>().DisplaySeedItems();
+        GameManager.Instance.isFinished = false;
     }
 
     public int GetCurrentLevel()

@@ -15,6 +15,10 @@ public class LevelData : ScriptableObject
     {
         return time;
     }
+    public bool HasTime()
+    {
+        return time > 0f;
+    }
     public int GetInitCoin()
     {
         return initGold;

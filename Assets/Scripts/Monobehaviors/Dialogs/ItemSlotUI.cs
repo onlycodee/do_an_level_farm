@@ -2,36 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
-public class ItemSlotUI : MonoBehaviour
+public class ItemSlotUI : MonoBehaviour, IPointerClickHandler
 {
     public Image itemImage;
     public TextMeshProUGUI itemQuantityText;
-    Item item;
+    ItemHolder itemHodler;
     
-    public void SetItem(Item itemToSet)
+    public void SetItemHolder(ItemHolder itemHolderParam)
     {
-        item = itemToSet;
-        itemImage.sprite = item.Avatar;
-    }
-
-    public void SetItemQuantityText(int value)
-    {
-        itemQuantityText.text = value.ToString();
+        itemHodler = itemHolderParam;
+        itemImage.sprite = itemHodler.InventoryItem.Avatar;
+        itemQuantityText.text = itemHodler.Quantity.ToString();
     }
 
     public Item GetItem()
     {
-        return item;
+        return itemHodler.InventoryItem;
     }
 
-    //public void UpdateUI()
-    //{
-    //    if (itemImage.sprite != item.Avatar)
-    //    {
-    //        itemImage.sprite = item.Avatar;
-    //    }
-    //    itemQuantityText.text = Inventory.Instance.GetQuantity(item).ToString();
-    //}
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.LogError("Inventory item clickedddddddddddddddd");
+        SellDialog sellDialog = DialogController.Instance.ShowDialog(DialogType.SELLING, DialogShow.OVER_CURRENT) as SellDialog;
+        sellDialog.SetItemHolder(itemHodler);
+    }
 }

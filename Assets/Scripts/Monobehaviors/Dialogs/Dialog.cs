@@ -63,18 +63,19 @@ public class Dialog : MonoBehaviour
         //{
         //    Sound.instance.Play(Sound.instance.ui_slider_hide);
         //}
+        //Debug.LogError("Is showingggggggg: " + _isShowing);
         if (_isShowing == false)
             return;
         _isShowing = false;
         if (anim != null && IsIdle() && hidingAnimation != null)
         {
-            Debug.LogError("hide with anim");
+            //Debug.LogError("hide with anim");
             anim.SetTrigger("hide");
             Timer.Schedule(this, hidingAnimation.length, DoClose);
         }
         else
         {
-            Debug.LogError("hide with no anim");
+            //Debug.LogError("hide with no anim");
             DoClose();
         }
 

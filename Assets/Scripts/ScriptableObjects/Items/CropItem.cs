@@ -4,7 +4,7 @@
 public class CropItem : Item, IExchangeable
 {
     [SerializeField] PriceVariable price;
-    [SerializeField] float grownTime;
+    [SerializeField] int grownTime;
     [SerializeField, Range(1, 100)] float diseasePercent, thirstyPercent;
     [SerializeField] CropType cropType;
 
@@ -32,12 +32,8 @@ public class CropItem : Item, IExchangeable
         return price.SellPrice;
     }
 
-    public float GetGrowTime()
+    public int GetGrowthTime()
     {
         return grownTime;
-    }
-
-    public override void SpecificInit()
-    {
     }
 }

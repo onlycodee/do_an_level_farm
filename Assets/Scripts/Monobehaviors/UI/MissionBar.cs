@@ -21,20 +21,18 @@ public class MissionBar : MonoBehaviour
         levelManager = FindObjectOfType<LevelManager>();
     }
 
-    private void Start()
-    {
-        //nextLevelBtn.SetActive(false);
-        //Debug.LogError("Init coin: " + levelData.GetInitCoin())
-        //LoadMissionData();
-    }
-
     public void LoadMissionData()
     {
         levelData = Resources.Load<LevelData>(levelDataPath + (levelManager.GetCurrentLevel()));
-        InitItemSlots();
         InitializeStartSeeds();
-        FindObjectOfType<CoinManager>().CurrentCoin = levelData.GetInitCoin();
-        FindObjectOfType<SeedBarManager>().DisplaySeedItems();
+        FindObjectOfType<GoldManager>().CurrentGold = levelData.GetInitCoin();
+        //FindObjectOfType<SeedBarManager>().DisplaySeedItems();
+        InitItemSlots();
+        if (levelData.HasTime())
+        {
+            FindObjectOfType<LevelTimer>().SetTime(levelData.GetTime());
+            FindObjectOfType<LevelTimer>().CountDownTime();
+        }
     }
 
     private void OnEnable()
@@ -43,12 +41,9 @@ public class MissionBar : MonoBehaviour
 
     private void InitializeStartSeeds()
     {
-        Debug.LogError("num init seeds: " + levelData.GetInitSeeds().Length);
         foreach (var seed in levelData.GetInitSeeds())
         {
-            Debug.LogError("Add seed item to inventory");
             Inventory.Instance.AddItem(seed.InventoryItem, seed.Quantity);
-            Debug.LogError("Inventory after add: " + Inventory.Instance.Count());
         }
     }
 
@@ -65,40 +60,49 @@ public class MissionBar : MonoBehaviour
             foreach (var crop in missions[i].GetItems())
             {
                 MissionUIItem missionUI = Instantiate(missionItemSlotPrefab, transform);
+                missionUI.Uncomplete();
                 missionUI.SetAvatar(crop.InventoryItem.Avatar);
                 missionUI.SetCropItem(crop);
-                ItemHolder cropInInventory = inventory.GetItemWithID(crop.InventoryItem.Id);
-                if (cropInInventory != null)
-                {
-                    missionUI.SetQuantity(inventory.GetItemWithID(crop.InventoryItem.Id).Quantity,
-                                          crop.Quantity);
-                }
-                else
-                {
-                    missionUI.SetQuantity(0, crop.Quantity);
-                }
+                //ItemHolder cropInInventory = inventory.GetItemWithID(crop.InventoryItem.Id);
+                //if (cropInInventory != null)
+                //{
+                //    missionUI.SetQuantity(cropInInventory.Quantity,
+                //                          crop.Quantity);
+                //}
+                //else
+                //{
+                //    missionUI.SetQuantity(0, crop.Quantity);
+                //}
+                missionUI.SetQuantity(crop.InventoryItem.GetQuantityInInventory(), crop.Quantity);
+                missionUI.UpdateUI();
                 itemSlots.Add(missionUI);
 
-                CropMission cropMission = missions[i] as CropMission;
-                if (cropMission != null)
-                {
-                    if (cropMission.IsItemCompleted(crop))
-                    {
-                        missionUI.Complete();
-                    }
-                    else
-                    {
-                        missionUI.Uncomplete();
-                    }
-                }
+                //ItemMission cropMission = missions[i] as ItemMission;
+                //if (cropMission != null)
+                //{
+                //    if (cropMission.IsItemCompleted(crop))
+                //    {
+                //        missionUI.Complete();
+                //    }
+                //    else
+                //    {
+                //        missionUI.Uncomplete();
+                //    }
+                //}
             }
         }
+    }
+
+    public void UpdateItemUIAndCheckIfMissionCompleted()
+    {
+        Debug.Log("Update item ui and check if mission completed");
+        UpdateUI();
+        CheckIfMissionCompleted();
     }
     
     public void CheckIfMissionCompleted()
     {
         MissionBase[] missions = levelData.GetMissions();
-        Debug.LogError("Mission counttttttttttt: " + missions.Length);
         bool isCompleted = true;
         foreach (var mission in missions)
         {
@@ -110,13 +114,7 @@ public class MissionBar : MonoBehaviour
         }
         if (isCompleted)
         {
-            //winDialog.SetActive(true);
-            //LevelManager.Instance.LoadNextLevel();
-            Debug.LogError("Current level completeeeeeeeeeeeee");
-            DialogController.instance.ShowDialog(DialogType.WIN);
-        } else
-        {
-            Debug.LogError("Not completeddddddddddddddd");
+            GameManager.Instance.Win();
         }
     }
 

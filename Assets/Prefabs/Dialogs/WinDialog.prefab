@@ -332,6 +332,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Close Button
       objectReference: {fileID: 0}
+    - target: {fileID: 114768564150899750, guid: e4496eca12ceabb42aa0e106fe0980ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 223100743023403080, guid: e4496eca12ceabb42aa0e106fe0980ba,
         type: 3}
       propertyPath: m_Camera

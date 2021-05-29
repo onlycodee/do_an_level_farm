@@ -18,20 +18,10 @@ public class InventoryDialog : Dialog
 
     private void OnEnable()
     {
-        //if (itemSlots.Count != inventory.items.Count)
-        //{
-        //    InitItemSlots();
-        //}
-
-        //for (int i = 0; i < inventory.items.Count; i++)
-        //{
-        //    itemSlots[i].SetItemQuantityText(Inventory.Instance.GetQuantity(itemSlots[i].GetCropItem()));
-        //}
-        //InitItemSlots();
         OnFarmProductViewClicked();
     }
 
-    void InitItemSlots()
+    public void InitItemSlots()
     {
         for (int i = 0; i < itemSlots.Count; i++)
         {
@@ -40,6 +30,7 @@ public class InventoryDialog : Dialog
         itemSlots.Clear();
         for (int i = 0; i < inventory.items.Count; i++)
         {
+            if (inventory.items[i].Quantity <= 0 || !inventory.items[i].InventoryItem.VisibleInInventory) continue;
             ItemSlotUI itemSlotInstance = Instantiate(itemSlotPrefab);
             SeedItem seedItem = inventory.items[i].InventoryItem as SeedItem;
             if (seedItem)
@@ -50,8 +41,7 @@ public class InventoryDialog : Dialog
                 itemSlotInstance.transform.SetParent(farmProductParent);
             }
             itemSlotInstance.transform.localScale = Vector3.one;
-            itemSlotInstance.SetItem(inventory.items[i].InventoryItem);
-            itemSlotInstance.SetItemQuantityText(Inventory.Instance.GetQuantity(itemSlotInstance.GetItem()));
+            itemSlotInstance.SetItemHolder(inventory.items[i]);
             itemSlots.Add(itemSlotInstance);
         }
     }

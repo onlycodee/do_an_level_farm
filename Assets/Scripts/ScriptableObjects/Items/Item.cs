@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Item : ScriptableObject
 {
     public Sprite Avatar;
     public string Id = "";
+    public bool VisibleInInventory = true;
 
     private void Awake()
     {
@@ -21,9 +20,13 @@ public abstract class Item : ScriptableObject
         }
     }
 
-    public void Init()
+    public virtual int GetQuantityInInventory()
     {
-        SpecificInit();
+        if (Inventory.Instance != null)
+        {
+            return Inventory.Instance.GetQuantity(this);
+        }
+        return 0;
     }
-    public abstract void SpecificInit(); 
+    //public abstract void SpecificInit(); 
 }

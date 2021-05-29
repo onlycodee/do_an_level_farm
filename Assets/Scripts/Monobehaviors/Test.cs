@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    public void AddCoint(int amount)
+    [SerializeField] CropItem crop;
+
+    public void AddCrop()
     {
-        FindObjectOfType<CoinManager>().AddCoin(amount);
-    }
-    public void HelloWorld()
-    {
-        Debug.LogError("Hello World");
+        Inventory.Instance.AddItem(crop);
     }
 }

@@ -3,13 +3,17 @@ using UnityEngine;
 
 public class Field : MonoBehaviour
 {
-    public GameEvent cropHarvestedEvent;
     public GrownTimeDisplay grownTimeDisplay;
     public CropStateUI cropStateUI;
     public GameObject diedCrop;
+    [SerializeField] Color havestedCropColor;
+    
     MeshRenderer meshRenderer;
     Crop currentCrop = null;
     FieldState curState;
+
+    Renderer curRenderer;
+
 
     public bool HasCrop
     {
@@ -29,14 +33,7 @@ public class Field : MonoBehaviour
     private void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
-    }
-
-    private void Start()
-    {
-    }
-
-    private void Update()
-    {
+        curRenderer = GetComponent<Renderer>();
     }
 
     public void ResetState()
@@ -62,14 +59,26 @@ public class Field : MonoBehaviour
         diedCrop.transform.localScale = Vector3.zero;
         diedCrop.transform.DOScale(1.0f, .5f);
         curState = FieldState.HAS_DIED_CROP;
-        currentCrop.Harvest(UpdateCropMissionUI);
+        currentCrop.Harvest();
         ResetState();
+        SetToNormalColor();
     }
 
-    void UpdateCropMissionUI()
+    public void SetToNormalColor()
     {
-        cropHarvestedEvent.NotifyAll();
+        if (curState == FieldState.HAS_DIED_CROP)
+        {
+            curRenderer.material.color = havestedCropColor;
+        } else
+        {
+            curRenderer.material.color = Color.white;
+        }
     }
+
+    //void UpdateCropMissionUI()
+    //{
+    //    cropHarvestedEvent.NotifyAll();
+    //}
 
     private void OnTriggerStay(Collider other)
     {

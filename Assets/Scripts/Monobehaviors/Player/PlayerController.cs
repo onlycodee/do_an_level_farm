@@ -87,6 +87,9 @@ public class PlayerController : MonoBehaviour
                                 //transform.LookAt(currentField.transform.position);
                                 SetPlayerLookView();
                                 m_animator.SetTrigger(hoeParam);
+                            } else
+                            {
+                                ToastManager.Instance.ShowNotify("INVALID TOOL", currentField.transform.position + Vector3.up);
                             }
                         } else
                         {
@@ -111,6 +114,9 @@ public class PlayerController : MonoBehaviour
                                 seedBarManager.SetChoosedItem(seedBarManager.GetFirstSeedItemBtn());
                                 StartCoroutine(DelayActivateSeedBorder());
                             }
+                        } else
+                        {
+                            ToastManager.Instance.ShowNotify("OUT OF SEED", currentField.transform.position, 150, .75f);
                         }
                     }
                     else
@@ -201,6 +207,9 @@ public class PlayerController : MonoBehaviour
                     //transform.LookAt(currentField.transform.position);
                     SetPlayerLookView();
                     m_animator.SetTrigger(wateringParam);
+                } else
+                {
+                    ToastManager.Instance.ShowNotify("INVALID TOOL", currentField.transform.position + Vector3.up);
                 }
             }
             else if (cropState as CropDiseasedState)
@@ -210,6 +219,9 @@ public class PlayerController : MonoBehaviour
                     //transform.LookAt(currentField.transform.position);
                     SetPlayerLookView();
                     m_animator.SetTrigger(wateringParam);
+                } else
+                {
+                    ToastManager.Instance.ShowNotify("INVALID TOOL", currentField.transform.position + Vector3.up);
                 }
             }
         }
@@ -329,5 +341,17 @@ public class PlayerController : MonoBehaviour
             currentToolItemGameObj.SetActive(false);
         }
         seedItemBtn = seedItem;
+    }
+    public void ResetToIdleAnim()
+    {
+        //m_animator.SetFloat(m_animSpeedParam, 0f);
+        m_animator.Rebind();
+        m_animator.Update(0f);
+    }
+    public void PlayFeedingAnim(Transform target)
+    {
+        transform.LookAt(target.position);
+        transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
+        m_animator.SetTrigger(seedParam);
     }
 }

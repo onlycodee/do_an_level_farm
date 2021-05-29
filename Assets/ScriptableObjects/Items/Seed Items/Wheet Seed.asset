@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wheet Seed
   m_EditorClassIdentifier: 
   Avatar: {fileID: 21300000, guid: d562723a27b05d64ca7f3b479eeb7904, type: 3}
-  Id: fc39fbc5-1a92-4cb3-a8ef-7121ba8afe0a
+  Id: 6ad5deda-fc1a-485b-80a7-9787d27f5c78
   unlockLevel: 2
-  price: {fileID: 11400000, guid: 1022f82c4b4dda4458c0c2ac131973d2, type: 2}
+  price: {fileID: 11400000, guid: 9bdb46408ae9336469ac8320ccdd4e83, type: 2}
   cropItem: {fileID: 11400000, guid: 30d5d82e0e2651d49a56413fcadef3ba, type: 2}

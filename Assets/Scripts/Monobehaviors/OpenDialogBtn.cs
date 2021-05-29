@@ -23,6 +23,6 @@ public class OpenDialogBtn : MonoBehaviour
     }
     public void ShowDialog()
     {
-        DialogController.instance.ShowDialog(dialogType);
+        DialogController.Instance.ShowDialog(dialogType);
     }
 }

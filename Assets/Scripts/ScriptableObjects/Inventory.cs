@@ -46,7 +46,7 @@ public class Inventory : ScriptableObject
         {
             items.Add(new ItemHolder() { InventoryItem = itemToAdd, Quantity = quantity });
         }
-        Debug.LogError("Add itemmmmmmmmmmmmmmmmmm");
+        Debug.LogError("Add itemmmmmmmmmmmmmmmmmm: " + itemToAdd.name);
         if (onItemsChanged) onItemsChanged.NotifyAll();
     }
     public IEnumerable<ItemHolder> GetAllItems()

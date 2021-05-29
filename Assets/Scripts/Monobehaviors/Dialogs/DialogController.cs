@@ -8,7 +8,9 @@ public enum DialogType
     WIN,
     LOSE,
     SHOP,
-    INVENTORY 
+    INVENTORY,
+    SELLING,
+    COOKING
 };
 
 public enum DialogShow
@@ -22,7 +24,7 @@ public enum DialogShow
 
 public class DialogController : MonoBehaviour
 {
-    public static DialogController instance;
+    public static DialogController Instance;
 
     [HideInInspector]
     public Dialog current;
@@ -35,8 +37,8 @@ public class DialogController : MonoBehaviour
 
     public void Awake()
     {
-        if (instance == null)
-            instance = this;
+        if (Instance == null)
+            Instance = this;
         else
             Destroy(this);
 
@@ -49,12 +51,13 @@ public class DialogController : MonoBehaviour
         ShowDialog((DialogType)type, DialogShow.DONT_SHOW_IF_OTHERS_SHOWING);
     }
 
-    public void ShowDialog(DialogType type, DialogShow option = DialogShow.REPLACE_CURRENT)
+    public Dialog ShowDialog(DialogType type, DialogShow option = DialogShow.REPLACE_CURRENT)
     {
         //if (ConfigController.instance.IsShowingTutorialLevelOne == true) return;
 
         Dialog dialog = GetDialog(type);
         ShowDialog(dialog, option);
+        return dialog;
         //if (Sound.instance != null)
         //{
         //    Sound.instance.Play(Sound.instance.ui_slider_show);
@@ -153,10 +156,10 @@ public class DialogController : MonoBehaviour
                 onDialogsClosed();
             }
 
-            if (dialogs.Count > 0)
-            {
-                ShowDialog(dialogs.Peek(), DialogShow.SHOW_PREVIOUS);
-            }
+            //if (dialogs.Count > 0)
+            //{
+            //    ShowDialog(dialogs.Peek(), DialogShow.SHOW_PREVIOUS);
+            //}
         }
     }
 

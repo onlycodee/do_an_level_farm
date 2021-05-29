@@ -12,6 +12,7 @@ public class CropDiseasedState : BaseState
 
     public override void Execute(Crop crop)
     {
+        crop.Degrow();
     }
 
     public override void Exit(Crop crop)

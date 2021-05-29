@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Wheet
   m_EditorClassIdentifier: 
   Avatar: {fileID: 21300000, guid: d562723a27b05d64ca7f3b479eeb7904, type: 3}
-  Id: 294c0361-020f-48f7-9251-2da1284177a9
+  Id: 6ae8ae1a-3b0e-4655-95ce-000a7c9e5e27
+  VisibleInInventory: 1
   price: {fileID: 11400000, guid: e48d639aaf08d6a4b8d97647c35bc58f, type: 2}
   grownTime: 5
   diseasePercent: 18.8
   thirstyPercent: 24.5
-  modelPrefab: {fileID: 6384131630564792575, guid: 6f843a578445bc0449ec27f6e6c4c846,
-    type: 3}
+  cropType: 0

@@ -10,7 +10,4 @@ public class ToolItem : Item, IEquipmentable
         return Instantiate(prefab);
     }
 
-    public override void SpecificInit()
-    {
-    }
 }
