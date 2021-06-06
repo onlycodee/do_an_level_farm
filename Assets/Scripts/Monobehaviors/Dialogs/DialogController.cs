@@ -10,7 +10,8 @@ public enum DialogType
     SHOP,
     INVENTORY,
     SELLING,
-    COOKING
+    COOKING,
+    INTRO
 };
 
 public enum DialogShow

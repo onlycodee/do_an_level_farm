@@ -113,7 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade1c181159df224fb2028ddde71b871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cropHarvestedEvent: {fileID: 11400000, guid: f6d748db4a5a29744afecb5cb57532ec, type: 2}
   grownTimeDisplay: {fileID: 7837830148234784129}
   cropStateUI: {fileID: 4145557515448415966}
   diedCrop: {fileID: 4083697592365647426}

@@ -70,4 +70,14 @@ public class InventoryDialog : Dialog
         seedsBtn.GetComponent<Image>().color = Color.white;
         farmProductsBtn.GetComponent<Image>().color = Color.green;
     }
+
+    public override void Close()
+    {
+        GameObject playerGO = GameObject.FindWithTag("Player");
+        if (playerGO)
+        {
+            playerGO.GetComponent<PlayerMovement>().SetMovingState(true);
+        }
+        base.Close();
+    }
 }

@@ -5,7 +5,7 @@ public class CropStateUI : MonoBehaviour
 {
     [SerializeField] Image timerImg;
     [SerializeField] GameObject waterIcon, diseaseIcon;
-    [SerializeField] GameObject waterBtn, healingBtn;
+    //[SerializeField] GameObject waterBtn, healingBtn;
 
     private void Start()
     {
@@ -30,21 +30,21 @@ public class CropStateUI : MonoBehaviour
     {
         diseaseIcon.SetActive(state);
     }
-    public void SetActiveBtnWatering(bool state)
-    {
-        waterBtn.SetActive(state);
-    }
-    public void SetActiveBtnHealing(bool state)
-    {
-        healingBtn.SetActive(state);
-    }
+    //public void SetActiveBtnWatering(bool state)
+    //{
+    //    waterBtn.SetActive(state);
+    //}
+    //public void SetActiveBtnHealing(bool state)
+    //{
+    //    healingBtn.SetActive(state);
+    //}
 
     public void ResetUI()
     {
         SetActiveTimerImg(false);
         SetActiveWaterIcon(false);
         SetActiveDiseaseIcon(false);
-        waterBtn.SetActive(false);
-        healingBtn.SetActive(false);
+        //waterBtn.SetActive(false);
+        //healingBtn.SetActive(false);
     }
 }

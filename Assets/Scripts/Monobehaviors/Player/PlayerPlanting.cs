@@ -7,11 +7,11 @@ public class PlayerPlanting : MonoBehaviour
 {
     [SerializeField] Crop cropToPlantPrefab;
     [SerializeField] LayerMask fieldLayermark;
-    [SerializeField, Range(1f, 10f)] float plantingRange;
+    [SerializeField, Range(.1f, 2f)] float plantingRange;
     [SerializeField] CropFactory cropFactory;
-    [SerializeField] Color fieldHighlightColor, hasRipedCropColor;
     [SerializeField] Inventory inventory;
-    [SerializeField] Transform rightHandTrans;
+
+    //[SerializeField] Color fieldHighlightColor, hasRipedCropColor;
 
     Camera mainCamera;
     Collider[] inPlantingRangeColliders = new Collider[100];
@@ -28,6 +28,7 @@ public class PlayerPlanting : MonoBehaviour
         int collidersCnt = Physics.OverlapSphereNonAlloc(transform.position, plantingRange, inPlantingRangeColliders, fieldLayermark, QueryTriggerInteraction.Collide);
         if (collidersCnt > 0)
         {
+            //Debug.Log("Count: " + collidersCnt);
             Collider curClosestField = GetClosestField(collidersCnt);
             if (lastClosestField != null && lastClosestField != curClosestField)
             {
@@ -38,13 +39,13 @@ public class PlayerPlanting : MonoBehaviour
             Field curFieldComp = lastClosestField.GetComponent<Field>();
             if (!curFieldComp.HasDiedCrop)
             {
-                lastClosestField.GetComponent<Renderer>().material.color = fieldHighlightColor;
+                lastClosestField.GetComponent<Field>().ChangeToHighlightColor();//GetRenderer().material.color = fieldHighlightColor;
             }
             if (curFieldComp)
             {
                 if (curFieldComp.HasCrop && curFieldComp.GetCurrentCrop().IsRiped)
                 {
-                    lastClosestField.GetComponent<Renderer>().material.color = hasRipedCropColor;
+                    lastClosestField.GetComponent<Field>().ChangeToRipedColor();//.GetRenderer().material.color = hasRipedCropColor;
                 } 
             }
         } else

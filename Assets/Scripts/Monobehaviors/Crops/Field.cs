@@ -3,17 +3,20 @@ using UnityEngine;
 
 public class Field : MonoBehaviour
 {
-    public GrownTimeDisplay grownTimeDisplay;
-    public CropStateUI cropStateUI;
-    public GameObject diedCrop;
-    [SerializeField] Color havestedCropColor;
+    [SerializeField] GrownTimeDisplay grownTimeDisplay;
+    [SerializeField] CropStateUI cropStateUI;
+    [SerializeField] GameObject diedCrop;
+    [SerializeField] Color normalColor, havestedCropColor, highlightColor, ripedColor;
+    [SerializeField] Renderer curRenderer;
     
-    MeshRenderer meshRenderer;
     Crop currentCrop = null;
     FieldState curState;
 
-    Renderer curRenderer;
 
+    public CropStateUI GetCropStateUI()
+    {
+        return cropStateUI; 
+    }
 
     public bool HasCrop
     {
@@ -28,12 +31,6 @@ public class Field : MonoBehaviour
     {
         get => curState;
         set => curState = value;
-    }
-
-    private void Awake()
-    {
-        meshRenderer = GetComponent<MeshRenderer>();
-        curRenderer = GetComponent<Renderer>();
     }
 
     public void ResetState()
@@ -51,6 +48,10 @@ public class Field : MonoBehaviour
     public Crop GetCurrentCrop()
     {
         return currentCrop;
+    }
+    public Renderer GetRenderer()
+    {
+        return curRenderer;
     }
 
     public void Harvest()
@@ -71,8 +72,16 @@ public class Field : MonoBehaviour
             curRenderer.material.color = havestedCropColor;
         } else
         {
-            curRenderer.material.color = Color.white;
+            curRenderer.material.color = normalColor;
         }
+    }
+    public void ChangeToHighlightColor()
+    {
+        curRenderer.material.color = highlightColor;
+    }
+    public void ChangeToRipedColor()
+    {
+        curRenderer.material.color = ripedColor;
     }
 
     //void UpdateCropMissionUI()
@@ -82,6 +91,7 @@ public class Field : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        //Debug.LogError("Trigger stay");
         if (other.tag == "Player" && HasCrop)
         {
             cropStateUI.SetActiveTimerImg(true);
@@ -91,6 +101,7 @@ public class Field : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        //Debug.LogError("Trigger exit");
         if (other.tag == "Player")
         {
             cropStateUI.SetActiveTimerImg(false);

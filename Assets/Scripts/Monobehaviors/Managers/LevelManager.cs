@@ -33,7 +33,7 @@ public class LevelManager : MonoBehaviour
         LoadCurrentLevel();
     }
 
-    public void LoadCurrentLevel()
+    public void LoadCurrentLevel(bool firstLoad = false)
     {
         levelText.text = "Level: " + PlayerPrefWrapper.CurrentLevel.ToString();
         Debug.LogError("Current level: " + PlayerPrefWrapper.CurrentLevel);
@@ -43,7 +43,7 @@ public class LevelManager : MonoBehaviour
             StartCoroutine(UnloadAndLoadNewScene());
         } else
         {
-            StartCoroutine(COLoadCurrentLevelScene("level_" + PlayerPrefWrapper.CurrentLevel));
+            StartCoroutine(COLoadCurrentLevelScene("level_" + PlayerPrefWrapper.CurrentLevel, firstLoad));
         }
     }
     public IEnumerator UnloadAndLoadNewScene()
@@ -51,11 +51,18 @@ public class LevelManager : MonoBehaviour
         yield return SceneManager.UnloadSceneAsync(curScene);
         yield return COLoadCurrentLevelScene("level_" + PlayerPrefWrapper.CurrentLevel);
     } 
-    public IEnumerator COLoadCurrentLevelScene(string sceneName)
+    public IEnumerator COLoadCurrentLevelScene(string sceneName, bool firstLoad = false)
     {
-        yield return FindObjectOfType<ScreenFader>().FadeIn();
+        if (!firstLoad)
+        {
+            Debug.LogError("In hereeeeeeeeeeeeee");
+            yield return ScreenFader.Instance.FadeIn();
+        }
         yield return SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-        yield return FindObjectOfType<ScreenFader>().FadeOut();
+        if (!firstLoad)
+        {
+            yield return ScreenFader.Instance.FadeOut();
+        }
         Inventory.Instance.Reset();
         FindObjectOfType<MissionBar>().LoadMissionData();
         FindObjectOfType<SeedBarManager>().DisplaySeedItems();

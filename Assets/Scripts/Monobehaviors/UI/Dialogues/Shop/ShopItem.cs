@@ -54,8 +54,12 @@ public class ShopItem : MonoBehaviour
             {
                 coinManager.SubtractGold(seedItem.GetBuyPrice());
                 Inventory.Instance.AddItem(seedItem);
-                FloatingUIItemController.Instance.Show(item.Avatar, 1, transform.position - Vector3.up * 20, transform.position + Vector3.up * 10);
+                FloatingUIItemController.Instance.Show(item.Avatar, 1, avatar.transform.position - Vector3.up * 20, avatar.transform.position + Vector3.up * 10);
+            } else
+            {
+                ToastManager.Instance.ShowNotifyWorldPosition("NOT ENOUGH MONEY", transform.position);
             }
+
         }
     }
 

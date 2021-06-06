@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: CropFactory
   m_EditorClassIdentifier: 
   cropPrefabs:
-  - {fileID: 6384131630564792574, guid: 6f843a578445bc0449ec27f6e6c4c846, type: 3}
-  - {fileID: 5770080178784068307, guid: 9be897a2deb86994eb908e2ad20f25c2, type: 3}
-  - {fileID: 8439598123352459510, guid: d9fe06ea25675c642b79241b9546f7c5, type: 3}
-  - {fileID: 4852435111642458416, guid: 71b71ba48890c714b91bea717409866d, type: 3}
+  - {fileID: 5005383308860201394, guid: ea519beb06d53db4985e910f1092c515, type: 3}
+  - {fileID: 338051292445902873, guid: a85e60fda9de7fc4595171d4a45203a7, type: 3}
+  - {fileID: 3375770056884177717, guid: 21840a5b64f87814ea8230cc659dc8fa, type: 3}
+  - {fileID: 1826807487099214117, guid: 9a811b2ac5c0aa64bbcf83b8d527c6af, type: 3}
+  - {fileID: 8331863228164530537, guid: 2cff166168d7cae4db91b057170efbb0, type: 3}
+  - {fileID: 5884342336697104312, guid: 97a9949431fd9dd44be2e3aa43e41b9c, type: 3}
+  - {fileID: 827162267073309823, guid: 553a9b651f0b524468dd40c12005d770, type: 3}

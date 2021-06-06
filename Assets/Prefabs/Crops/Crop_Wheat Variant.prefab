@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 4852435111642458417, guid: 71b71ba48890c714b91bea717409866d,
         type: 3}
       propertyPath: m_Name
-      value: Crop_Wheat
+      value: Crop_Wheat Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4852435111642458423, guid: 71b71ba48890c714b91bea717409866d,
         type: 3}
@@ -77,5 +77,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300000, guid: 9788568206a3f4f06aa9a37d2683fd04, type: 3}
+    - target: {fileID: 7890517111995807331, guid: 71b71ba48890c714b91bea717409866d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.94
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71b71ba48890c714b91bea717409866d, type: 3}

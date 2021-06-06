@@ -15,12 +15,12 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(Instance.gameObject);
-        Inventory.Instance.Reset();
     }
 
     private void Start()
     {
-        LevelManager.Instance.LoadCurrentLevel();
+        Inventory.Instance.Reset();
+        LevelManager.Instance.LoadCurrentLevel(true);
     }
 
     public void Win()
@@ -29,11 +29,13 @@ public class GameManager : MonoBehaviour
         isFinished = true;
         FindObjectOfType<LevelTimer>().Pause();
         DialogController.Instance.ShowDialog(DialogType.WIN);
+        Inventory.Instance.Reset();
     }
     public void Lose()
     {
         if (isFinished) return;
         isFinished = true;
+        Inventory.Instance.Reset();
         DialogController.Instance.ShowDialog(DialogType.LOSE);
     }
 }

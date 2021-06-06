@@ -7,12 +7,12 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField, Min(5f)] float m_moveSpeed = 10f;
     [SerializeField, Min(10f)] float m_rotationSpeed = 120f;
-    [SerializeField] Joystick joystick;
     [SerializeField] bool useJoyStick = false;
 
     Rigidbody m_rigidBody;
     Animator m_animator;
     PlayerController m_playerController;
+    Joystick joystick;
 
     Vector3 m_moveInput;
     float m_targetRotation;
@@ -24,11 +24,12 @@ public class PlayerMovement : MonoBehaviour
         m_animator = GetComponent<Animator>();
         m_playerController = GetComponent<PlayerController>();
         m_targetRotation = 0;
+        joystick = Joystick.Instance;
     }
 
     private void FixedUpdate()
     {
-        if (GameManager.Instance.isFinished) return;
+        if (GameManager.Instance && GameManager.Instance.isFinished) return;
         MovePlayer();
     }
 

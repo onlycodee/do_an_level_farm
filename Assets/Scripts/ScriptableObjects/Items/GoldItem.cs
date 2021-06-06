@@ -10,7 +10,7 @@ public class GoldItem : Item
         GoldManager goldManager = FindObjectOfType<GoldManager>();
         if (goldManager != null)
         {
-            Debug.LogError("Current gold: " + goldManager.CurrentGold);
+            //Debug.LogError("Current gold: " + goldManager.CurrentGold);
             return goldManager.CurrentGold;
         } else
         {

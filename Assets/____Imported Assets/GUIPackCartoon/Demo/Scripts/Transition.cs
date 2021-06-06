@@ -4,6 +4,7 @@
 
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 // This class is responsible for managing the transitions between scenes that are performed
@@ -74,7 +75,7 @@ public class Transition : MonoBehaviour
         image.canvasRenderer.SetAlpha(1.0f);
         yield return new WaitForEndOfFrame();
 
-        Application.LoadLevel(level);
+        SceneManager.LoadScene(level);
 
         time = 0.0f;
         while (time < halfDuration)
@@ -87,6 +88,7 @@ public class Transition : MonoBehaviour
         image.canvasRenderer.SetAlpha(0.0f);
         yield return new WaitForEndOfFrame();
 
-        Destroy(m_canvas);
+        Destroy(image.gameObject);
+        image = null;
     }
 }

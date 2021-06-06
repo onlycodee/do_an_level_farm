@@ -16,7 +16,6 @@ public class Crop : MonoBehaviour
     public bool IsPlanted = false;
     [HideInInspector]
     public bool IsRiped = false;
-    public CropType type;
     public CropFactory CropFactory;
 
     Field field;
@@ -100,25 +99,25 @@ public class Crop : MonoBehaviour
 
     public void DisplayThirstyIcon()
     {
-        field.cropStateUI.SetActiveWaterIcon(true);
-        field.cropStateUI.SetActiveBtnWatering(true);
+        field.GetCropStateUI().SetActiveWaterIcon(true);
+        //field.GetCropStateUI().SetActiveBtnWatering(true);
     }
 
     public void HideThirstyIcon()
     {
-        field.cropStateUI.SetActiveWaterIcon(false);
-        field.cropStateUI.SetActiveBtnWatering(false);
+        field.GetCropStateUI().SetActiveWaterIcon(false);
+        //field.GetCropStateUI().SetActiveBtnWatering(false);
     }
     public void DisplayDiseasedIcon()
     {
-        field.cropStateUI.SetActiveDiseaseIcon(true);
-        field.cropStateUI.SetActiveBtnHealing(true);
+        field.GetCropStateUI().SetActiveDiseaseIcon(true);
+        //field.GetCropStateUI().SetActiveBtnHealing(true);
     }
 
     public void HideDiseasedIcon()
     {
-        field.cropStateUI.SetActiveDiseaseIcon(false);
-        field.cropStateUI.SetActiveBtnHealing(false);
+        field.GetCropStateUI().SetActiveDiseaseIcon(false);
+        //field.GetCropStateUI().SetActiveBtnHealing(false);
     }
 
     public void ChangeState(BaseState newState)
@@ -143,8 +142,8 @@ public class Crop : MonoBehaviour
 
     public void Harvest(Action onCropHarvested = null)
     {
-        transform.DOMoveY(transform.position.y + 2f, .5f);
-        transform.DOScale(.8f, .5f).OnComplete(() =>
+        transform.DOMoveY(transform.position.y + 2f, .75f);
+        transform.DOScale(.8f, .75f).OnComplete(() =>
         {
             Inventory.Instance.AddItem(cropItem, 1);
             onCropHarvested?.Invoke();
@@ -187,6 +186,9 @@ public enum CropType
     WHEAT,
     CORN,
     BEET,
-    GREENPLANT
+    PUMPKIN,
+    SUNFLOWER,
+    CABBAGE,
+    TOMATO
 }
 
