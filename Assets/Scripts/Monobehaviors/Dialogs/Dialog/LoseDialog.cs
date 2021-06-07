@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoseDialog : Dialog 
 {
@@ -8,5 +9,8 @@ public class LoseDialog : Dialog
     {
         Close();
         FindObjectOfType<LevelManager>().LoadCurrentLevel();
+    }
+    public void Home() {
+        SceneManager.LoadScene(0);
     }
 }

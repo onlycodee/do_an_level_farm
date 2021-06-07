@@ -18,6 +18,7 @@ public class GoldManager : MonoBehaviour
     {
         set
         {
+            Debug.LogError("Set current gold: " + value);
             currentGold = value;
             goldDisplayer.SetGold(currentGold);
         }
@@ -29,6 +30,7 @@ public class GoldManager : MonoBehaviour
 
     public void AddGold(int amount)
     {
+        Debug.Log("Current gold: " + currentGold);
         StartCoroutine(ChangeGoldText(currentGold, currentGold + amount, timeToChangeGoldText));
         currentGold += amount;
     } 

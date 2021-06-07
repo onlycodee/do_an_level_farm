@@ -13,8 +13,14 @@ MonoBehaviour:
   m_Name: Level_1
   m_EditorClassIdentifier: 
   initGold: 100
-  initSeeds: []
+  initSeeds:
+  - InventoryItem: {fileID: 11400000, guid: f4a11e1834ee9f540a4414ae3ae66e6e, type: 2}
+    Quantity: 2
+  - InventoryItem: {fileID: 11400000, guid: 01d466c3d1bcc2e4981e63bc54adf8da, type: 2}
+    Quantity: 2
+  - InventoryItem: {fileID: 11400000, guid: b606a979b1e14304da4d7658d2d1dcb6, type: 2}
+    Quantity: 1
   missions:
   - {fileID: 11400000, guid: 29bcd23d3fba7bc4fbde2d12cbe14129, type: 2}
   - {fileID: 11400000, guid: 8977d08a5c5b49e45918146805d1921e, type: 2}
-  time: 1000
+  time: 3

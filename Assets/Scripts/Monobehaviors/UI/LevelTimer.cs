@@ -7,13 +7,15 @@ using System;
 public class LevelTimer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timeTxt;
-    Coroutine countdownCO;
+    Coroutine countdownCO = null;
     WaitForSeconds oneSecond = new WaitForSeconds(1);
-    TimeSpan timeSpan;
+    TimeSpan timeSpan, missionDuration;
 
     public void SetTime(float timeSeconds)
     {
+        // timeSpan = TimeSpan.FromSeconds(timeSeconds);
         timeSpan = TimeSpan.FromSeconds(timeSeconds);
+        missionDuration = timeSpan;
         timeTxt.text = string.Format("{0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
         //CountDownTime();
     }
@@ -25,6 +27,9 @@ public class LevelTimer : MonoBehaviour
     }
     public void CountDownTime()
     {
+        if (countdownCO != null) {
+            StopCoroutine(countdownCO);
+        }
         countdownCO = StartCoroutine(COCountDownTime());
     }
 
@@ -41,5 +46,8 @@ public class LevelTimer : MonoBehaviour
     public void Pause()
     {
         StopCoroutine(countdownCO);
+    }
+    public TimeSpan GetCompletedTime() {
+        return (missionDuration - timeSpan);
     }
 }

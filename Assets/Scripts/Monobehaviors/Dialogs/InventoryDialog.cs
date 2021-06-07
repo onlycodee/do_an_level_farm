@@ -9,8 +9,8 @@ public class InventoryDialog : Dialog
     [SerializeField] ItemSlotUI itemSlotPrefab;
     [SerializeField] Transform farmProductParent;
     [SerializeField] Transform seedParent;
-    [SerializeField] Button farmProductsBtn;
-    [SerializeField] Button seedsBtn;
+    [SerializeField] Image farmProductsImage;
+    [SerializeField] Image seedsImage;
     [SerializeField] Sprite normalSprite, activeSprite;
 
     List<ItemSlotUI> itemSlots = new List<ItemSlotUI>();
@@ -50,25 +50,21 @@ public class InventoryDialog : Dialog
     public void OnSeedViewClicked()
     {
         Debug.LogError("Seed view clickeddddddddddddd");
-        seedsBtn.image.sprite = activeSprite;
-        farmProductsBtn.image.sprite = normalSprite;
+        seedsImage.sprite = activeSprite;
+        farmProductsImage.sprite = normalSprite;
         farmProductParent.gameObject.SetActive(false);
         seedParent.gameObject.SetActive(true);
         InitItemSlots();
-        seedsBtn.GetComponent<Image>().color = Color.green;
-        farmProductsBtn.GetComponent<Image>().color = Color.white;
     }
     // btn seed view event
     public void OnFarmProductViewClicked()
     {
         Debug.LogError("Farm product view clickeddddddddddddd");
-        seedsBtn.image.sprite = normalSprite;
-        farmProductsBtn.image.sprite = activeSprite;
+        seedsImage.sprite = normalSprite;
+        farmProductsImage.sprite = activeSprite;
         farmProductParent.gameObject.SetActive(true);
         seedParent.gameObject.SetActive(false);
         InitItemSlots();
-        seedsBtn.GetComponent<Image>().color = Color.white;
-        farmProductsBtn.GetComponent<Image>().color = Color.green;
     }
 
     public override void Close()

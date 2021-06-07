@@ -8,9 +8,8 @@ public class SellDialog : Dialog
 {
     [SerializeField] TextMeshProUGUI numItemsTxt, revenueTxt;
     [SerializeField] Image avatarImg;
-    [SerializeField] Button sellBtn, cancelBtn;
+    [SerializeField] CanvasGroup sellBtn;
     [SerializeField] Transform goldTrans;
-    [SerializeField] GameEvent onInventoryItemChanged;
 
     ItemHolder itemHolder;
     int curQuantity = 0, maxQuantity = 0;
@@ -31,9 +30,7 @@ public class SellDialog : Dialog
     public void Sell()
     {
         if (curQuantity <= 0 || hasSold) return;
-        onInventoryItemChanged.NotifyAll();
         sellBtn.interactable = false;
-        cancelBtn.interactable = false;
         hasSold = true;
         Inventory.Instance.SubtractQuantity(itemHolder.InventoryItem, curQuantity);
         GoldDisplayer goldDisplayer = FindObjectOfType<GoldDisplayer>();
