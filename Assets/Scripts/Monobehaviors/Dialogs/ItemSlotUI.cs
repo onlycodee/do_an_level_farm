@@ -25,7 +25,7 @@ public class ItemSlotUI : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.LogError("Inventory item clickedddddddddddddddd");
+        // Debug.LogError("Inventory item clickedddddddddddddddd");
         SellDialog sellDialog = DialogController.Instance.ShowDialog(DialogType.SELLING, DialogShow.OVER_CURRENT) as SellDialog;
         sellDialog.SetItemHolder(itemHodler);
     }

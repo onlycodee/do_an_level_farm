@@ -29,6 +29,7 @@ public class CakeShop : MonoBehaviour
             CookingDialog cookingDialog = DialogController.Instance.ShowDialog(DialogType.COOKING) as CookingDialog; 
             if (cakeItem)
             {
+                Debug.LogError("Cake item not null in cake shoppppppppppppppppppp");
                 cookingDialog.SetCakeItem(cakeItem, cookTimer);
             }
         }

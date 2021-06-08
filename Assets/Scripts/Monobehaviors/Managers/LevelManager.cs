@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI levelText;
+
+    public static Action OnLevelBeginLoaded;
+    public static Action OnLevelLoaded;
     public static LevelManager Instance;
     Scene curScene;
 
@@ -17,6 +21,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        OnLevelBeginLoaded?.Invoke();
         Debug.LogError("Load next level");
         StartCoroutine(COLoadNextLevel());
     }
@@ -35,6 +40,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoadCurrentLevel(bool firstLoad = false)
     {
+        OnLevelBeginLoaded?.Invoke();
         levelText.text = "Level: " + PlayerPrefWrapper.CurrentLevel.ToString();
         Debug.LogError("Current level: " + PlayerPrefWrapper.CurrentLevel);
         curScene = SceneManager.GetSceneByName("level_" + PlayerPrefWrapper.CurrentLevel);
@@ -63,6 +69,7 @@ public class LevelManager : MonoBehaviour
         {
             yield return ScreenFader.Instance.FadeOut();
         }
+        OnLevelLoaded?.Invoke();
         Inventory.Instance.Reset();
         FindObjectOfType<MissionBar>().LoadMissionData();
         FindObjectOfType<SeedBarManager>().DisplaySeedItems();

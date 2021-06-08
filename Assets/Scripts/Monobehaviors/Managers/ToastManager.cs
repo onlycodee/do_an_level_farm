@@ -17,7 +17,7 @@ public class ToastManager : MonoBehaviour
         Instance = this;
     }
 
-    public void ShowNotify(string content, Vector3 initPosition, int moveUpAmount = 150, float duration = .75f, Action onCompleted = null)
+    public void ShowNotify(string content, Vector3 initPosition, float moveUpAmount = 150, float duration = .75f, Action onCompleted = null)
     {
         Vector2 canvasPosition = mainCamera.WorldToViewportPoint(initPosition);
         canvasPosition.x = canvasPosition.x * rectTrans.rect.width - rectTrans.rect.width / 2.0f;
@@ -38,7 +38,7 @@ public class ToastManager : MonoBehaviour
                 });
             });
     }
-    public void ShowNotifyRect(string content, Vector2 initPosition, int moveUpAmount = 150, float duration = .75f, Action onCompleted = null)
+    public void ShowNotifyRect(string content, Vector2 initPosition, float moveUpAmount = 150, float duration = .75f, Action onCompleted = null)
     {
         FloatingNotification instance = Instantiate(floatingNotifyPrefab, transform);
         instance.SetContent(content);
@@ -55,7 +55,7 @@ public class ToastManager : MonoBehaviour
                 });
             });
     }
-    public void ShowNotifyWorldPosition(string content, Vector2 initPosition, int moveUpAmount = 150, float duration = .75f, Action onCompleted = null)
+    public void ShowNotifyWorldPosition(string content, Vector2 initPosition, float moveUpAmount = 150, float duration = .75f, Action onCompleted = null)
     {
         FloatingNotification instance = Instantiate(floatingNotifyPrefab, transform);
         instance.SetContent(content);

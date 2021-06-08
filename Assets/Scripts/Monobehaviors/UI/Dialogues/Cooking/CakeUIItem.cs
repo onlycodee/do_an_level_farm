@@ -10,7 +10,7 @@ public class CakeUIItem : MonoBehaviour
     [SerializeField] CakeIngredientUIItem cakeIngredientPrefab;
     [SerializeField] RectTransform cakeIngreParent;
     [SerializeField] CakeItem cakeItem;
-    [SerializeField] Button cookButton;
+    // [SerializeField] Button cookButton;
 
     List<CakeIngredientUIItem> cakeIngredients = new List<CakeIngredientUIItem>();
     bool hasInited = false;
@@ -20,16 +20,6 @@ public class CakeUIItem : MonoBehaviour
         cakeName.text = cakeItem.name;
         sellPrice.text = cakeItem.GetSellPrice().ToString();
         cookTime.text = cakeItem.GetCookTime().ToString();
-
-        cookButton.onClick.RemoveAllListeners();
-        cookButton.onClick.AddListener(Cook);
-        if (HasEnoughIngredients())
-        {
-            cookButton.interactable = true;
-        } else
-        {
-            cookButton.interactable = false;
-        }
     }
 
     public void UpdateUI()
@@ -37,7 +27,7 @@ public class CakeUIItem : MonoBehaviour
         if (!hasInited)
         {
             hasInited = true;
-            InitIncredientUIItems();
+            InitIngredientUIItems();
         } else
         {
             for (int i = 0; i < cakeIngredients.Count; i++)
@@ -46,8 +36,9 @@ public class CakeUIItem : MonoBehaviour
             }
         } 
     }
-    public void InitIncredientUIItems()
+    public void InitIngredientUIItems()
     {
+        Debug.LogError("init ingredient");
         List<ItemHolder> ingres = cakeItem.GetIngredients();
         for (int i = 0; i < ingres.Count; i++)
         {
@@ -77,9 +68,14 @@ public class CakeUIItem : MonoBehaviour
                 Inventory.Instance.SubtractQuantity(ingres[i].InventoryItem, ingres[i].Quantity);
                 UpdateUI();
             }
+            if (cakeItem == null) {
+                Debug.LogError("Cake item is null in cake ui itemmmmmmmmmmmmmm");
+            }
             FindObjectOfType<CookingDialog>().ShowCookingPanel(cakeItem, cakeItem.GetCookTime());
         } else
         {
+            // ToastManager.Instance.ShowNotifyRect("NOT ENOUGH CROP", GetComponent<RectTransform>().anchoredPosition);
+            ToastManager.Instance.ShowNotifyWorldPosition("NOT ENOUGH CROP", transform.position);
             Debug.LogError("Not Enough ingredientttttttttttttt");
         }
     }

@@ -27,10 +27,32 @@ public class PlayerMovement : MonoBehaviour
         joystick = Joystick.Instance;
     }
 
+    private void Start() {
+        m_rigidBody.useGravity = false;
+    }
+
+
     private void FixedUpdate()
     {
         if (GameManager.Instance && GameManager.Instance.isFinished) return;
         MovePlayer();
+    }
+
+    private void OnEnable() {
+        LevelManager.OnLevelBeginLoaded += DontUseRigidBody; 
+        LevelManager.OnLevelLoaded += UseRigidBody; 
+    }
+    private void OnDisable() {
+        LevelManager.OnLevelBeginLoaded -= DontUseRigidBody; 
+        LevelManager.OnLevelLoaded -= UseRigidBody; 
+    }
+    public void UseRigidBody() {
+        Debug.LogError("Use rigidbody");
+        m_rigidBody.useGravity = true;
+    }
+    public void DontUseRigidBody() {
+        Debug.LogError("Dont use rigidbody");
+        m_rigidBody.useGravity = true;
     }
 
     private void MovePlayer()

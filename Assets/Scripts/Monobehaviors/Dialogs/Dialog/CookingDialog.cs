@@ -3,7 +3,7 @@
 public class CookingDialog : Dialog 
 {
     [SerializeField] CakeUIItem[] cakeUIItems;
-    [SerializeField] GameObject menuObject; 
+    [SerializeField] GameObject cakesPanel; 
     [SerializeField] CookingPanel cookingPanel;
 
     CakeItem currentCake = null;
@@ -32,12 +32,15 @@ public class CookingDialog : Dialog
     }
     public void ShowCakeMenu()
     {
-        //Debug.LogError("Show cook menu");
+        Debug.LogError("Show cake menu");
+        title.text = "CAKES SHOP";
         currentCake = null;
         remainTime = 0f;
-        FindObjectOfType<CakeShop>().ResetCook();
+        if (FindObjectOfType<CakeShop>()) {
+            FindObjectOfType<CakeShop>().ResetCook();
+        }
         cookingPanel.gameObject.SetActive(false);
-        menuObject.gameObject.SetActive(true);
+        cakesPanel.gameObject.SetActive(true);
         for (int i = 0; i < cakeUIItems.Length; i++)
         {
             cakeUIItems[i].UpdateUI();
@@ -45,7 +48,9 @@ public class CookingDialog : Dialog
     }
     public void ShowCookingPanel(CakeItem cake, float remainTime)
     {
-        menuObject.gameObject.SetActive(false);
+        Debug.LogError("Show cooking panelllllllllllllllllllllll: " + cake.name);
+        title.text = "COOKING";
+        cakesPanel.gameObject.SetActive(false);
         cookingPanel.gameObject.SetActive(true);
         cookingPanel.SetCakeItem(cake, remainTime);
     }

@@ -6,25 +6,26 @@ using UnityEngine.UI;
 
 public class CookingPanel : MonoBehaviour
 {
+    [SerializeField] RectTransform avatarRect;
     [SerializeField] Image avatar;
     [SerializeField] TextMeshProUGUI cookTimeTxt;
-    [SerializeField] Button getBtn;
     [SerializeField] int initPosition, donePosition;
 
     CakeItem cakeItem;
     WaitForSeconds waitOneSecond = new WaitForSeconds(1);
     float cookTimer;
+    bool isCookingDone = false;
 
 
     private void OnEnable()
     {
-        getBtn.interactable = false;
+        isCookingDone = false;
     }
 
     public void SetCakeItem(CakeItem item, float remainTime = 0)
     {
-        avatar.GetComponent<RectTransform>().SetYAnchoredPosition(initPosition);
         cakeItem = item;
+        avatarRect.SetYAnchoredPosition(initPosition);
         avatar.sprite = cakeItem.Avatar;
         cookTimeTxt.text = remainTime.ToString(); //cakeItem.GetCookTime().ToString();
         cookTimer = remainTime;
@@ -64,22 +65,29 @@ public class CookingPanel : MonoBehaviour
     
     void CookDone()
     {
-        avatar.GetComponent<RectTransform>().SetYAnchoredPosition(donePosition);
+        // avatar.GetComponent<RectTransform>().SetYAnchoredPosition(donePosition);
+        avatarRect.SetYAnchoredPosition(donePosition);
         cookTimeTxt.transform.parent.gameObject.SetActive(false);
-        getBtn.interactable = true;
+        // avatarRect.gameObject.SetActive(false);
+        // getBtn.interactable = true;
+        isCookingDone = true;
     }
 
     public void TakeCake()
     {
-        RectTransform pos = avatar.GetComponent<RectTransform>();
-        FloatingUIItemController.Instance.ShowWithAnchoredPosition(cakeItem.Avatar, 1, pos.anchoredPosition
-            , pos.anchoredPosition + Vector2.up * 150,
-            () =>
-            {
-                Inventory.Instance.AddItem(cakeItem);
-                FindObjectOfType<CookingDialog>().ShowCakeMenu();
-                cakeItem = null;
-            });
+        if (isCookingDone) {
+            RectTransform pos = avatar.GetComponent<RectTransform>();
+            FloatingUIItemController.Instance.ShowWithAnchoredPosition(cakeItem.Avatar, 1, pos.anchoredPosition
+                , pos.anchoredPosition + Vector2.up * 150,
+                () =>
+                {
+                    Inventory.Instance.AddItem(cakeItem);
+                    FindObjectOfType<CookingDialog>().ShowCakeMenu();
+                    cakeItem = null;
+                });
+        } else {
+            ToastManager.Instance.ShowNotifyRect("NOT DONE", avatarRect.anchoredPosition);
+        }
     }
     //IEnumerator COTakeCake()
     //{

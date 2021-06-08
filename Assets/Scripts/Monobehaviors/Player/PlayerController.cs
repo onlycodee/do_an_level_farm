@@ -40,11 +40,9 @@ public class PlayerController : MonoBehaviour
         wateringCan.SetActive(false);
         hoe.SetActive(false);
         medicineCan.SetActive(false);
-
         toolBarManager.Hide();
         seedBarManager.Hide();
     }
-
     private void Update()
     {
         currentField = playerPlantingComp.GetCurrentInteractableField();
