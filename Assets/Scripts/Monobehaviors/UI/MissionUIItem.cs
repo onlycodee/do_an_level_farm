@@ -27,12 +27,16 @@ public class MissionUIItem : MonoBehaviour
 
     public void Complete()
     {
-        tickDone.SetActive(true);
+        if (tickDone != null) {
+            tickDone.SetActive(true);
+        }
     }
 
     public void Uncomplete()
     {
-        tickDone.SetActive(false);
+        if (tickDone) {
+            tickDone.SetActive(false);
+        }
     }
 
     public void SetCropItem(ItemHolder cropItem)

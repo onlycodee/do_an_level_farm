@@ -21,7 +21,7 @@ public class MissionBar : MonoBehaviour
         levelManager = FindObjectOfType<LevelManager>();
     }
 
-    public void LoadMissionData()
+    public LevelData LoadMissionData()
     {
         levelData = Resources.Load<LevelData>(levelDataPath + (levelManager.GetCurrentLevel()));
         InitializeStartSeeds();
@@ -33,6 +33,7 @@ public class MissionBar : MonoBehaviour
             FindObjectOfType<LevelTimer>().SetTime(levelData.GetTime());
             FindObjectOfType<LevelTimer>().CountDownTime();
         }
+        return levelData;
     }
 
     private void OnEnable()
@@ -131,5 +132,8 @@ public class MissionBar : MonoBehaviour
                 Debug.Log("Item is null");
             }
         }
+    }
+    public LevelData GetLevelData() {
+        return levelData;
     }
 }

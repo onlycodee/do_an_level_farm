@@ -5,24 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class ItemSlotUI : MonoBehaviour, IPointerClickHandler
+public class ItemSlotUI : ItemUI, IPointerClickHandler
 {
-    public Image itemImage;
-    public TextMeshProUGUI itemQuantityText;
-    ItemHolder itemHodler;
-    
-    public void SetItemHolder(ItemHolder itemHolderParam)
-    {
-        itemHodler = itemHolderParam;
-        itemImage.sprite = itemHodler.InventoryItem.Avatar;
-        itemQuantityText.text = itemHodler.Quantity.ToString();
-    }
-
-    public Item GetItem()
-    {
-        return itemHodler.InventoryItem;
-    }
-
     public void OnPointerClick(PointerEventData eventData)
     {
         // Debug.LogError("Inventory item clickedddddddddddddddd");

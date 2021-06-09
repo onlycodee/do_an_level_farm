@@ -11,7 +11,7 @@ public enum DialogType
     INVENTORY,
     SELLING,
     COOKING,
-    INTRO
+    STARTGAME
 };
 
 public enum DialogShow
