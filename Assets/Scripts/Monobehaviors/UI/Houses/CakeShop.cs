@@ -14,6 +14,7 @@ public class CakeShop : MonoBehaviour
     float cookTimer = 0f;
 
     WaitForSeconds waitOneSecond = new WaitForSeconds(1f);
+    Coroutine coCountDownTime = null;
 
     private void Start()
     {
@@ -57,7 +58,10 @@ public class CakeShop : MonoBehaviour
             CookDone();
         } else
         {
-            StartCoroutine(CountdownTime());
+            if (coCountDownTime != null) {
+                StopCoroutine(coCountDownTime);
+            }
+            coCountDownTime = StartCoroutine(CountdownTime());
         }
     }
 

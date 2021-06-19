@@ -9,7 +9,7 @@ public class ShopDialogue : Dialog
     [SerializeField] ShopItem shopItemSlotPrefab;
     [SerializeField] RectTransform itemParent;
     [SerializeField] ScrollRect scroll;
-    [SerializeField] ShopItemDetail shopDetail;
+    [SerializeField] ShopItemDetail shopItemDetail;
 
     List<ShopItem> shopUIItems = new List<ShopItem>();
 
@@ -18,6 +18,7 @@ public class ShopDialogue : Dialog
         base.Start();
         scroll.enabled = false;
         FindObjectOfType<GoldDisplayer>().Show();
+        Debug.Log("Shop item count: " + items.Count);
         for (int i = 0; i < items.Count; i++)
         {
             ShopItem newItem = Instantiate(shopItemSlotPrefab, itemParent);
@@ -32,7 +33,7 @@ public class ShopDialogue : Dialog
     }
     public void ShowDetail(CropItem crop)
     {
-        shopDetail.Show(crop);
+        shopItemDetail.Show(crop);
     }
 
     public override void Close()

@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IExchangeable 
 {
-    int GetSellPrice();
-    int GetBuyPrice();
+    // int GetSellPrice();
+    // int GetBuyPrice();
 }

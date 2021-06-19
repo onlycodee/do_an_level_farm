@@ -45,7 +45,9 @@ public class LevelTimer : MonoBehaviour
     }
     public void Pause()
     {
-        StopCoroutine(countdownCO);
+        if (countdownCO != null) {
+            StopCoroutine(countdownCO);
+        }
     }
     public TimeSpan GetCompletedTime() {
         return (missionDuration - timeSpan);

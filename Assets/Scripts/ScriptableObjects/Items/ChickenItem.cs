@@ -3,17 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Items/Chicken item")]
-public class ChickenItem : Item, IExchangeable 
+public class ChickenItem : Item, IExchangeable, IBuyable 
 {
-    public PriceVariable price;
+    public int unlockLevel = 10;
 
-    public int GetBuyPrice()
-    {
-        return price.BuyPrice;
-    }
-
-    public int GetSellPrice()
-    {
-        return price.SellPrice;
+    public int GetUnlockLevel() {
+        return unlockLevel;
     }
 }

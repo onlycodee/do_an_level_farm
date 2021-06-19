@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0c2b35f5890a049bc181c9c8c60c90, type: 3}
   m_Name: Beet
   m_EditorClassIdentifier: 
+  Price: {fileID: 11400000, guid: 1022f82c4b4dda4458c0c2ac131973d2, type: 2}
   Avatar: {fileID: 21300000, guid: 75acc892ed7c52f489d85ecaa8c4a873, type: 3}
-  Id: 26aa5758-df58-442d-b574-b22cca0f57cc
+  Name: Beet
+  Id: ed0c264a-6cf4-4c82-b979-ab8dc174a659
   VisibleInInventory: 1
-  price: {fileID: 11400000, guid: 1022f82c4b4dda4458c0c2ac131973d2, type: 2}
-  grownTime: 3
-  diseasePercent: 17.6
+  grownDuration: 1
+  diseasedPercent: 0
   thirstyPercent: 20.1
   cropType: 2

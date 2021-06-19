@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3014006392d471409c5b9558f591543, type: 3}
   m_Name: EggItem
   m_EditorClassIdentifier: 
+  Price: {fileID: 11400000, guid: 1022f82c4b4dda4458c0c2ac131973d2, type: 2}
   Avatar: {fileID: 21300000, guid: 541002c1364d0ed418f5b79863132d74, type: 3}
-  Id: 1cf22a6e-7467-4c80-acd5-ce33a04fd2fc
-  price: {fileID: 11400000, guid: 9bdb46408ae9336469ac8320ccdd4e83, type: 2}
+  Name: Egg
+  Id: c553f3d7-d96f-4815-8f4a-7bb28a0540c9
+  VisibleInInventory: 1

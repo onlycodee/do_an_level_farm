@@ -18,10 +18,13 @@ public class ChickenNest : MonoBehaviour
     }
     public void SpawnEgg(Vector3 pos)
     {
-        Debug.Log("Spawn egg");
-        pos.y = 2;
         ChickenEgg newEgg = Instantiate(eggPrefab, eggParent);
-        newEgg.transform.position = pos;//GetRandomPointInsideCollider(nestBoundary);
+        // Debug.Log("Egg position: " + pos.y);
+        // newEgg.transform.position = pos;//GetRandomPointInsideCollider(nestBoundary);
+        // newEgg.transform.position = Vector3.up * 5;
+        pos.y = .18f;
+        newEgg.transform.position = pos;
+        Debug.Log("Egg position after: " + newEgg.transform.position.y);
         chickenEggs.Add(newEgg);
     }
     public Vector3 GetRandomPoint()
@@ -45,11 +48,6 @@ public class ChickenNest : MonoBehaviour
                 eggParent.gameObject.SetActive(false);
                 if (FloatingUIItemController.Instance)
                 {
-                    //Camera mainCamera = Camera.main;
-                    //Vector2 viewportPos = mainCamera.WorldToViewportPoint(transform.position);
-                    //RectTransform canvasRectTransform = FloatingUIItemController.Instance.GetComponent<RectTransform>();
-                    //viewportPos.x = viewportPos.x * canvasRectTransform.rect.width - canvasRectTransform.rect.width / 2.0f;
-                    //viewportPos.y = viewportPos.y * canvasRectTransform.rect.height - canvasRectTransform.rect.height / 2.0f;
                     FloatingUIItemController.Instance.ShowAnchored(
                         chickenEggItem.Avatar,
                         numEggs,

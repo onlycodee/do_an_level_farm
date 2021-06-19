@@ -37,11 +37,20 @@ public class ChickenController : MonoBehaviour
     }
     public void SpawnChicken()
     {
+        int cnt = 0;
         Vector3 chickenPosition = Vector3.zero;
         do
         {
             chickenPosition = GetRandomPointInsideCollider(fenceBoundary);
+            Debug.Log("Chicken position: " + chickenPosition);
+            cnt++;
+            Debug.Log("Cnt: " + cnt);
+            if (cnt > 100) {
+                Debug.LogError("Inside infinate looppppppppppppppppppppppppp");
+                break;
+            }
         } while (chickenNestCollider.bounds.Contains(chickenPosition));
+        // chickenPosition.y += .1f;
         Chicken newChicken = Instantiate(chickenPrefab, transform);
         newChicken.transform.rotation = Quaternion.identity;
         newChicken.transform.position = chickenPosition;//GetRandomPointInsideCollider(fenceBoundary);
@@ -57,10 +66,13 @@ public class ChickenController : MonoBehaviour
         Vector3 point = new Vector3(
             Random.Range(-extents.x, extents.x),
             //transform.position.y,
-            0,
+            .5f,
             Random.Range(-extents.z, extents.z)
         ) + new Vector3(boxCollider.center.x, 0, boxCollider.center.z);
-        return boxCollider.transform.TransformPoint(point);
+        Debug.Log("Before: " + point);
+        Vector3 worldPoint = boxCollider.transform.TransformPoint(point);
+        Debug.Log("After: " + worldPoint);
+        return worldPoint; 
     }
 
     public void AddToNearChicken(Chicken chicken)

@@ -15,10 +15,12 @@ public class CookingPanel : MonoBehaviour
     WaitForSeconds waitOneSecond = new WaitForSeconds(1);
     float cookTimer;
     bool isCookingDone = false;
+    bool hasTook = false;
 
 
     private void OnEnable()
     {
+        hasTook = false;
         isCookingDone = false;
     }
 
@@ -27,6 +29,7 @@ public class CookingPanel : MonoBehaviour
         cakeItem = item;
         avatarRect.SetYAnchoredPosition(initPosition);
         avatar.sprite = cakeItem.Avatar;
+        cookTimeTxt.transform.parent.gameObject.SetActive(true);
         cookTimeTxt.text = remainTime.ToString(); //cakeItem.GetCookTime().ToString();
         cookTimer = remainTime;
         if (cookTimer <= 0f)
@@ -76,6 +79,8 @@ public class CookingPanel : MonoBehaviour
     public void TakeCake()
     {
         if (isCookingDone) {
+            if (hasTook) return;
+            hasTook = true;
             RectTransform pos = avatar.GetComponent<RectTransform>();
             FloatingUIItemController.Instance.ShowWithAnchoredPosition(cakeItem.Avatar, 1, pos.anchoredPosition
                 , pos.anchoredPosition + Vector2.up * 150,

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae309b52a997f9a46b55261d4ede0326, type: 3}
   m_Name: Cabbage Seed
   m_EditorClassIdentifier: 
+  Price: {fileID: 11400000, guid: 1022f82c4b4dda4458c0c2ac131973d2, type: 2}
   Avatar: {fileID: 21300000, guid: 1483bf6037c2aea4a805bd735c398573, type: 3}
-  Id: 282e2d0b-14bf-41f9-9fae-c4babe95e02b
+  Name: Cabbage
+  Id: 7fd9e2a7-2e93-4bd1-b7bb-36b30a92b414
   VisibleInInventory: 1
   unlockLevel: 0
-  price: {fileID: 11400000, guid: 9bdb46408ae9336469ac8320ccdd4e83, type: 2}
   cropItem: {fileID: 11400000, guid: 3e57a899911e08e4d9964dffe42b2354, type: 2}

@@ -6,15 +6,14 @@ public class StartGameDialog : Dialog
     [SerializeField] TextMeshProUGUI timeTxt, goldText;
     [SerializeField] RectTransform startItemParent, targetItemParent;
     [SerializeField] ItemUI startItemPrefab, targetItemPrefab; 
-    public LevelData levelData;
+
     protected override void Start()
     {
         base.Start();
-        SetLevelData(levelData);
+        title.text = "LEVEL " + LevelManager.Instance.GetCurrentLevel();
     }
-    public void SetLevelData(LevelData levelDataParam) {
-        levelData = levelDataParam;
-        for (int i = 0; i < levelDataParam.GetInitSeeds().Length; i++) {
+    public void SetLevelData(LevelData levelData) {
+        for (int i = 0; i < levelData.GetInitSeeds().Length; i++) {
             ItemUI instance = Instantiate(startItemPrefab, startItemParent); 
             instance.SetItemHolder(levelData.GetInitSeeds()[i]);
         }
@@ -26,5 +25,10 @@ public class StartGameDialog : Dialog
                 instance.SetItemHolder(missionItems[i]);
             }
         } 
+    }
+    public override void Close() {
+        Debug.Log("Close dialog");
+        FindObjectOfType<LevelTimer>().CountDownTime();
+        base.Close();
     }
 }

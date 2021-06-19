@@ -3,7 +3,10 @@ using UnityEngine;
 
 public abstract class Item : ScriptableObject
 {
+    [SerializeField]
+    PriceVariable Price;
     public Sprite Avatar;
+    public string Name;
     public string Id = "";
     public bool VisibleInInventory = true;
 
@@ -18,6 +21,12 @@ public abstract class Item : ScriptableObject
         {
             Id = Guid.NewGuid().ToString(); 
         }
+    }
+    public int GetBuyPrice() {
+        return Price.BuyPrice;
+    } 
+    public int GetSellPrice() {
+        return Price.SellPrice;
     }
 
     public virtual int GetQuantityInInventory()

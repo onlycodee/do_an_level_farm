@@ -7,7 +7,7 @@ public class InventoryDialog : Dialog
 {
     [SerializeField] Inventory inventory;
     [SerializeField] ItemSlotUI itemSlotPrefab;
-    [SerializeField] Transform farmProductParent;
+    [SerializeField] Transform productParent;
     [SerializeField] Transform seedParent;
     [SerializeField] Image farmProductsImage;
     [SerializeField] Image seedsImage;
@@ -38,7 +38,7 @@ public class InventoryDialog : Dialog
                 itemSlotInstance.transform.SetParent(seedParent);
             } else
             {
-                itemSlotInstance.transform.SetParent(farmProductParent);
+                itemSlotInstance.transform.SetParent(productParent);
             }
             itemSlotInstance.transform.localScale = Vector3.one;
             itemSlotInstance.SetItemHolder(inventory.items[i]);
@@ -52,7 +52,7 @@ public class InventoryDialog : Dialog
         Debug.LogError("Seed view clickeddddddddddddd");
         seedsImage.sprite = activeSprite;
         farmProductsImage.sprite = normalSprite;
-        farmProductParent.gameObject.SetActive(false);
+        productParent.gameObject.SetActive(false);
         seedParent.gameObject.SetActive(true);
         InitItemSlots();
     }
@@ -62,7 +62,7 @@ public class InventoryDialog : Dialog
         Debug.LogError("Farm product view clickeddddddddddddd");
         seedsImage.sprite = normalSprite;
         farmProductsImage.sprite = activeSprite;
-        farmProductParent.gameObject.SetActive(true);
+        productParent.gameObject.SetActive(true);
         seedParent.gameObject.SetActive(false);
         InitItemSlots();
     }

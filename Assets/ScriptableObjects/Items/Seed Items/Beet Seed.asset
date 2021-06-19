@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae309b52a997f9a46b55261d4ede0326, type: 3}
   m_Name: Beet Seed
   m_EditorClassIdentifier: 
+  Price: {fileID: 11400000, guid: 1022f82c4b4dda4458c0c2ac131973d2, type: 2}
   Avatar: {fileID: 21300000, guid: 75acc892ed7c52f489d85ecaa8c4a873, type: 3}
-  Id: 92f463d4-c12c-451e-944a-d494686c8f7b
+  Name: Beet
+  Id: 7821adc3-46de-4af9-8803-4ce3b014d319
+  VisibleInInventory: 1
   unlockLevel: 0
-  price: {fileID: 11400000, guid: 9bdb46408ae9336469ac8320ccdd4e83, type: 2}
   cropItem: {fileID: 11400000, guid: 84c74bbdcea455146a999383fc6fb76b, type: 2}

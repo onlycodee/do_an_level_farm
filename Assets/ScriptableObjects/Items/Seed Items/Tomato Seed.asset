@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae309b52a997f9a46b55261d4ede0326, type: 3}
   m_Name: Tomato Seed
   m_EditorClassIdentifier: 
+  Price: {fileID: 11400000, guid: 1022f82c4b4dda4458c0c2ac131973d2, type: 2}
   Avatar: {fileID: 21300000, guid: 276129a2e7ac536409694b1d4be28dc1, type: 3}
-  Id: 45a575b8-1186-43a6-873e-d1a4fadc98e5
+  Name: Tomato
+  Id: 9f8656e2-5b19-4a37-a8db-5146166e9aff
   VisibleInInventory: 1
   unlockLevel: 0
-  price: {fileID: 11400000, guid: 9bdb46408ae9336469ac8320ccdd4e83, type: 2}
   cropItem: {fileID: 11400000, guid: 461b98210f8d5514a8ce91ea2cad3d30, type: 2}

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerPlanting : MonoBehaviour
 {
-    [SerializeField] Crop cropToPlantPrefab;
     [SerializeField] LayerMask fieldLayermark;
     [SerializeField, Range(.1f, 2f)] float plantingRange;
     [SerializeField] CropFactory cropFactory;

@@ -12,6 +12,8 @@ public class LevelManager : MonoBehaviour
     public static Action OnLevelBeginLoaded;
     public static Action OnLevelLoaded;
     public static LevelManager Instance;
+    const string levelDataPath = "Levels/Level_";
+    LevelData levelData;
     Scene curScene;
 
     private void Awake()
@@ -71,8 +73,16 @@ public class LevelManager : MonoBehaviour
         }
         OnLevelLoaded?.Invoke();
         Inventory.Instance.Reset();
-        FindObjectOfType<MissionBar>().LoadMissionData();
+        levelData = Resources.Load<LevelData>(levelDataPath + GetCurrentLevel()); 
+        StartGameDialog startGameDialog = DialogController.Instance.ShowDialog(DialogType.STARTGAME) as StartGameDialog;
+        startGameDialog.SetLevelData(levelData);
+        FindObjectOfType<GoldManager>().CurrentGold = levelData.GetInitCoin();
+        FindObjectOfType<MissionBar>().LoadMissionData(levelData);
         FindObjectOfType<SeedBarManager>().DisplaySeedItems();
+        if (levelData.HasTime())
+        {
+            FindObjectOfType<LevelTimer>().SetTime(levelData.GetTime());
+        }
         GameManager.Instance.isFinished = false;
     }
 

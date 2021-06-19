@@ -469,7 +469,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.9204152
+      - time: 0.93402064
         functionName: OnWateringDone
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -505,11 +505,10 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.9774279
-        functionName: DeactivateTool
+      - time: 0.97402656
+        functionName: OnHealingDone
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: be971f0ed83b7af43b9b437909841950,
-          type: 3}
+        objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0

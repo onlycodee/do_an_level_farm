@@ -7,7 +7,7 @@ public class CookingDialog : Dialog
     [SerializeField] CookingPanel cookingPanel;
 
     CakeItem currentCake = null;
-    float remainTime = 0f;
+    float remainingTime = 0f;
 
     protected override void Start()
     {
@@ -18,13 +18,13 @@ public class CookingDialog : Dialog
         }
         else
         {
-            ShowCookingPanel(currentCake, remainTime);
+            ShowCookingPanel(currentCake, remainingTime);
         }
     }
     public void SetCakeItem(CakeItem cake, float remainTimeParam)
     {
         currentCake = cake;
-        remainTime = remainTimeParam;
+        remainingTime = remainTimeParam;
     }
     public void StartCooking(CakeItem cakeToCook, float remainTime)
     {
@@ -35,7 +35,7 @@ public class CookingDialog : Dialog
         Debug.LogError("Show cake menu");
         title.text = "CAKES SHOP";
         currentCake = null;
-        remainTime = 0f;
+        remainingTime = 0f;
         if (FindObjectOfType<CakeShop>()) {
             FindObjectOfType<CakeShop>().ResetCook();
         }

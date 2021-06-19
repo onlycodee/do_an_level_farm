@@ -7,7 +7,7 @@ public class Chicken : MonoBehaviour
 {
     [SerializeField] ChickenItem chickenItem;
     [SerializeField] Animator animator;
-    [SerializeField] float growthDuration, layingEggDuration;
+    [SerializeField] float minGrowthDuration, maxGrowthDuration, minLayingEggDuration, maxLayingEggDuration;
     [SerializeField] LayerMask layerMask;
     [SerializeField] float moveDistance = 4f;
     [SerializeField] float minSpeed = 1f, maxSpeed = 2f;
@@ -18,6 +18,7 @@ public class Chicken : MonoBehaviour
     [SerializeField] RectTransform canvas;
     [SerializeField] GameObject selectedIcon; 
 
+    float growthDuration = 10f, layingEggDuration = 10f;
     ChickenController chickenController;
     Collider fenceCollider;
     ChickenFood food = null;
@@ -42,14 +43,19 @@ public class Chicken : MonoBehaviour
 
     private void Start()
     {
+        isFullGrown = false;
+        layingEggDuration = Random.Range(minLayingEggDuration, maxLayingEggDuration);
+        growthDuration = Random.Range(minGrowthDuration, maxGrowthDuration);
         targetPosition = FindRandomTargetPosition();
+        // Debug.Log("laying : " + layingEggDuration);
+        // Debug.Log("Grow: " + growthDuration);
         walkCO = StartCoroutine(WalkRandom());
         transform.localScale = Vector3.one * initScale;
         curState = State.HUNGRY;
         hungryIcon.SetActive(true);
         selectedIcon.SetActive(false);
-        startIconScale = 1 / initScale;
-        hungryIcon.transform.localScale = Vector3.one * startIconScale; 
+        // startIconScale = 1 / initScale;
+        hungryIcon.transform.localScale = Vector3.one;// * startIconScale; 
     }
 
     public void UpdateSelf()
@@ -57,8 +63,10 @@ public class Chicken : MonoBehaviour
         if (curState == State.NORMAL)
         {
             processTimer += Time.deltaTime;
+            // Debug.Log("Normal: " + processTimer);
             if (isFullGrown)
             {
+                Debug.Log("1");
                 if (processTimer >= layingEggDuration)
                 {
                     GoToChickenNestAndLayingEgg();
@@ -66,6 +74,7 @@ public class Chicken : MonoBehaviour
                 }
             } else
             {
+                Debug.Log("2");
                 Grown();
                 if (processTimer >= growthDuration)
                 {
@@ -93,6 +102,7 @@ public class Chicken : MonoBehaviour
     void Grown()
     {
         float scale = Mathf.Lerp(initScale, 1, processTimer / (float)growthDuration);
+        // Debug.Log("Scale: " + scale + " " + " growth: " + growthDuration);
         transform.localScale = Vector3.one * scale;
         hungryIcon.transform.localScale = Vector3.one * Mathf.Lerp(startIconScale, 1f, processTimer / growthDuration); 
     }
@@ -122,9 +132,9 @@ public class Chicken : MonoBehaviour
     IEnumerator LayingEgg(ChickenNest chickenNest)
     {
         animator.SetFloat("speed", 0f);
-        //Debug.Log("after set float");
+        Debug.Log("Before Laying eggggggggggggggggggggggg");
         yield return new WaitForSeconds(layingDuration);
-        //Debug.Log("Laying eggggggggggggggggggggggg");
+        Debug.Log("Laying eggggggggggggggggggggggg");
         chickenNest.SpawnEgg(transform.position);
         curState = State.HUNGRY;
         hungryIcon.SetActive(true);
@@ -166,7 +176,13 @@ public class Chicken : MonoBehaviour
             if (fenceCollider.bounds.Contains(nextPoint))
             {
                 break;
-            } 
+            }
+            cnt++;
+            if (cnt > 100)
+            {
+                Debug.Log("Inside infinite loop");
+                break;
+            }
         }
         return nextPoint;
     }

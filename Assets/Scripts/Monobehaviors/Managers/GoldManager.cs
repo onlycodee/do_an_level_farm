@@ -6,6 +6,7 @@ using TMPro;
 public class GoldManager : MonoBehaviour
 {
     [SerializeField] float timeToChangeGoldText = 1f;
+    [SerializeField] GameEvent onInventoryItemChanged;
     int currentGold;
     GoldDisplayer goldDisplayer;
 
@@ -56,6 +57,7 @@ public class GoldManager : MonoBehaviour
             goldDisplayer.SetGold(currentValue);
             yield return null;
         }
+        onInventoryItemChanged.NotifyAll();
     }
     public float GetAnimLength()
     {

@@ -33,7 +33,7 @@ public class ChickenFoodController : MonoBehaviour
         Vector3 resPosition = centerPosition + 
             new Vector3(
                 Random.Range(-foodSpawnRange, foodSpawnRange),
-                0, 
+                .1f, 
                 Random.Range(-foodSpawnRange, foodSpawnRange));
         while (!fenceBoundaryCollider.bounds.Contains(resPosition))
         {

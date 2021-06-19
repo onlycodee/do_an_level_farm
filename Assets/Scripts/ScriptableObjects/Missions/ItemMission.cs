@@ -16,13 +16,13 @@ public class ItemMission : MissionBase
     }
     public bool IsItemCompleted(ItemHolder crop)
     {
-        Debug.LogError("Inventory count: " + Inventory.Instance.GetAllItems());
+        // Debug.LogError("Inventory count: " + Inventory.Instance.GetAllItems());
         foreach (var item in Inventory.Instance.GetAllItems())
         {
             if (item.InventoryItem.Id == crop.InventoryItem.Id)
             {
                 if (item.Quantity >= crop.Quantity) return true;
-                return false;
+
             }
         }
         return false;

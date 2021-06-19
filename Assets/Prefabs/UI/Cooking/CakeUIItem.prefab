@@ -371,6 +371,7 @@ MonoBehaviour:
     type: 3}
   cakeIngreParent: {fileID: 8427384429839009351}
   cakeItem: {fileID: 11400000, guid: 324a5232af6772c45a432ad2d44085bd, type: 2}
+  avatarImg: {fileID: 1412810702632733040}
 --- !u!1 &1412810702632733006
 GameObject:
   m_ObjectHideFlags: 0

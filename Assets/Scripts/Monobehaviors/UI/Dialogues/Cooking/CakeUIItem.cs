@@ -10,6 +10,7 @@ public class CakeUIItem : MonoBehaviour
     [SerializeField] CakeIngredientUIItem cakeIngredientPrefab;
     [SerializeField] RectTransform cakeIngreParent;
     [SerializeField] CakeItem cakeItem;
+    [SerializeField] Image avatarImg;
     // [SerializeField] Button cookButton;
 
     List<CakeIngredientUIItem> cakeIngredients = new List<CakeIngredientUIItem>();
@@ -19,7 +20,8 @@ public class CakeUIItem : MonoBehaviour
     {
         cakeName.text = cakeItem.name;
         sellPrice.text = cakeItem.GetSellPrice().ToString();
-        cookTime.text = cakeItem.GetCookTime().ToString();
+        cookTime.text = cakeItem.GetCookDuration().ToString();
+        avatarImg.sprite = cakeItem.Avatar;
     }
 
     public void UpdateUI()
@@ -71,7 +73,7 @@ public class CakeUIItem : MonoBehaviour
             if (cakeItem == null) {
                 Debug.LogError("Cake item is null in cake ui itemmmmmmmmmmmmmm");
             }
-            FindObjectOfType<CookingDialog>().ShowCookingPanel(cakeItem, cakeItem.GetCookTime());
+            FindObjectOfType<CookingDialog>().ShowCookingPanel(cakeItem, cakeItem.GetCookDuration());
         } else
         {
             // ToastManager.Instance.ShowNotifyRect("NOT ENOUGH CROP", GetComponent<RectTransform>().anchoredPosition);

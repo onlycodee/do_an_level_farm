@@ -11,29 +11,21 @@ public class MissionBar : MonoBehaviour
     [SerializeField] GameObject winDialog; 
     //[SerializeField] CropMission[] cropsMission;
     List<MissionUIItem> itemSlots = new List<MissionUIItem>();
-    LevelData levelData;
     LevelManager levelManager = null;
+    LevelData levelData;
 
-    const string levelDataPath = "Levels/Level_";
 
     private void Awake()
     {
         levelManager = FindObjectOfType<LevelManager>();
     }
 
-    public LevelData LoadMissionData()
+    public void LoadMissionData(LevelData levelData)
     {
-        levelData = Resources.Load<LevelData>(levelDataPath + (levelManager.GetCurrentLevel()));
+        this.levelData = levelData;
+        // levelData = Resources.Load<LevelData>(levelDataPath + (levelManager.GetCurrentLevel()));
         InitializeStartSeeds();
-        FindObjectOfType<GoldManager>().CurrentGold = levelData.GetInitCoin();
-        //FindObjectOfType<SeedBarManager>().DisplaySeedItems();
         InitItemSlots();
-        if (levelData.HasTime())
-        {
-            FindObjectOfType<LevelTimer>().SetTime(levelData.GetTime());
-            FindObjectOfType<LevelTimer>().CountDownTime();
-        }
-        return levelData;
     }
 
     private void OnEnable()
@@ -64,39 +56,16 @@ public class MissionBar : MonoBehaviour
                 missionUI.Uncomplete();
                 missionUI.SetAvatar(crop.InventoryItem.Avatar);
                 missionUI.SetCropItem(crop);
-                //ItemHolder cropInInventory = inventory.GetItemWithID(crop.InventoryItem.Id);
-                //if (cropInInventory != null)
-                //{
-                //    missionUI.SetQuantity(cropInInventory.Quantity,
-                //                          crop.Quantity);
-                //}
-                //else
-                //{
-                //    missionUI.SetQuantity(0, crop.Quantity);
-                //}
                 missionUI.SetQuantity(crop.InventoryItem.GetQuantityInInventory(), crop.Quantity);
                 missionUI.UpdateUI();
                 itemSlots.Add(missionUI);
-
-                //ItemMission cropMission = missions[i] as ItemMission;
-                //if (cropMission != null)
-                //{
-                //    if (cropMission.IsItemCompleted(crop))
-                //    {
-                //        missionUI.Complete();
-                //    }
-                //    else
-                //    {
-                //        missionUI.Uncomplete();
-                //    }
-                //}
             }
         }
     }
 
     public void UpdateItemUIAndCheckIfMissionCompleted()
     {
-        Debug.Log("Update item ui and check if mission completed");
+        // Debug.Log("Update item ui and check if mission completed");
         UpdateUI();
         CheckIfMissionCompleted();
     }
@@ -132,8 +101,5 @@ public class MissionBar : MonoBehaviour
                 Debug.Log("Item is null");
             }
         }
-    }
-    public LevelData GetLevelData() {
-        return levelData;
     }
 }

@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Items/Seed item")]
-public class SeedItem : Item, IExchangeable 
+public class SeedItem : Item, IExchangeable, IBuyable 
 {
     [SerializeField] int unlockLevel;
-    [SerializeField] PriceVariable price;
     [SerializeField] CropItem cropItem;
 
 
@@ -16,20 +15,6 @@ public class SeedItem : Item, IExchangeable
     public int GetUnlockLevel()
     {
         return unlockLevel;
-    }
-
-    public int GetSellPrice()
-    {
-        return price.SellPrice;
-    }
-
-    public int GetBuyPrice()
-    {
-        return cropItem.GetBuyPrice();
-    }
-    public int GetGrowthTime()
-    {
-        return cropItem.GetGrowthTime();
     }
     public CropItem GetCropItem()
     {

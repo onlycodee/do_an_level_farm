@@ -7,25 +7,17 @@ using UnityEngine;
 public class CakeItem : Item, IExchangeable
 {
     [SerializeField] List<ItemHolder> ingredients;
-    [SerializeField] float cookTime;
-    [SerializeField] int sellPrice, buyPrice;
+    [SerializeField] float cookDuration;
+    // [SerializeField] PriceVariable price;
+    // [SerializeField] int sellPrice, buyPrice;
 
     public List<ItemHolder> GetIngredients()
     {
         return ingredients;
     }
 
-    public int GetSellPrice()
+    public float GetCookDuration()
     {
-        return sellPrice;
+        return cookDuration;
     }
-
-    public int GetBuyPrice()
-    {
-        return buyPrice;
-    }
-    public float GetCookTime()
-    {
-        return cookTime;
-    } 
 }

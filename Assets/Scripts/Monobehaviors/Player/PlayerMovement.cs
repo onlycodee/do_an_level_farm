@@ -5,7 +5,7 @@ using UnityEngine;
 //[RequireComponent(typeof(Rigidbody), typeof(Animator))]
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField, Min(5f)] float m_moveSpeed = 10f;
+    [SerializeField, Min(1f)] float m_moveSpeed = 10f;
     [SerializeField, Min(10f)] float m_rotationSpeed = 120f;
     [SerializeField] bool useJoyStick = false;
 
@@ -27,35 +27,13 @@ public class PlayerMovement : MonoBehaviour
         joystick = Joystick.Instance;
     }
 
-    private void Start() {
-        m_rigidBody.useGravity = false;
-    }
-
-
     private void FixedUpdate()
     {
         if (GameManager.Instance && GameManager.Instance.isFinished) return;
-        MovePlayer();
+        ProcessMoveInput();
     }
 
-    private void OnEnable() {
-        LevelManager.OnLevelBeginLoaded += DontUseRigidBody; 
-        LevelManager.OnLevelLoaded += UseRigidBody; 
-    }
-    private void OnDisable() {
-        LevelManager.OnLevelBeginLoaded -= DontUseRigidBody; 
-        LevelManager.OnLevelLoaded -= UseRigidBody; 
-    }
-    public void UseRigidBody() {
-        Debug.LogError("Use rigidbody");
-        m_rigidBody.useGravity = true;
-    }
-    public void DontUseRigidBody() {
-        Debug.LogError("Dont use rigidbody");
-        m_rigidBody.useGravity = true;
-    }
-
-    private void MovePlayer()
+    private void ProcessMoveInput()
     {
         if (m_playerController.IsWorking() || !m_canMove) return;
         if (useJoyStick)
@@ -65,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
         {
             m_moveInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
         }
+        // Debug.Log("Joystick input: " + m_moveInput);
         m_moveInput = Vector3.ClampMagnitude(m_moveInput, 1f);
         m_playerController.SetAnimSpeed(m_moveInput.magnitude);
         if (!Mathf.Approximately(m_moveInput.x, Mathf.Epsilon) || !Mathf.Approximately(m_moveInput.z, Mathf.Epsilon))

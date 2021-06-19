@@ -42,10 +42,10 @@ public class SellDialog : Dialog
             {
                 goldDisplayer.GetGoldIconTrans().DOScale(1.0f, .05f);
             });
-        }, () =>
-        {
+        }, 
+        null, 
+        () => {
             goldManager.AddGold(curRevenue);
-            //StartCoroutine(DelayClose(goldManager.GetAnimLength()));
         });
         //Close();
         StartCoroutine(DelayClose(.25f));
@@ -73,18 +73,9 @@ public class SellDialog : Dialog
     }
     public void UpdateTexts()
     {
-        //CropItem crop = itemHolder.InventoryItem as CropItem;
-        //SeedItem seedItem = itemHolder.InventoryItem as SeedItem;
-        //if (crop)
-        //{
-        //    curRevenue = curQuantity * crop.GetSellPrice();
-        //} else
-        //{
-        //    curRevenue = curQuantity;
-        //}
-        IExchangeable price = itemHolder.InventoryItem as IExchangeable;
         numItemsTxt.text = curQuantity + "/" + maxQuantity;
-        curRevenue = curQuantity * price.GetSellPrice();
+        curRevenue = curQuantity * itemHolder.InventoryItem.GetSellPrice();
+        Debug.LogError("Cur quantity: " + curQuantity + " sell price: " + itemHolder.InventoryItem.GetSellPrice());
         revenueTxt.text = curRevenue.ToString();
     }
     public override void Close()

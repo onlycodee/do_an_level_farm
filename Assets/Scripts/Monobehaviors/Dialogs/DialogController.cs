@@ -23,29 +23,18 @@ public enum DialogShow
     OVER_CURRENT
 };
 
-public class DialogController : MonoBehaviour
+public class DialogController : PersistentSingleton<DialogController> 
 {
-    public static DialogController Instance;
+    // public static DialogController Instance;
 
     [HideInInspector]
-    public Dialog current;
+    public Dialog currentDialog;
     [HideInInspector]
     public Dialog[] baseDialogs;
 
     public Action onDialogsOpened;
     public Action onDialogsClosed;
     public Stack<Dialog> dialogs = new Stack<Dialog>();
-
-    public void Awake()
-    {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(this);
-
-    }
-
-
 
     public void ShowDialog(int type)
     {
@@ -70,7 +59,7 @@ public class DialogController : MonoBehaviour
     }
     public void ShowDialog(Dialog dialog, DialogShow option = DialogShow.REPLACE_CURRENT)
     {
-        if (current != null)
+        if (currentDialog != null)
         {
             if (option == DialogShow.DONT_SHOW_IF_OTHERS_SHOWING)
             {
@@ -79,29 +68,29 @@ public class DialogController : MonoBehaviour
             }
             else if (option == DialogShow.REPLACE_CURRENT)
             {
-                current.Close();
+                currentDialog.Close();
             }
             else if (option == DialogShow.STACK)
             {
-                current.Hide();
+                currentDialog.Hide();
             }
         }
 
-        current = dialog;
+        currentDialog = dialog;
         if (option != DialogShow.SHOW_PREVIOUS)
         {
-            current.onDialogOpened += OnOneDialogOpened;
-            current.onDialogClosed += OnOneDialogClosed;
-            dialogs.Push(current);
+            currentDialog.onDialogOpened += OnOneDialogOpened;
+            currentDialog.onDialogClosed += OnOneDialogClosed;
+            dialogs.Push(currentDialog);
         }
 
-        if (current == null)
+        if (currentDialog == null)
         {
             Debug.Log("ERROR ShowDialog");
         }
         else
         {
-            current.Show();
+            currentDialog.Show();
         }
 
         if (onDialogsOpened != null)
@@ -117,28 +106,28 @@ public class DialogController : MonoBehaviour
 
     public void CloseCurrentDialog()
     {
-        if (current != null)
-            current.Close();
+        if (currentDialog != null)
+            currentDialog.Close();
     }
 
     public void CloseDialog(DialogType type)
     {
-        if (current == null) return;
-        if (current.dialogType == type)
+        if (currentDialog == null) return;
+        if (currentDialog.dialogType == type)
         {
-            current.Close();
+            currentDialog.Close();
         }
     }
 
     public bool IsDialogShowing()
     {
-        return current != null;
+        return currentDialog != null;
     }
 
     public bool IsDialogShowing(DialogType type)
     {
-        if (current == null) return false;
-        return current.dialogType == type;
+        if (currentDialog == null) return false;
+        return currentDialog.dialogType == type;
     }
 
     private void OnOneDialogOpened(Dialog dialog)
@@ -148,9 +137,9 @@ public class DialogController : MonoBehaviour
 
     private void OnOneDialogClosed(Dialog dialog)
     {
-        if (current == dialog)
+        if (currentDialog == dialog)
         {
-            current = null;
+            currentDialog = null;
             dialogs.Pop();
             if ((onDialogsClosed != null && dialogs.Count == 0))
             {

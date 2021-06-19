@@ -13,7 +13,9 @@ public class PlayerController : MonoBehaviour
     int hoeParam = Animator.StringToHash("Hoe");
     int wateringParam = Animator.StringToHash("Watering");
     int seedParam = Animator.StringToHash("Seed");
+    int healingParam = Animator.StringToHash("Healing");
     int m_animSpeedParam = Animator.StringToHash("MoveSpeed");
+    int feedingParam = Animator.StringToHash("Feeding");
 
     ToolItemUI.ToolType curToolType = ToolItemUI.ToolType.NONE;
     PlayerPlanting playerPlantingComp;
@@ -99,11 +101,11 @@ public class PlayerController : MonoBehaviour
                 {
                     if (currentToolItemGameObj) currentToolItemGameObj.SetActive(false);
                     toolBarManager.Hide();
-                    Debug.LogError("Show seeds");
+                    // Debug.LogError("Show seeds");
                     if (!seedBarManager.IsShow())
                     {
                         seedBarManager.UpdateSeedQuantity();
-                        Debug.LogError("inside show seeds: " + seedBarManager.GetSeedItemCount());
+                        // Debug.LogError("inside show seeds: " + seedBarManager.GetSeedItemCount());
                         if (seedBarManager.GetSeedItemCount() > 0)
                         {
                             seedBarManager.Show();
@@ -174,7 +176,7 @@ public class PlayerController : MonoBehaviour
 
     public void DeactivateTool()
     {
-        Debug.LogError("Deactive tool");
+        // Debug.LogError("Deactive tool");
         if (currentToolItemGameObj)
         {
             currentToolItemGameObj.SetActive(false);//.SetActiveBorder(false);
@@ -212,11 +214,11 @@ public class PlayerController : MonoBehaviour
             }
             else if (cropState as CropDiseasedState)
             {
-                if (toolItemBtn && toolItemBtn.GetToolType() == ToolItemUI.ToolType.WATERING) // tam thoi de watering nhu nay
+                if (toolItemBtn && toolItemBtn.GetToolType() == ToolItemUI.ToolType.MEDICINE) // tam thoi de watering nhu nay
                 {
                     //transform.LookAt(currentField.transform.position);
                     SetPlayerLookView();
-                    m_animator.SetTrigger(wateringParam);
+                    m_animator.SetTrigger(healingParam);
                 } else
                 {
                     ToastManager.Instance.ShowNotify("INVALID TOOL", currentField.transform.position + Vector3.up);
@@ -263,6 +265,7 @@ public class PlayerController : MonoBehaviour
     }
     public void OnHealingDone()
     {
+        Debug.LogError("Healing doneeeeeeeeeeeeeeeeeeeeeeeeeeeee");
         currentField.Healing();
         StartCoroutine(UnactiveToolAndToolBar());
     }
@@ -319,8 +322,6 @@ public class PlayerController : MonoBehaviour
             case ToolItemUI.ToolType.WATERING:
                 currentToolItemGameObj = wateringCan;
                 break;
-            case ToolItemUI.ToolType.PUNCH:
-                break;
             case ToolItemUI.ToolType.MEDICINE:
                 currentToolItemGameObj = medicineCan;
                 break;
@@ -350,6 +351,6 @@ public class PlayerController : MonoBehaviour
     {
         transform.LookAt(target.position);
         transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
-        m_animator.SetTrigger(seedParam);
+        //m_animator.SetTrigger(seedParam);
     }
 }

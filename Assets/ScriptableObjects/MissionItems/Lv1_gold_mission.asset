@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requiredItem:
     InventoryItem: {fileID: 11400000, guid: 65f6f06ce9aea284b9bb5ce423805ffc, type: 2}
-    Quantity: 190
+    Quantity: 120

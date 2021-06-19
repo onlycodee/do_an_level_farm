@@ -3,37 +3,24 @@
 [CreateAssetMenu(menuName = "Items/Crop item")]
 public class CropItem : Item, IExchangeable
 {
-    [SerializeField] PriceVariable price;
-    [SerializeField] int grownTime;
-    [SerializeField, Range(1, 100)] float diseasePercent, thirstyPercent;
+    [SerializeField] int grownDuration;
+    [SerializeField, Range(1, 100)] float diseasedPercent, thirstyPercent;
     [SerializeField] CropType cropType;
 
     public CropType GetCropType()
     {
         return cropType;
     }
-
     public float GetThirstyPercent()
     {
         return thirstyPercent; 
     }
-    
     public float GetDiseasedPercent()
     {
-        return diseasePercent;
+        return diseasedPercent;
     }
-    public int GetBuyPrice()
-    {
-        return price.BuyPrice;
-    }
-
-    public int GetSellPrice()
-    {
-        return price.SellPrice;
-    }
-
     public int GetGrowthTime()
     {
-        return grownTime;
+        return grownDuration;
     }
 }

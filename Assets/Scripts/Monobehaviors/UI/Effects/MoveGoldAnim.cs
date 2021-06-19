@@ -40,12 +40,12 @@ public class MoveGoldAnim : PersistentSingleton<MoveGoldAnim>
 
     public void BtnPlay2()
     {
-        MoveAcorn(transform.position, targetTransform.position, numAcorns);
+        // MoveAcorn(transform.position, targetTransform.position, numAcorns);
     }
 
-    public void MoveGolds(Vector3 fromPosition, Vector3 toPosition, int numAcornsPram, Action onMoveItemEnded, Action onMoveItemsDone)
+    public void MoveGolds(Vector3 fromPosition, Vector3 toPosition, int numAcornsPram, Action onMoveItemEnded, Action onMoveItemsDone, Action onFirstItemMoveDone)
     {
-        StartCoroutine(Play(fromPosition, toPosition, numAcornsPram, onMoveItemEnded, onMoveItemsDone, null, (GameObject goldFly) =>
+        StartCoroutine(Play(fromPosition, toPosition, numAcornsPram, onMoveItemEnded, onMoveItemsDone, onFirstItemMoveDone, null, (GameObject goldFly) =>
         {
             if (goldFly && goldFly.GetComponent<ParticleSystem>())
             {
@@ -54,12 +54,13 @@ public class MoveGoldAnim : PersistentSingleton<MoveGoldAnim>
         }));
     }
 
-    public void MoveAcorn(Vector3 fromPosition, Vector3 toPosition, int numAcornsPram, Action itemCallback = null, Action callBack = null, Action onItemInited = null, Action<GameObject> onItemStage1Ended = null)
-    {
-        StartCoroutine(Play(fromPosition, toPosition, numAcornsPram, itemCallback, callBack, onItemInited, onItemStage1Ended));
-    }
+    // public void MoveAcorn(Vector3 fromPosition, Vector3 toPosition, int numAcornsPram, Action itemCallback = null, Action callBack = null, Action onItemInited = null, Action<GameObject> onItemStage1Ended = null)
+    // {
+    //     StartCoroutine(Play(fromPosition, toPosition, numAcornsPram, itemCallback, callBack, onItemInited, onItemStage1Ended));
+    // }
 
-    public IEnumerator Play(Vector3 fromPosition, Vector3 toPosition, int numAcornsParam, Action itemCallback = null, Action callBack = null, Action onItemInited = null, Action<GameObject> onItemStage1Ended = null)
+    public IEnumerator Play(Vector3 fromPosition, Vector3 toPosition, int numAcornsParam, Action itemCallback = null, Action callBack = null, 
+    Action onFirstItemMoveDone = null, Action onItemInited = null, Action<GameObject> onItemStage1Ended = null)
     {
         fromPosition.z = 0;
         toPosition.z = 0;
@@ -75,6 +76,7 @@ public class MoveGoldAnim : PersistentSingleton<MoveGoldAnim>
 
         List<Vector3> randomAcornPositions = new List<Vector3>();
         GenerateRandomAcornPositions(fromPosition, randomAcornPositions);
+        bool firstItemMoveDone = false;
 
         for (int i = 0; i < numAcorns; i++)
         {
@@ -112,6 +114,10 @@ public class MoveGoldAnim : PersistentSingleton<MoveGoldAnim>
                 //.SetDelay(.2f * delayTime * (totalAcornsInCurrentPhase - (curI + 1) % totalAcornsInCurrentPhase))
                 .OnComplete(() =>
                 {
+                    if (!firstItemMoveDone) {
+                        firstItemMoveDone = true;
+                        onFirstItemMoveDone?.Invoke();
+                    }
                     itemCallback?.Invoke();
                     if (curI == numAcorns - 1)
                     {

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae309b52a997f9a46b55261d4ede0326, type: 3}
   m_Name: Pumpkin Seed
   m_EditorClassIdentifier: 
+  Price: {fileID: 11400000, guid: 1022f82c4b4dda4458c0c2ac131973d2, type: 2}
   Avatar: {fileID: 21300000, guid: 68a586aeb126e674691a18c5fb674195, type: 3}
-  Id: b052e4b8-92b4-491d-8fac-f7d052c4d4d0
+  Name: Pumpkin
+  Id: 553308bf-a731-4d9c-841c-821b6749e0f7
   VisibleInInventory: 1
   unlockLevel: 0
-  price: {fileID: 11400000, guid: 9bdb46408ae9336469ac8320ccdd4e83, type: 2}
   cropItem: {fileID: 11400000, guid: d2168caaa85c2fb4eb41391420724f48, type: 2}

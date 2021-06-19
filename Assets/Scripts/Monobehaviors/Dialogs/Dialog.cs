@@ -82,16 +82,6 @@ public class Dialog : MonoBehaviour
         onDialogClosed(this);
     }
 
-    private void DoClose()
-    {
-        if (onDialogCompleteClosed != null) onDialogCompleteClosed();
-        Destroy(gameObject);
-    }
-
-    private void DoOpen()
-    {
-        if (onDialogCompleteShowing != null) onDialogCompleteShowing();
-    }
 
     public void Hide()
     {
@@ -115,9 +105,15 @@ public class Dialog : MonoBehaviour
         onDialogCompleteClosed -= OnDialogCompleteClosed;
     }
 
-    public void PlayButton()
+    private void DoClose()
     {
-        //Sound.instance.PlayButton();
+        if (onDialogCompleteClosed != null) onDialogCompleteClosed();
+        Destroy(gameObject);
+    }
+
+    private void DoOpen()
+    {
+        if (onDialogCompleteShowing != null) onDialogCompleteShowing();
     }
 }
 
