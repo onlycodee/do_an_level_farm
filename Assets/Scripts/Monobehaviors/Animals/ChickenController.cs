@@ -189,11 +189,11 @@ public class ChickenController : MonoBehaviour
             Destroy(selectedChicken.gameObject);
             selectedChicken = null;
             FindNextChicken();
-
+            FindObjectOfType<GoldManager>().AddGold(sellPrice);
             FloatingUIItemController.Instance.ShowGold(
-                chickenItem.GetSellPrice(),
+                sellPrice,
                 chickenPos, 150
-                , 1.0f, () =>
+                , .5f, () =>
                 {
                     Inventory.Instance.AddItem(chickenItem);
                 }); ;

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3ba17e98aa4a3a46957795e4ec76f78, type: 3}
   m_Name: Corn Price
   m_EditorClassIdentifier: 
-  BuyPrice: 15
+  BuyPrice: 12
   SellPrice: 25

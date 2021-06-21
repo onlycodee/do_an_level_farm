@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3ba17e98aa4a3a46957795e4ec76f78, type: 3}
-  m_Name: Seed Price
+  m_Name: Tomato Price
   m_EditorClassIdentifier: 
-  BuyPrice: 0
-  SellPrice: 1
+  BuyPrice: 30
+  SellPrice: 70

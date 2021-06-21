@@ -19,8 +19,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Inventory.Instance.Reset();
-        LevelManager.Instance.LoadCurrentLevel(true);
+        // Inventory.Instance.Reset();
+        // LevelManager.Instance.LoadCurrentLevel(true);
     }
 
     public void Win()

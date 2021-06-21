@@ -3,48 +3,42 @@ using UnityEngine.UI;
 
 public class CropStateUI : MonoBehaviour
 {
-    [SerializeField] Image timerImg;
     [SerializeField] GameObject waterIcon, diseaseIcon;
-    //[SerializeField] GameObject waterBtn, healingBtn;
+    [SerializeField] Image percentImage;
+    [SerializeField] Sprite pinkBarSprite, greenBarSprite;
 
     private void Start()
     {
+        percentImage.sprite = pinkBarSprite;
+        percentImage.type = Image.Type.Filled;
         ResetUI();
-        //SetActiveWaterIcon(false);
     }
 
     public void SetFillOfTimerImg(float percent)
     {
-        timerImg.fillAmount = percent;
+        percentImage.fillAmount = percent;
+        if (Mathf.Approximately(percentImage.fillAmount, 1f)) {
+            percentImage.sprite = greenBarSprite;
+        }
     }
     public void SetActiveTimerImg(bool state)
     {
-        timerImg.gameObject.SetActive(state);
+        Debug.Log("Set active timer img");
+        percentImage.gameObject.SetActive(state);
     }
     public void SetActiveWaterIcon(bool state)
     {
-        //Debug.LogError("Set active water icon: " + state);
         waterIcon.SetActive(state);
     }
     public void SetActiveDiseaseIcon(bool state)
     {
         diseaseIcon.SetActive(state);
     }
-    //public void SetActiveBtnWatering(bool state)
-    //{
-    //    waterBtn.SetActive(state);
-    //}
-    //public void SetActiveBtnHealing(bool state)
-    //{
-    //    healingBtn.SetActive(state);
-    //}
 
     public void ResetUI()
     {
         SetActiveTimerImg(false);
         SetActiveWaterIcon(false);
         SetActiveDiseaseIcon(false);
-        //waterBtn.SetActive(false);
-        //healingBtn.SetActive(false);
     }
 }

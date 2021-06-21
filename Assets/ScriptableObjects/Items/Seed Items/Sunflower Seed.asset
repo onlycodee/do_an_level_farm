@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae309b52a997f9a46b55261d4ede0326, type: 3}
   m_Name: Sunflower Seed
   m_EditorClassIdentifier: 
-  Price: {fileID: 11400000, guid: 1022f82c4b4dda4458c0c2ac131973d2, type: 2}
+  Price: {fileID: 11400000, guid: d02e02fe5ae4c1d41a48abbcde996081, type: 2}
   Avatar: {fileID: 21300000, guid: 1807f59cc07b6584ca12f46c41098d3c, type: 3}
   Name: Sunflower
-  Id: 9b10b59b-bb22-463f-86b2-0d525e16e9c7
+  Id: b1dcd33d-a303-4875-8a25-e8964dbdd0a6
   VisibleInInventory: 1
-  unlockLevel: 0
+  unlockLevel: 5
   cropItem: {fileID: 11400000, guid: 36d0a5fa95f495344b35ed80adf92acd, type: 2}

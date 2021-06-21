@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0c2b35f5890a049bc181c9c8c60c90, type: 3}
   m_Name: Cabbage
   m_EditorClassIdentifier: 
-  Price: {fileID: 11400000, guid: 1022f82c4b4dda4458c0c2ac131973d2, type: 2}
+  Price: {fileID: 11400000, guid: c2e1c8cc82eb4ce489c508972a5edf1b, type: 2}
   Avatar: {fileID: 21300000, guid: 1483bf6037c2aea4a805bd735c398573, type: 3}
   Name: Cabbage
-  Id: 251d42d6-efbb-4773-b391-451265247bc8
+  Id: 60976746-166a-4927-af89-b8ace0ff8863
   VisibleInInventory: 1
-  grownDuration: 1
-  diseasedPercent: 0
-  thirstyPercent: 24.5
+  grownDuration: 50
+  diseasedPercent: 25
+  thirstyPercent: 25
   cropType: 5

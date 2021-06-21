@@ -8,7 +8,7 @@ public class LoseDialog : Dialog
     public void PlayAgain()
     {
         Close();
-        FindObjectOfType<LevelManager>().LoadCurrentLevel();
+        StartCoroutine(FindObjectOfType<LevelManager>().LoadCurrentLevel());
     }
     public void Home() {
         SceneManager.LoadScene(0);

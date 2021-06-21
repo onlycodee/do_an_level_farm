@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class CakeShop : MonoBehaviour
 {
-    [SerializeField] GameObject cakeHolder;
+    [SerializeField] GameObject cakeTimeHolder;
     [SerializeField] Image cakeImage;
     [SerializeField] TextMeshProUGUI cookTimerTxt;
     [SerializeField] GameObject cookDoneIcon;
+    [SerializeField] GameObject canvas;
 
     CakeItem cakeItem = null;
     float cookTimer = 0f;
@@ -18,7 +19,8 @@ public class CakeShop : MonoBehaviour
 
     private void Start()
     {
-        cakeHolder.SetActive(false);
+        // cakeHolder.SetActive(false);
+        canvas.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -38,16 +40,18 @@ public class CakeShop : MonoBehaviour
 
     public void ResetCook()
     {
+        canvas.SetActive(false);
         cakeItem = null;
         cookTimer = 0f;
         cookDoneIcon.SetActive(false);
-        cakeHolder.SetActive(false);
+        // cakeHolder.SetActive(false);
     }
 
     public void SetCakeItem(CakeItem cake, float remainTime)
     {
         Debug.LogError("Set cake itemmmmmmmmmmm: " + remainTime);
-        cakeHolder.SetActive(true);
+        cakeTimeHolder.SetActive(true);
+        canvas.SetActive(true);
         cakeItem = cake;
         cakeImage.sprite = cake.Avatar;
         cookTimerTxt.text = (Mathf.RoundToInt(remainTime)).ToString();
@@ -84,6 +88,6 @@ public class CakeShop : MonoBehaviour
     {
         Debug.Log("Cook done");
         cookDoneIcon.SetActive(true);
-        cakeHolder.SetActive(false);
+        cakeTimeHolder.SetActive(false);
     } 
 }

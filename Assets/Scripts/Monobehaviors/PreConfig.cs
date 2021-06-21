@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PreConfig : MonoBehaviour
 {
-    [SerializeField] int currentLevel = 1;
     [SerializeField] bool isDebug = false;
+    [SerializeField] int currentLevel = 1;
 
     private void Start() {
         if (isDebug) {

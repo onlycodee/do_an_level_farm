@@ -23,9 +23,16 @@ public class MusicButton : MonoBehaviour
     public void Toggle()
     {
         m_on = !m_on;
-        var backgroundAudioSource = GameObject.Find("BackgroundMusic").GetComponent<AudioSource>();
-        backgroundAudioSource.volume = m_on ? 1 : 0;
         PlayerPrefs.SetInt("music_on", m_on ? 1 : 0);
+        var backgroundAudioSource = GameObject.Find("BackgroundMusic").GetComponent<BackgroundMusic>();
+        // backgroundAudioSource.volume = m_on ? .5f : 0;
+        if (m_on) {
+            Debug.Log("Onnnnnnnnnnnnnnnnnnnnnn");
+            backgroundAudioSource.FadeIn();
+        } else {
+            Debug.Log("Offffffffffffffffffffff");
+            backgroundAudioSource.FadeOut();
+        }
     }
 
     public void ToggleSprite()

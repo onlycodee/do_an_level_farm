@@ -7,7 +7,7 @@ using System;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI levelText;
+    // [SerializeField] TextMeshProUGUI levelText;
 
     public static Action OnLevelBeginLoaded;
     public static Action OnLevelLoaded;
@@ -37,21 +37,22 @@ public class LevelManager : MonoBehaviour
             currentLevel++;
             PlayerPrefWrapper.CurrentLevel = currentLevel;
         }
-        LoadCurrentLevel();
+        yield return LoadCurrentLevel();
     }
 
-    public void LoadCurrentLevel(bool firstLoad = false)
+    public IEnumerator LoadCurrentLevel(bool firstLoad = false)
     {
         OnLevelBeginLoaded?.Invoke();
-        levelText.text = "Level: " + PlayerPrefWrapper.CurrentLevel.ToString();
+        FindObjectOfType<LevelTextDisplay>().SetLevel(PlayerPrefWrapper.CurrentLevel);
+        // levelText.text = "Level: " + PlayerPrefWrapper.CurrentLevel.ToString();
         Debug.LogError("Current level: " + PlayerPrefWrapper.CurrentLevel);
         curScene = SceneManager.GetSceneByName("level_" + PlayerPrefWrapper.CurrentLevel);
         if (curScene.isLoaded)
         {
-            StartCoroutine(UnloadAndLoadNewScene());
+            yield return StartCoroutine(UnloadAndLoadNewScene());
         } else
         {
-            StartCoroutine(COLoadCurrentLevelScene("level_" + PlayerPrefWrapper.CurrentLevel, firstLoad));
+            yield return StartCoroutine(COLoadCurrentLevelScene("level_" + PlayerPrefWrapper.CurrentLevel, firstLoad));
         }
     }
     public IEnumerator UnloadAndLoadNewScene()

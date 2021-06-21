@@ -21,6 +21,6 @@ public class WinDialog : Dialog
     }
     public void ReloadCurrentLevel() {
         Close();
-        LevelManager.Instance.LoadCurrentLevel();
+        StartCoroutine(LevelManager.Instance.LoadCurrentLevel());
     }
 }

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae309b52a997f9a46b55261d4ede0326, type: 3}
   m_Name: Corn Seed
   m_EditorClassIdentifier: 
-  Price: {fileID: 11400000, guid: 1022f82c4b4dda4458c0c2ac131973d2, type: 2}
+  Price: {fileID: 11400000, guid: 89bf266bf8ed0d949861acf3eaffe18c, type: 2}
   Avatar: {fileID: 21300000, guid: 1ac0c4a0f9f12f741920c5de6728d909, type: 3}
   Name: Corn
-  Id: 20ae8d07-2c89-45da-8ec2-447012b2f73c
+  Id: 8efa5181-68c2-4b69-95a3-f702f5486d9e
   VisibleInInventory: 1
-  unlockLevel: 0
+  unlockLevel: 1
   cropItem: {fileID: 11400000, guid: 7103c2840a0701c4e80057b51d003a4e, type: 2}

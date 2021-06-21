@@ -257,7 +257,7 @@ public class Chicken : MonoBehaviour
             return chickenItem.GetSellPrice();
         } else
         {
-            return chickenItem.GetSellPrice() / 2;
+            return chickenItem.GetBuyPrice() / 2;
         }
     }
 

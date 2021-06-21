@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Field : MonoBehaviour
 {
-    [SerializeField] GrownTimeDisplay grownTimeDisplay;
+    // [SerializeField] GrownTimeDisplay grownTimeDisplay;
     [SerializeField] CropStateUI cropStateUI;
     [SerializeField] GameObject diedCrop;
     [SerializeField] Color normalColor, havestedCropColor, highlightColor, ripedColor;
@@ -83,11 +83,6 @@ public class Field : MonoBehaviour
     {
         curRenderer.material.color = ripedColor;
     }
-
-    //void UpdateCropMissionUI()
-    //{
-    //    cropHarvestedEvent.NotifyAll();
-    //}
 
     private void OnTriggerStay(Collider other)
     {

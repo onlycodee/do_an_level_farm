@@ -16,6 +16,8 @@ MonoBehaviour:
   initSeeds:
   - InventoryItem: {fileID: 11400000, guid: c2f6629a606fe5f4d8b5c01368bed922, type: 2}
     Quantity: 5
+  - InventoryItem: {fileID: 11400000, guid: 4bb68f0411e2e8d48bf6518d58a92187, type: 2}
+    Quantity: 5
   missions:
   - {fileID: 11400000, guid: 17aa0f9763d78874aa66d3497c09c3fc, type: 2}
   time: 1000

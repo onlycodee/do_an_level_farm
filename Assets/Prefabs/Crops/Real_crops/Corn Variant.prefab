@@ -84,17 +84,17 @@ PrefabInstance:
     - target: {fileID: 2135634266836533041, guid: e165a31f59e1dc845b4b3dcd817df551,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2135634266836533041, guid: e165a31f59e1dc845b4b3dcd817df551,
-        type: 3}
-      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2135634266836533041, guid: e165a31f59e1dc845b4b3dcd817df551,
         type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135634266836533041, guid: e165a31f59e1dc845b4b3dcd817df551,
+        type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.78
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2135634266836533041, guid: e165a31f59e1dc845b4b3dcd817df551,
         type: 3}
@@ -145,7 +145,7 @@ PrefabInstance:
     - target: {fileID: 2135634266836533047, guid: e165a31f59e1dc845b4b3dcd817df551,
         type: 3}
       propertyPath: m_Name
-      value: Corn
+      value: Corn Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2135634266836533047, guid: e165a31f59e1dc845b4b3dcd817df551,
         type: 3}

@@ -15,7 +15,7 @@ MonoBehaviour:
   Price: {fileID: 11400000, guid: 1022f82c4b4dda4458c0c2ac131973d2, type: 2}
   Avatar: {fileID: 21300000, guid: 75acc892ed7c52f489d85ecaa8c4a873, type: 3}
   Name: Beet
-  Id: 7821adc3-46de-4af9-8803-4ce3b014d319
+  Id: e06f71f8-2604-40b6-bd14-65205854d478
   VisibleInInventory: 1
-  unlockLevel: 0
+  unlockLevel: 3
   cropItem: {fileID: 11400000, guid: 84c74bbdcea455146a999383fc6fb76b, type: 2}

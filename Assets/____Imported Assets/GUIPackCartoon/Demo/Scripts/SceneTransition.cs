@@ -16,17 +16,19 @@ public class SceneTransition : MonoBehaviour
 
     public void PerformTransition()
     {
-        //Transition.LoadLevel(scene, duration, color);
         StartCoroutine(COLoadScene());
-        //DontDestroyOnLoad(gameObject);
-        //Debug.LogError("Load scene done");
     }
     IEnumerator COLoadScene()
     {
         DontDestroyOnLoad(gameObject);
         yield return ScreenFader.Instance.FadeIn();
         yield return SceneManager.LoadSceneAsync(scene);
-        yield return new WaitForSeconds(.5f);
+        if (LevelManager.Instance) {
+            yield return LevelManager.Instance.LoadCurrentLevel(true);
+        } else {
+            Debug.Log("Can not find level manager");
+        }
+        // yield return new WaitForSeconds(.5f);
         yield return ScreenFader.Instance.FadeOut();
         Destroy(gameObject);
     }

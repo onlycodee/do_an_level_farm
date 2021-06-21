@@ -65,7 +65,7 @@ public class PlayerPlanting : MonoBehaviour
         curFieldComp.SetCrop(cropInstance);
         cropInstance.SetField(curFieldComp);
         cropInstance.transform.SetParent(curFieldComp.transform);
-        cropInstance.transform.localPosition = Vector3.zero;
+        cropInstance.transform.localPosition = Vector3.up * .15f;
         cropInstance.transform.localScale = Vector3.zero;
     }
     

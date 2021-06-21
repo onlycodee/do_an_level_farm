@@ -15,6 +15,6 @@ MonoBehaviour:
   Price: {fileID: 11400000, guid: eb936b7f8b1f7954ab572e91e66e348d, type: 2}
   Avatar: {fileID: 21300000, guid: 0f0be8135b04fe5469e218beba282df3, type: 3}
   Name: Chicken
-  Id: eacd68f4-0e71-43b2-87c7-24d30cd15894
-  VisibleInInventory: 0
-  unlockLevel: 1
+  Id: 70c687bb-6c38-4cb7-9d61-64f85acea3b9
+  VisibleInInventory: 1
+  unlockLevel: 5
