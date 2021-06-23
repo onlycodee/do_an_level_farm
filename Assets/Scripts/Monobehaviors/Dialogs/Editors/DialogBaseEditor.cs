@@ -2,6 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 public class BaseInspector : Editor
 {
     public void ShowArrayProperty(SerializedProperty array, Type type, string label)
@@ -27,3 +28,5 @@ public class BaseInspector : Editor
         }
     }
 }
+
+#endif

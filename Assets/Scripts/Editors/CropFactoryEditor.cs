@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using System;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(CropFactory))]
 public class CropFactoryEditor : Editor
 {
@@ -30,3 +31,5 @@ public class CropFactoryEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 }
+
+#endif

@@ -15,11 +15,9 @@ MonoBehaviour:
   Price: {fileID: 11400000, guid: e9720050a139cd545b5403762fe5d860, type: 2}
   Avatar: {fileID: 21300000, guid: d498044edfb9f3c41b8d15ed43be5711, type: 3}
   Name: Gato
-  Id: 1a0d5492-86fa-47be-bf8d-d3cf74331c8a
+  Id: 08049233-fe40-4bc6-b6fb-ab05bd8dd844
   VisibleInInventory: 1
   ingredients:
-  - InventoryItem: {fileID: 11400000, guid: 84c74bbdcea455146a999383fc6fb76b, type: 2}
-    Quantity: 1
   - InventoryItem: {fileID: 11400000, guid: 30d5d82e0e2651d49a56413fcadef3ba, type: 2}
-    Quantity: 2
-  cookDuration: 20
+    Quantity: 3
+  cookDuration: 10

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 public abstract class EditorWithSubEditor<TEditor, TTarget> : Editor
     where TEditor : Editor 
     where TTarget : MonoBehaviour
@@ -39,3 +40,5 @@ public abstract class EditorWithSubEditor<TEditor, TTarget> : Editor
         subEditors = null;
     }
 }
+
+#endif

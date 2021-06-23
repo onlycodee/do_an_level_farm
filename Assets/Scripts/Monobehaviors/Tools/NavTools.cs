@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
+  
+#if UNITY_EDITOR
 public class NavTools : MonoBehaviour
 {
     [MenuItem("Tools/Remove all data")]
@@ -12,3 +13,5 @@ public class NavTools : MonoBehaviour
         Debug.Log("Delete all data successfull");
     }
 }
+
+#endif
