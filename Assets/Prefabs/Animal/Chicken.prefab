@@ -197,18 +197,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chickenItem: {fileID: 11400000, guid: ebaa91b7b34eaf14c91b3f2fedecbaf4, type: 2}
   animator: {fileID: 8287627417246932373}
-  minGrowthDuration: 9
-  maxGrowthDuration: 16
-  minLayingEggDuration: 9
-  maxLayingEggDuration: 16
+  minGrowthDuration: 4
+  maxGrowthDuration: 8
+  minLayingEggDuration: 4
+  maxLayingEggDuration: 8
   layerMask:
     serializedVersion: 2
     m_Bits: 512
   moveDistance: 1.5
   minSpeed: 0.25
   maxSpeed: 1.5
-  eatDuration: 3
-  layingDuration: 2
+  eatDuration: 1.5
+  layingDuration: 1
   initScale: 0.5
   headTrans: {fileID: 8241585058396487045}
   hungryIcon: {fileID: 3220871358790431731}

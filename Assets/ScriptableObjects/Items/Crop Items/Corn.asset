@@ -15,9 +15,9 @@ MonoBehaviour:
   Price: {fileID: 11400000, guid: 89bf266bf8ed0d949861acf3eaffe18c, type: 2}
   Avatar: {fileID: 21300000, guid: 1ac0c4a0f9f12f741920c5de6728d909, type: 3}
   Name: Corn
-  Id: 6af065ed-890b-4794-bf94-bb2463252287
+  Id: a7975a7f-a8a4-4ed3-a7d1-c3342609df7f
   VisibleInInventory: 1
-  grownDuration: 13
-  diseasedPercent: 12
-  thirstyPercent: 12
+  grownDuration: 6
+  diseasedPercent: 5
+  thirstyPercent: 5
   cropType: 1

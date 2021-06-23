@@ -15,9 +15,9 @@ MonoBehaviour:
   Price: {fileID: 11400000, guid: f84c7e7f30b60a34c864758597da1685, type: 2}
   Avatar: {fileID: 21300000, guid: 276129a2e7ac536409694b1d4be28dc1, type: 3}
   Name: Tomato
-  Id: 224ce9d7-01da-48ea-b654-8e66bde7b925
+  Id: df71f274-9c97-4fc8-9503-689afbc2ef2d
   VisibleInInventory: 1
-  grownDuration: 35
+  grownDuration: 17
   diseasedPercent: 15
   thirstyPercent: 15
   cropType: 6

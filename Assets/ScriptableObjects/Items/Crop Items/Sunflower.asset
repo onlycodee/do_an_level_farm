@@ -15,9 +15,9 @@ MonoBehaviour:
   Price: {fileID: 11400000, guid: d02e02fe5ae4c1d41a48abbcde996081, type: 2}
   Avatar: {fileID: 21300000, guid: 1807f59cc07b6584ca12f46c41098d3c, type: 3}
   Name: Sunflower
-  Id: cf182592-0d13-4033-9e78-fd4549ed218d
+  Id: 6da94dff-b893-47e9-b4ca-43ce12910bfb
   VisibleInInventory: 1
-  grownDuration: 30
+  grownDuration: 15
   diseasedPercent: 20
   thirstyPercent: 20
   cropType: 4

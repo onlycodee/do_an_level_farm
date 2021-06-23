@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject hoe;
     [SerializeField] GameObject wateringCan;
     [SerializeField] GameObject medicineCan;
+    [SerializeField] Item hoeUse, medicineUse, waterUse;
     Animator m_animator;
     int hoeParam = Animator.StringToHash("Hoe");
     int wateringParam = Animator.StringToHash("Watering");
@@ -255,16 +256,19 @@ public class PlayerController : MonoBehaviour
     // Event callback invoked from animation
     public void OnHoeingDone()
     {
+        Inventory.Instance.AddItem(hoeUse);
         currentField.Hoeing();
         StartCoroutine(UnactiveToolAndToolBar());
     }
     public void OnWateringDone()
     {
+        Inventory.Instance.AddItem(waterUse);
         currentField.Watering();
         StartCoroutine(UnactiveToolAndToolBar());
     }
     public void OnHealingDone()
     {
+        Inventory.Instance.AddItem(medicineUse);
         Debug.LogError("Healing doneeeeeeeeeeeeeeeeeeeeeeeeeeeee");
         currentField.Healing();
         StartCoroutine(UnactiveToolAndToolBar());

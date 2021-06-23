@@ -15,9 +15,9 @@ MonoBehaviour:
   Price: {fileID: 11400000, guid: c2e1c8cc82eb4ce489c508972a5edf1b, type: 2}
   Avatar: {fileID: 21300000, guid: 1483bf6037c2aea4a805bd735c398573, type: 3}
   Name: Cabbage
-  Id: 60976746-166a-4927-af89-b8ace0ff8863
+  Id: daf537d0-d578-4cbb-93c7-5bed85546f47
   VisibleInInventory: 1
-  grownDuration: 50
+  grownDuration: 25
   diseasedPercent: 25
   thirstyPercent: 25
   cropType: 5

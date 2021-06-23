@@ -23,7 +23,7 @@ public class CropStateUI : MonoBehaviour
     }
     public void SetActiveTimerImg(bool state)
     {
-        Debug.Log("Set active timer img");
+        // Debug.Log("Set active timer img");
         percentImage.gameObject.SetActive(state);
     }
     public void SetActiveWaterIcon(bool state)

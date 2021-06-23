@@ -4,7 +4,7 @@
 public class CropItem : Item, IExchangeable
 {
     [SerializeField] int grownDuration;
-    [SerializeField, Range(1, 100)] float diseasedPercent, thirstyPercent;
+    [SerializeField, Range(0, 100)] float diseasedPercent, thirstyPercent;
     [SerializeField] CropType cropType;
 
     public CropType GetCropType()

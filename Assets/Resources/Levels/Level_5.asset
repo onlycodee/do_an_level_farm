@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f8a848ea52bff14896268954e0e3200, type: 3}
   m_Name: Level_5
   m_EditorClassIdentifier: 
-  initGold: 10000
+  initGold: 300
   initSeeds:
-  - InventoryItem: {fileID: 11400000, guid: c2f6629a606fe5f4d8b5c01368bed922, type: 2}
-    Quantity: 5
-  - InventoryItem: {fileID: 11400000, guid: 4bb68f0411e2e8d48bf6518d58a92187, type: 2}
-    Quantity: 5
+  - InventoryItem: {fileID: 11400000, guid: a5b0119288a332c43ae8bc708dc847b9, type: 2}
+    Quantity: 4
   missions:
-  - {fileID: 11400000, guid: 17aa0f9763d78874aa66d3497c09c3fc, type: 2}
-  time: 1000
+  - {fileID: 11400000, guid: ea09b66af30cdf54ba92a1c002f4c5db, type: 2}
+  time: 300

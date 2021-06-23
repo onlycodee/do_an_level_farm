@@ -15,9 +15,9 @@ MonoBehaviour:
   Price: {fileID: 11400000, guid: c4c7a223d5c5f0548a9c3af43716093c, type: 2}
   Avatar: {fileID: 21300000, guid: 68a586aeb126e674691a18c5fb674195, type: 3}
   Name: Pumpkin
-  Id: 5ee9524f-fa1a-4904-8dd9-abf1ef32191a
+  Id: 2f92f1b6-5c3f-4da3-b8dc-f855f2b4c039
   VisibleInInventory: 1
-  grownDuration: 20
+  grownDuration: 10
   diseasedPercent: 50
   thirstyPercent: 50
   cropType: 3

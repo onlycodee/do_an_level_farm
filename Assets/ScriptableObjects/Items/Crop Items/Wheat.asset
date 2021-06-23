@@ -15,9 +15,9 @@ MonoBehaviour:
   Price: {fileID: 11400000, guid: e48d639aaf08d6a4b8d97647c35bc58f, type: 2}
   Avatar: {fileID: 21300000, guid: 353fecc3598054a4697acf6f598adb09, type: 3}
   Name: Wheat
-  Id: 9a9d67a1-fb85-4daa-b33d-536bf89aa1cd
+  Id: d94642e5-4d98-4397-bde8-e9f79a2ecbb1
   VisibleInInventory: 1
-  grownDuration: 10
-  diseasedPercent: 10
-  thirstyPercent: 10
+  grownDuration: 5
+  diseasedPercent: 0
+  thirstyPercent: 0
   cropType: 0

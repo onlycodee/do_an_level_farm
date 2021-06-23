@@ -13,7 +13,7 @@ public class CakeUIItem : MonoBehaviour
     [SerializeField] Image avatarImg;
     // [SerializeField] Button cookButton;
 
-    List<CakeIngredientUIItem> cakeIngredients = new List<CakeIngredientUIItem>();
+    public List<CakeIngredientUIItem> cakeIngredients = new List<CakeIngredientUIItem>();
     bool hasInited = false;
 
     private void Start()
@@ -40,7 +40,7 @@ public class CakeUIItem : MonoBehaviour
     }
     public void InitIngredientUIItems()
     {
-        Debug.LogError("init ingredient");
+        Debug.LogError("init ingredient: " + cakeItem.GetIngredients().Count);
         List<ItemHolder> ingres = cakeItem.GetIngredients();
         for (int i = 0; i < ingres.Count; i++)
         {

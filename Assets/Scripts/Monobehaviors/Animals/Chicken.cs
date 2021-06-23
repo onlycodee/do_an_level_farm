@@ -66,7 +66,7 @@ public class Chicken : MonoBehaviour
             // Debug.Log("Normal: " + processTimer);
             if (isFullGrown)
             {
-                Debug.Log("1");
+                // Debug.Log("1");
                 if (processTimer >= layingEggDuration)
                 {
                     GoToChickenNestAndLayingEgg();
@@ -74,7 +74,7 @@ public class Chicken : MonoBehaviour
                 }
             } else
             {
-                Debug.Log("2");
+                // Debug.Log("2");
                 Grown();
                 if (processTimer >= growthDuration)
                 {
